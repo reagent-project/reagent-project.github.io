@@ -1,10 +1,8 @@
-# Project Name Documentation
-
-This is a documentation site for [Project Name](). Copy or clone me and adapt for your project
-that needs documentation guides similar to [rubyamqp.info](http://rubyamqp.info), [clojuremongodb.info](http://clojuremongodb.info) and so on.
+# Reagent Documentation
 
 
-## Install Dependencies
+
+## Developing Locally
 
 With Bundler:
 
@@ -20,9 +18,9 @@ then navigate to [localhost:4000](http://localhost:4000)
 
     ./bin/jekyll build
 
-## With Docker
+## Developing With Docker
 
-If you don't have ruby toolsets available on your machine, you can run this with Docker.
+If you don't have ruby toolsets available on your machine, you can run this project in Docker with [Fig](http://www.fig.sh).
 
 ### Running a local development server
 
@@ -40,6 +38,6 @@ fig run web jekyll build
 
 ## License & Copyright
 
-Copyright (C) 2014 Alexander Petrov, Michael S. Klishin, Zack Maril.
+Copyright (C) 2014 The Reagent Team
 
 Distributed under the Eclipse Public License, the same as Clojure.
