@@ -109,7 +109,13 @@ its result changes.
 track is lazy, i.e the function is only evaluated on deref.</pre></div></div><div class="public anchor" id="var-track.21"><h3>track!</h3><div class="usage"><code>(track! f &amp; args)</code></div><div class="doc"><pre class="plaintext">An eager version of track. The function passed is called
 immediately, and continues to be called when needed, until stopped
 with dispose!.</pre></div></div><div class="public anchor" id="var-unmount-component-at-node"><h3>unmount-component-at-node</h3><div class="usage"><code>(unmount-component-at-node container)</code></div><div class="doc"><pre class="plaintext">Remove a component from the given DOM node.
-</pre></div></div><div class="public anchor" id="var-with-let"><h3>with-let</h3><h4 class="type">macro</h4><div class="usage"><code>(with-let bindings &amp; body)</code></div><div class="doc"><pre class="plaintext"></pre></div></div><div class="public anchor" id="var-with-let"><h3>with-let</h3><h4 class="type">macro</h4><div class="usage"><code>(with-let bindings &amp; body)</code></div><div class="doc"><pre class="plaintext"></pre></div></div><div class="public anchor" id="var-wrap"><h3>wrap</h3><div class="usage"><code>(wrap value reset-fn &amp; args)</code></div><div class="doc"><pre class="plaintext">Provide a combination of value and callback, that looks like an atom.
+</pre></div></div><div class="public anchor" id="var-with-let"><h3>with-let</h3><h4 class="type">macro</h4><div class="usage"><code>(with-let bindings &amp; body)</code></div><div class="doc"><pre class="plaintext">Bind variables as with let, except that when used in a component
+the bindings are only evaluated once. Also takes an optional finally
+clause at the end, that is executed when the component is
+destroyed.</pre></div></div><div class="public anchor" id="var-with-let"><h3>with-let</h3><h4 class="type">macro</h4><div class="usage"><code>(with-let bindings &amp; body)</code></div><div class="doc"><pre class="plaintext">Bind variables as with let, except that when used in a component
+the bindings are only evaluated once. Also takes an optional finally
+clause at the end, that is executed when the component is
+destroyed.</pre></div></div><div class="public anchor" id="var-wrap"><h3>wrap</h3><div class="usage"><code>(wrap value reset-fn &amp; args)</code></div><div class="doc"><pre class="plaintext">Provide a combination of value and callback, that looks like an atom.
 
 The first argument can be any value, that will be returned when the
 result is deref'ed.
