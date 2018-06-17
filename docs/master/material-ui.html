@@ -32,6 +32,8 @@
   (let [props (-&gt; props
                   (assoc-in [:InputProps :inputComponent] input-component)
                   rtpl/convert-prop-value)]
-    (apply r/create-element mui/TextField props children)))
+    (apply r/create-element mui/TextField props (map r/as-element children))))
 </code></pre>
-<p>Here <code>r/create-element</code> and <code>reagent.impl.template/covert-prop-values</code> achieve the same as what <code>adapt-react-class</code> does, but allows modifying the props.</p></div></div></div></body></html>
+<p>Here <code>r/create-element</code> and <code>reagent.impl.template/covert-prop-values</code> achieve the same as what <code>adapt-react-class</code> does, but allows modifying the props.</p>
+<p><strong>Check the example project for complete code.</strong> Some additional logic is required to ensure option like <code>:multiline</code> and <code>:select</code> work correctly, as they affect how the <code>inputComponent</code> should work.</p>
+<p>TODO: <code>:multiline</code> <code>TextField</code> without <code>:rows</code> (i.e. automatic height) doesn’t work, because that requires Material-UI <code>Input/Textarea</code>, which doesn’t work with Reagent cursor fix.</p></div></div></div></body></html>
