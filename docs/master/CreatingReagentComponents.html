@@ -81,22 +81,27 @@
 <p>Now, for the final step in complexity.</p>
 <p>In my experience, you’ll probably use <code>Form-3</code> <code>components</code> less than 1% of the time, perhaps only when you want to use a js library like D3 or introduce some hand-crafted optimisations. Maybe. While you’ll ignore <code>Form-3</code> components most of the time, when you do need them, you need them bad. So pay attention, because they’ll save your bacon one day. </p>
 <p>While the critical part of a component is its render function, sometimes we need to perform actions at various critical moments in a component’s lifetime, like when it is first created, or when its about to be destroyed (removed from the DOM), or when its about to be updated, etc.</p>
-<p>With <code>Form-3</code> components, you can nominate <code>lifecycle methods</code>. reagent provides a very thin layer over React’s own <code>lifecycle methods</code>. So, before going on, <a href="http://facebook.github.io/react/docs/component-specs.html#lifecycle-methods">read all about React’s lifecycle methods.</a></p>
+<p>With <code>Form-3</code> components, you can nominate <code>lifecycle methods</code>. reagent provides a very thin layer over React’s own <code>lifecycle methods</code>. So, before going on, <a href="http://facebook.github.io/react/docs/component-specs.html#lifecycle-methods">read all about React’s lifecycle methods.</a>. </p>
+<p>Because React’s lifecycle methods are object-oriented, they presume the ability to access <code>this</code> to obtain the current state of the component. Accordingly, the signatures of the corresponding Reagent lifecycle methods all take a reference to the reagent component as the first argument. This reference can be used with <code>r/props</code>, <code>r/children</code>, and <code>r/argv</code> to obtain the current props/arguments. There are some unexpected details with these functions described below. You may also find <code>r/dom-node</code> helpful, as a common use of form-3 components is to draw into a <code>canvas</code> element, and you will need access to the underlying DOM element to do so.</p>
 <p>A <code>Form-3</code> component definition looks like this:</p>
 <pre><code class="cljs">(defn my-component
   [x y z]  
   (let [some (local but shared state)      ;; &lt;-- closed over by lifecycle fns
         can  (go here)]   
      (reagent/create-class                 ;; &lt;-- expects a map of functions 
-       {:component-did-mount               ;; the name of a lifecycle function
-        #(println "component-did-mount")   ;; your implementation
+       {:display-name  "my-component"      ;; for more helpful warnings &amp; errors
+
+        :component-did-mount               ;; the name of a lifecycle function
+        (fn [this] 
+          (println "component-did-mount")) ;; your implementation
          
-        :component-will-mount              ;; the name of a lifecycle function
-        #(println "component-will-mount")  ;; your implementation
+        :component-did-update              ;; the name of a lifecycle function
+        (fn [this old-argv]                ;; reagent provides you the entire "argv", not just the "props"
+          (let [new-argv (rest (reagent/argv this))]
+            (do-something new-argv old-argv)))
       
         ;; other lifecycle funcs can go in here
-      
-        :display-name  "my-component"  ;; for more helpful warnings &amp; errors
+     
 
         :reagent-render        ;; Note:  is not :render
          (fn [x y z]           ;; remember to repeat parameters
@@ -113,7 +118,10 @@
    [:h1 "Welcome"]
    [my-component 1 2 3]]) ;; Be sure to put the Reagent class in square brackets to force it to render!
 </code></pre>
-<p>At the time of writing, the official reagent tutorial doesn’t show how to do <code>Form-3</code> <code>components</code> in the way shown above, and instead suggests that you use <code>with-meta</code>, which is clumsy and inferior. So I won’t show that method here, but be aware that an alternative way exists to achieve the same outcome.</p>
+<p>Note the <code>old-argv</code> above in the signature for <code>component-did-mount</code>. Many of these Reagent lifecycle method analogs take <code>prev-argv</code> or <code>old-argv</code> (see the docstring for <code>reagent/create-class</code> for a full listing). These <code>argv</code> arguments include the component constructor as the first argument, which should generally be ignored. This is the same format returned by <code>(reagent/argv this)</code>.</p>
+<p>Alternately, you can use <code>(reagent/props this)</code> and <code>(reagent/props children)</code>, but, conceptually, these don’t map as clearly to the <code>argv</code> concept. Specifically, the arguments to your render function are actually passed as children (not props) to the underlying React component, <strong>unless the first argument is a map.</strong> If the first argument is a map, then that map is passed as props, and the rest of the arguments are passed as children. Using <code>props</code> and <code>children</code> may read a bit cleaner, but you do need to pay attention to whether you’re passing a props map or not.</p>
+<p>Finally, note that some react lifecycle methods take <code>prevState</code> and <code>nextState</code>. Because Reagent provides its own state management system, there is no access to these parameters in the lifecycle methods.</p>
+<p>It is possible to create <code>Form-3</code> <code>components</code> using <code>with-meta</code>. However, <code>with-meta</code> is a bit clumsy and has no advantages over the above method, but be aware that an alternative way exists to achieve the same outcome.</p>
 <p><strong>Rookie mistake</strong></p>
 <p>In the code sample above, notice that the renderer function is identified via an odd keyword in the map given to <code>reagent/create-class</code>. It’s called <code>:reagent-render</code> rather than the shorter, more obvious <code>:render</code>. </p>
 <p>Its a trap to mistakenly use <code>:render</code> because you won’t get any errors, <strong>except</strong> the function you supply will only ever be called with one parameter, and it won’t be the one you expect. <a href="https://github.com/reagent-project/reagent/issues/47#issuecomment-61056999">Some details here</a>.</p>
@@ -122,6 +130,7 @@
 <p>While you can override <code>component-should-update</code> to achieve some performance improvements, you probably shouldn’t unless you really, really know what you are doing. Resist the urge. Your current performance is just fine. :-)</p>
 <p><strong>Rookie mistake</strong></p>
 <p>Leaving out the <code>:display-name</code> entry. If you leave it out, Reagent and React have no way of knowing the name of the component causing a problem. As a result, the warnings and errors they generate won’t be as informative. </p>
+<hr />
 <h2><a href="#final-note" name="final-note"></a>Final Note</h2>
 <p>Above I used the terms <code>Form-1</code>, <code>Form-2</code> and <code>Form-3</code>, but there’s actually only one kind of component. It is just that there’s <strong>3 different ways to create a component</strong>. </p>
 <p>At the end of the day, no matter how it is created, a component will end up with a render function and some life-cycle methods. A component created via <code>Form-1</code> has the same basic structure as one created via <code>Form-3</code> because underneath they are all just React components.</p>
