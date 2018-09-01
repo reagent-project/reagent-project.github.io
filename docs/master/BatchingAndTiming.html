@@ -9,7 +9,7 @@
   <li>The new code does proper batching of renderings even when changes to atoms are done outside of event handlers (which is great for e.g core.async users).</li>
   <li>Repaints can be synced by the browser with for example CSS transitions, since Reagent uses requestAnimationFrame to do the batching. That makes for example animations smoother.</li>
 </ul>
-<p>In short, Reagent renders less often, but at the right times. For a much better description of why async rendering is good, see David Nolen’s <a href="http://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs/">excellent explanation here.</a></p>
+<p>In short, Reagent renders less often, but at the right times. For a much better description of why async rendering is good, see David Nolen’s <a href="http://swannodette.github.io/2013/12/17/the-future-of-javascript-mvcs">excellent explanation here.</a></p>
 <h2><a href="#the-bad-news" name="the-bad-news"></a>The bad news</h2>
 <p>Lunches in general tend to be non-free, and this is no exception. The downside to async rendering is that you can no longer depend on changes to atoms being immediately available in the DOM. (Actually, you couldn’t have truly relied upon it anyway because React.js itself does batching inside event handlers.)</p>
 <p>The biggest impact is in testing: be sure to call <code>reagent.core/flush</code> to force Reagent to synchronize state with the DOM.</p>
