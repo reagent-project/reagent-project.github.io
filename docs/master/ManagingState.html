@@ -133,66 +133,81 @@
   <li><code>on-set</code> and <code>on-dispose</code> are run when the reaction is set and unset from the DOM</li>
   <li><code>derefed</code> <strong>TODO unclear</strong></li>
 </ul>
-<p>Reactions are very useful when * You need a way in which components only updates based on part of the ratom state. (reagent/cursor can also be used for this scenario) * When you want to combine two <code>ratoms</code> and produce a result<br />* You want the component to use some transformed value of <code>ratom</code></p>
+<p>Reactions are very useful when</p>
+<ul>
+  <li>You need a way in which components only updates based on part of the ratom state. (reagent/cursor can also be used for this scenario)</li>
+  <li>When you want to combine two <code>ratoms</code> and produce a result</li>
+  <li>You want the component to use some transformed value of <code>ratom</code></li>
+</ul>
 <p>Here’s an example:</p>
 <pre><code> (def app-state (reagent/atom {:state-var-1 {:var-a 2
                                                    :var-b 3}
                                      :state-var-2 {:var-a 7
                                                    :var-b 9}}))
- 
- (def app-var2-reaction (reagent.ratom/make-reaction 
+
+ (def app-var2-reaction (reagent.ratom/make-reaction
                           #(get-in @app-state [:state-var-2 :var-a])))
- 
+
 
  (defn component-using-make-reaction []
    [:div
     [:div "component-using-make-reaction"]
     [:div "Sate 2 - var a : " @app-var2-reaction]])
 
- ```
-
-The below example uses `reagent.ratom/reaction` macro, which provides syntactic sugar around creating reaction using `make-reaction`  
-
 </code></pre>
-<p>(let [username (reagent/atom "“)  password (reagent/atom ”")  fields-populated? (reagent.ratom/reaction (every? not-empty [@username @password]))]
- [:div “Is username and password populated ?” @fields-populated?])</p>
-<pre><code>Reactions are executed asynchronously, so be sure to call `flush` if you depend on reaction side effects.
-
-## The track function
-
-`reagent.core/track` takes a function, and optional arguments for that function, and gives a derefable (i.e "atom-like") value, containing whatever is returned by that function. If the tracked function depends on a Reagent atom, it is called again whenever that atom changes – just like a Reagent component function. If the value returned by `track` is used in a component, the component is re-rendered when the value returned by the function changes.
-
-In other words, `@(r/track foo x)` gives the same result as `(foo x)` – but in the first case, foo is only called again when the atom(s) it depends on changes.
-
-Here's an example:
-
+<p>The below example uses <code>reagent.ratom/reaction</code> macro, which provides syntactic sugar around creating reaction using <code>make-reaction</code></p>
+<pre><code>(let [username (reagent/atom "")
+      password (reagent/atom "")
+      fields-populated? (reagent.ratom/reaction (every? not-empty [@username @password]))]
+ [:div "Is username and password populated ?" @fields-populated?])
 </code></pre>
-<p>(ns example.core  (:require [reagent.core :as r])) (defonce app-state (r/atom {:people  {1 {:name “John Smith”}  2 {:name “Maggie Johnson”}}}))</p>
-<p>(defn people []  (:people @app-state))</p>
-<p>(defn person-keys []  (-&gt; @(r/track people)  keys  sort))</p>
-<p>(defn person [id]  (-&gt; @(r/track people)  (get id)))</p>
-<p>(defn name-comp [id]  (let [p @(r/track person id)]
-	[:li  (:name p)]))</p>
-<p>(defn name-list []  (let [ids @(r/track person-keys)]
-	[:ul  (for [i ids]  ^{:key i} [name-comp i])]))</p>
-<pre><code><br />Here, the name-list component will only be re-rendered if the keys of the :people map changes. Every name-comp only renders again when needed, etc.
+<p>Reactions are executed asynchronously, so be sure to call <code>flush</code> if you depend on reaction side effects.</p>
+<h2><a href="#the-track-function" name="the-track-function"></a>The track function</h2>
+<p><code>reagent.core/track</code> takes a function, and optional arguments for that function, and gives a derefable (i.e “atom-like”) value, containing whatever is returned by that function. If the tracked function depends on a Reagent atom, it is called again whenever that atom changes – just like a Reagent component function. If the value returned by <code>track</code> is used in a component, the component is re-rendered when the value returned by the function changes.</p>
+<p>In other words, <code>@(r/track foo x)</code> gives the same result as <code>(foo x)</code> – but in the first case, foo is only called again when the atom(s) it depends on changes.</p>
+<p>Here’s an example:</p>
+<pre><code class="clojure">(ns example.core
+  (:require [reagent.core :as r]))
+(defonce app-state (r/atom {:people
+							{1 {:name "John Smith"}
+							 2 {:name "Maggie Johnson"}}}))
 
-Use of track can improve performance in three ways:
+(defn people []
+  (:people @app-state))
 
-1. It can be used as a cache for an expensive function, that is automatically updated if that function depends on Reagent atoms (or other tracks, cursors, etc).
-2. It can also be used to limit the number of times a component is re-rendered. The user of track is only updated when the function’s result changes. In other words, you can use track as a kind of generalized, read-only cursor.
-3. Every use of track with the same arguments will only result in one execution of the function. E.g the two uses of `@(r/track people)` in the example above will only result in one call to the people function (both initially, and when the state atom changes).
+(defn person-keys []
+  (-&gt; @(r/track people)
+	  keys
+	  sort))
 
-_Note:_ Compared to reactions, `reagent.ratom/reaction` and `track` are similar. The main differences are that track uses named functions and variables, rather than depending on closures, and that you don’t have to manage their creation manually (since tracks are automatically cached and reused).
+(defn person [id]
+  (-&gt; @(r/track people)
+	  (get id)))
 
-_Note:_ The first argument to track should be a named function, i.e not an anonymous one. Also, beware of lazy data sequences: don’t use deref (i.e ”@”) with the for macro, unless wrapped in doall (just like in Reagent components).
+(defn name-comp [id]
+  (let [p @(r/track person id)]
+	[:li
+	 (:name p)]))
 
-### The track! function
-
-`track!` works just like track, except that the function passed is invoked immediately, and continues to be invoked whenever any atoms used within it changes.
-
-For example, given this function:
-
+(defn name-list []
+  (let [ids @(r/track person-keys)]
+	[:ul
+	 (for [i ids]
+	   ^{:key i} [name-comp i])]))
 </code></pre>
-<p>(defn log-app-state []  (prn @app-state)) ```</p>
+<p>Here, the name-list component will only be re-rendered if the keys of the :people map changes. Every name-comp only renders again when needed, etc.</p>
+<p>Use of track can improve performance in three ways:</p>
+<ol>
+  <li>It can be used as a cache for an expensive function, that is automatically updated if that function depends on Reagent atoms (or other tracks, cursors, etc).</li>
+  <li>It can also be used to limit the number of times a component is re-rendered. The user of track is only updated when the function’s result changes. In other words, you can use track as a kind of generalized, read-only cursor.</li>
+  <li>Every use of track with the same arguments will only result in one execution of the function. E.g the two uses of <code>@(r/track people)</code> in the example above will only result in one call to the people function (both initially, and when the state atom changes).</li>
+</ol>
+<p><em>Note:</em> Compared to reactions, <code>reagent.ratom/reaction</code> and <code>track</code> are similar. The main differences are that track uses named functions and variables, rather than depending on closures, and that you don’t have to manage their creation manually (since tracks are automatically cached and reused).</p>
+<p><em>Note:</em> The first argument to track should be a named function, i.e not an anonymous one. Also, beware of lazy data sequences: don’t use deref (i.e ”@”) with the for macro, unless wrapped in doall (just like in Reagent components).</p>
+<h3><a href="#the-track-function" name="the-track-function"></a>The track! function</h3>
+<p><code>track!</code> works just like track, except that the function passed is invoked immediately, and continues to be invoked whenever any atoms used within it changes.</p>
+<p>For example, given this function:</p>
+<pre><code class="clojure">(defn log-app-state []
+  (prn @app-state))
+</code></pre>
 <p>you could use <code>(defonce logger (r/track! log-app-state))</code> to monitor changes to app-state. <code>log-app-state</code> would continue to run until you stop it, using <code>(r/dispose! logger)</code>.</p></div></div></div></body></html>
