@@ -39,6 +39,26 @@
 <p>As of reagent 0.8.0, the <code>class</code> attribute accepts a collection of classes and will remove any nil value:</p>
 <pre><code class="clojure">[:div {:class ["a-class" (when active? "active") "b-class"]}]
 </code></pre>
+<h2><a href="#special-notation-for-id-and-class" name="special-notation-for-id-and-class"></a>Special notation for id and class</h2>
+<p>The id of an element can be indicated with a hash (<code>#</code>) after the name of the element.</p>
+<p>This:</p>
+<pre><code class="clojure">[:div#my-id]
+</code></pre>
+<p>is the same as this:</p>
+<pre><code class="clojure">[:div {:id "my-id"}]
+</code></pre>
+<p>One or more classes can indicated for an element with a <code>.</code> and the class-name like this:</p>
+<pre><code class="clojure">[:div.my-class.my-other-class.etc]
+</code></pre>
+<p>which is the same as:</p>
+<pre><code class="clojure">[:div {:class ["my-class" "my-other-class" "etc"]}]
+</code></pre>
+<p>Special notations for id and classes can be used together. The id must be listed first:</p>
+<pre><code class="clojure">[:div#my-id.my-class.my-other-class]
+</code></pre>
+<p>which is the same as:</p>
+<pre><code class="clojure">[:div {:id "my-id" :class ["my-class" "my-other-class"]}]
+</code></pre>
 <h2><a href="#special-notation-for-nested-elements" name="special-notation-for-nested-elements"></a>Special notation for nested elements</h2>
 <p>Reagent extends standard Hiccup in one way: it is possible to “squeeze” elements together by using a <code>&gt;</code> character.</p>
 <p>This:</p>
