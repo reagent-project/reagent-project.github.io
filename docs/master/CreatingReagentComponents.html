@@ -51,6 +51,19 @@
      [:div "Hello"] 
      [:div name]])     ;; [:div] containing two nested [:divs]
 </code></pre>
+<p>Alternatively, you could return a <a href="https://reactjs.org/docs/fragments.html">React Fragment</a>. In reagent, a React Fragment is created using the <code>:&lt;&gt;</code> Hiccup form.</p>
+<pre><code class="cljs">(defn right-component
+   [name]
+   [:&lt;&gt;
+     [:div "Hello"]
+     [:div name]])
+</code></pre>
+<p>Referring to the example in <a href="https://reactjs.org/docs/fragments.html">React’s documentation</a>, the <code>Columns</code> component could be defined in reagent as:</p>
+<pre><code class="cljs">(defn columns
+  [:&lt;&gt;
+    [:td "Hello"]
+    [:td "World"]]
+</code></pre>
 <h2><a href="#form-2-a-function-returning-a-function" name="form-2-a-function-returning-a-function"></a>Form-2: A Function Returning A Function</h2>
 <p>Now, let’s take one step up in complexity. Sometimes, a component requires:  - some setup; or  - some local state; and of course  - a renderer</p>
 <p>The first two are optional, the last is not.</p>
