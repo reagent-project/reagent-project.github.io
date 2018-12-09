@@ -89,8 +89,8 @@
 <p>Cursors are created with <code>reagent/cursor</code>, which takes a ratom and a keypath (like <code>get-in</code>):</p>
 <pre><code class="clojure">;; First create a ratom
 (def state (reagent/atom {:foo {:bar "BAR"}
-						  :baz "BAZ"
-						  :quux "QUUX"}))
+                                :baz "BAZ"
+                                :quux "QUUX"}))
 ;; Now create a cursor
 (def bar-cursor (reagent/cursor state [:foo :bar]))
 
@@ -126,7 +126,7 @@
 <p>Reactions are like cursors called with a function.</p>
 <p>When reactions produce a new result (as determined by <code>=</code>), they cause other dependent reactions and components to update.</p>
 <p>The function <code>make-reaction</code>, and its macro <code>reaction</code> are used to create a <code>Reaction</code>, which is a type that belongs to a number of protocols such as <code>IWatchable</code>, <code>IAtom</code>, <code>IReactiveAtom</code>, <code>IDeref</code>, <code>IReset</code>, <code>ISwap</code>, <code>IRunnable</code>, etc. which make it atom-like: ie it can be watched, derefed, reset, swapped on, and additionally, tracks its derefs, behave reactively, and so on.</p>
-<p>Reactions are what give <code>r/atom</code>, <code>r/cursor</code>, and function <code>r/cursor</code> and <code>r/wrap</code> their power.</p>
+<p>Reactions are what give <code>r/atom</code>, <code>r/cursor</code>, and <code>r/wrap</code> their power.</p>
 <p><code>make-reaction</code> takes one argument, <code>f</code>, and an optional options map. The options map specifies what happens to <code>f</code>:</p>
 <ul>
   <li><code>auto-run</code> (boolean) specifies whether <code>f</code> run on change</li>
@@ -135,27 +135,27 @@
 </ul>
 <p>Reactions are very useful when</p>
 <ul>
-  <li>You need a way in which components only updates based on part of the ratom state. (reagent/cursor can also be used for this scenario)</li>
+  <li>You need a way in which a component only updates based on part of the ratom state. (reagent/cursor can also be used for this scenario)</li>
   <li>When you want to combine two <code>ratoms</code> and produce a result</li>
   <li>You want the component to use some transformed value of <code>ratom</code></li>
 </ul>
 <p>Here’s an example:</p>
 <pre><code> (def app-state (reagent/atom {:state-var-1 {:var-a 2
-                                                   :var-b 3}
-                                     :state-var-2 {:var-a 7
-                                                   :var-b 9}}))
+                                             :var-b 3}
+                               :state-var-2 {:var-a 7
+                                             :var-b 9}}))
 
- (def app-var2-reaction (reagent.ratom/make-reaction
+ (def app-var2a-reaction (reagent.ratom/make-reaction
                           #(get-in @app-state [:state-var-2 :var-a])))
 
 
  (defn component-using-make-reaction []
    [:div
     [:div "component-using-make-reaction"]
-    [:div "Sate 2 - var a : " @app-var2-reaction]])
+    [:div "state-var-2 - var-a : " @app-var2a-reaction]])
 
 </code></pre>
-<p>The below example uses <code>reagent.ratom/reaction</code> macro, which provides syntactic sugar around creating reaction using <code>make-reaction</code></p>
+<p>The below example uses <code>reagent.ratom/reaction</code> macro, which provides syntactic sugar compared to using plain <code>make-reaction</code>:</p>
 <pre><code>(let [username (reagent/atom "")
       password (reagent/atom "")
       fields-populated? (reagent.ratom/reaction (every? not-empty [@username @password]))]
@@ -169,8 +169,8 @@
 <pre><code class="clojure">(ns example.core
   (:require [reagent.core :as r]))
 (defonce app-state (r/atom {:people
-							{1 {:name "John Smith"}
-							 2 {:name "Maggie Johnson"}}}))
+                              {1 {:name "John Smith"}
+                               2 {:name "Maggie Johnson"}}}))
 
 (defn people []
   (:people @app-state))
