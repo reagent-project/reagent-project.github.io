@@ -93,10 +93,10 @@ export default DragDropContext(HTML5Backend)(TopLevelComponent);
    (reagent/as-element [my-component (:height dims)])))]
 </code></pre>
 <h2><a href="#getting-props-and-children-of-current-component" name="getting-props-and-children-of-current-component"></a>Getting props and children of current component</h2>
-<p>Because you just pass argument to reagent functions, you typically don’t need to think about “props” and “children” as distinct things. But reagent does make a distinction and it is helpful to understand this particularly when interoperating with native elements and React libraries.</p>
-<p>Specifically, if the first argument to your reagent function is a map, that is assigned to <code>this.props</code> of the underlying reagent component. All other arguments are assigned as children to <code>this.props.children</code>.</p>
+<p>Because you just pass arguments to reagent functions, you typically don’t need to think about “props” and “children” as distinct things. But Reagent does make a distinction and it is helpful to understand this, particularly when interoperating with native elements and React libraries.</p>
+<p>Specifically, if the first argument to your Reagent function is a map, that is assigned to <code>this.props</code> of the underlying Reagent component. All other arguments are assigned as children to <code>this.props.children</code>.</p>
 <p>When interacting with native React components, it may be helpful to access props and children, which you can do with <code>reagent.core/current-component</code>. This function returns an object that allows you retrieve the props and children passed to the current component.</p>
-<p>Beware that <code>current-component</code> is only valid in component functions, and must be called outside of e.g event handlers and for expressions, so it’s safest to always put the call at the top, as in <code>my-div</code> here:</p>
+<p>Beware that <code>current-component</code> is only valid in component functions, and must be called outside of e.g event handlers and <code>for</code> expressions, so it’s safest to always put the call at the top, as in <code>my-div</code> here:</p>
 <pre><code class="clojure">(ns example
   (:require [reagent.core :as r]))
 
