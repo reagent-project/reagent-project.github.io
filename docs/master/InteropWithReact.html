@@ -69,11 +69,10 @@
 </ul>
 <h2><a href="#example-decorator-higher-order-components" name="example-decorator-higher-order-components"></a>Example: “Decorator” Higher-Order Components</h2>
 <p>Some React libraries use the decorator pattern: a React component which takes a component as an argument and returns a new component as its result. One example is the React DnD library. We will need to use both <code>adapt-react-class</code> and <code>reactify-component</code> to move back and forth between React and reagent:</p>
-<pre><code class="clojure">(defn react-dnd-component
-  []
+<pre><code class="clojure">(def react-dnd-component
   (let [decorator (DragDropContext HTML5Backend)]
-    [(reagent/adapt-react-class
-       (decorator (reagent/reactify-component top-level-component)))]))
+    (reagent/adapt-react-class
+      (decorator (reagent/reactify-component top-level-component)))))
 </code></pre>
 <p>This is the equivalent javascript:</p>
 <pre><code class="clojure">import HTML5Backend from 'react-dnd-html5-backend';
