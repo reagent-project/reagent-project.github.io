@@ -118,8 +118,8 @@
 <p>On the other hand, unnecessary re-rendering should be avoided. In the worst case, it could lead to performance problems. By unnecessary rendering, I mean rerenders which result in unchanged HTML. That’s a whole lot of work for no reason.</p>
 <p>So this notion of “changed” is pretty important. It controls if we are doing unnecessary, performance-sapping re-rendering work. </p>
 <h3><a href="#lifecycle-functions" name="lifecycle-functions"></a>Lifecycle Functions</h3>
-<p>When <code>props</code> change, the entire underlying React machinery is engaged. React Components can have lifecycle methods like <code>component-did-update</code> and these functions will get called, just as they would if you were dealing with a React Component. </p>
-<p>But … when the rerender is re-run because an input ratom changed, <strong>Lifecycle functions are not run</strong>. So, for example, <code>component-did-update</code> will not be called on the Component. </p>
+<p>When <code>props</code> change, the entire underlying React machinery is engaged. Reagent Components can have lifecycle methods like <code>component-did-update</code> and these functions will get called, just as they would if you were dealing with a React Component. </p>
+<p>But … when the re-render occurs because an input ratom changed, <strong>Lifecycle functions are not run</strong>. So, for example, <code>component-did-update</code> will not be called on the Component. </p>
 <p>Careful of this one. It trips people up.</p>
 <h2><a href="#appendix-1" name="appendix-1"></a>Appendix 1</h2>
 <p>In the previous Tutorial, we looked at the difference between <code>()</code> and <code>[]</code>. </p>
