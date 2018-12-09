@@ -77,8 +77,9 @@
     (fn  parent-renderer 
       []
       [:div 
-        [more-button counter]            ;; no @ on counter
-        [greet-number @counter]])))      ;; notice the @. The prop is an int
+        [greet-number @counter]      ;; notice the @. The prop is an int
+        [more-button counter]])))    ;; no @ on counter
+	
 </code></pre>
 <p>With this setup, answer this question: what rerendering happens each time the <code>more-button</code> gets clicked and <code>counter</code> gets incremented? </p>
 <p>Don’t read on. Test yourself. Spend 30 seconds working it out.</p>
