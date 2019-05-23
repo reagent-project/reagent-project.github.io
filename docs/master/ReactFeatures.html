@@ -22,7 +22,7 @@
    [child-c]])
 </code></pre>
 <p>Reagent syntax follows <a href="https://reactjs.org/docs/fragments.html#short-syntax">React Fragment short syntax</a>.</p>
-<h2><a href="#context" name="context"></a>Context</h2>
+<h2><a href="#context" name="context"></a><a href="https://reactjs.org/docs/context.html">Context</a></h2>
 <pre><code class="cljs">(defonce my-context (react/createContext "default"))
 
 (def Provider (.-Provider my-context))
@@ -35,7 +35,7 @@
           container)
 </code></pre>
 <p>Tests contain example of using old React lifecycle Context API (<code>context-wrapper</code> function): <a href="https://github.com/reagent-project/reagent/blob/master/test/reagenttest/testreagent.cljs#L1141-L1165">tests</a></p>
-<h2><a href="#error-boundaries" name="error-boundaries"></a>Error boundaries</h2>
+<h2><a href="#error-boundaries" name="error-boundaries"></a><a href="https://reactjs.org/docs/error-boundaries.html">Error boundaries</a></h2>
 <p>You can use <code>ComponentDidCatch</code> lifecycle method with <code>create-class</code>:</p>
 <pre><code class="cljs">(defn error-boundary [comp]
   (r/create-class
@@ -48,7 +48,7 @@
                            [:button {:on-click #(reset! error nil)} "Try again"]]
                           comp))}))
 </code></pre>
-<h2><a href="#hooks" name="hooks"></a>Hooks</h2>
+<h2><a href="#hooks" name="hooks"></a><a href="https://reactjs.org/docs/hooks-intro.html">Hooks</a></h2>
 <p>Hooks can’t be used inside class components, and Reagent implementation creates a class component from every function (i.e. Reagent component).</p>
 <p>However, you can use React components using Hooks inside Reagent, or use <a href="https://github.com/Lokeh/hx">hx</a> components inside Reagent. Also, it is possible to create React components from Reagent quite easily, because React function component is just a function that happens to return React elements, and <code>r/as-element</code> does just that:</p>
 <pre><code class="cljs">;; This is React function component. Can't use Ratoms here!
@@ -68,7 +68,7 @@
    [:&gt; example]])
 </code></pre>
 <p>If you need to pass RAtom state into these components, dereference them in the Reagent components and pass the value (and if needed, function to update them) as properties into the React function component.</p>
-<h2><a href="#portals" name="portals"></a>Portals</h2>
+<h2><a href="#portals" name="portals"></a><a href="https://reactjs.org/docs/portals.html">Portals</a></h2>
 <pre><code class="cljs">(defn reagent-component []
   (r/create-class
     {:render (fn [this]
@@ -77,6 +77,6 @@
 
 </code></pre>
 <p>TODO: Can this be done without create-class and <code>:render</code>. TODO: This might have problems handling Ratoms, test.</p>
-<h2><a href="#hydrate" name="hydrate"></a>Hydrate</h2>
+<h2><a href="#hydrate" name="hydrate"></a><a href="https://reactjs.org/docs/react-dom.html#hydrate">Hydrate</a></h2>
 <pre><code class="cljs">(react-dom/hydrate (r/as-element [main-component]) container)
 </code></pre></div></div></div></body></html>
