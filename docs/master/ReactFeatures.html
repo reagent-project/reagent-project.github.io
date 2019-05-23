@@ -4,7 +4,7 @@
 <p>Most React features should be usable from Reagent, even if Reagent doesn’t provide functions to use them directly.</p>
 <h2><a href="#fragments" name="fragments"></a><a href="https://reactjs.org/docs/fragments.html">Fragments</a></h2>
 <p>JSX:</p>
-<pre><code class="js">render() {
+<pre><code class="js">function example() {
   return (
     &lt;React.Fragment&gt;
       &lt;ChildA /&gt;
@@ -21,7 +21,7 @@
    [child-b]
    [child-c]])
 </code></pre>
-<p>Reagent syntax follows [React Fragment short syntax].</p>
+<p>Reagent syntax follows <a href="https://reactjs.org/docs/fragments.html#short-syntax">React Fragment short syntax</a>.</p>
 <h2><a href="#context" name="context"></a>Context</h2>
 <pre><code class="cljs">(defonce my-context (react/createContext "default"))
 
