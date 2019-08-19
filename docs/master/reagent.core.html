@@ -17,22 +17,40 @@ Reagent allows classes to be defined as:
 - Collections of previous types</pre></div></div><div class="public anchor" id="var-component-path"><h3>component-path</h3><div class="usage"><code>(component-path c)</code></div><div class="doc"><pre class="plaintext"></pre></div></div><div class="public anchor" id="var-create-class"><h3>create-class</h3><div class="usage"><code>(create-class spec)</code></div><div class="doc"><pre class="plaintext">Creates JS class based on provided Clojure map, for example:
 
 ```cljs
-{:get-initial-state (fn [this])
- :component-will-receive-props (fn [this new-argv])
+{;; Constructor
+ :constructor (fn [this props])
+ :get-initial-state (fn [this])
+ ;; Static methods
+ :get-derived-state-from-props (fn [props state] partial-state)
+ :get-derived-state-from-error (fn [error] partial-state)
+ ;; Methods
+ :get-snapshot-before-update (fn [this old-argv new-argv] snapshot)
  :should-component-update (fn [this old-argv new-argv])
- :component-will-mount (fn [this])
  :component-did-mount (fn [this])
- :component-will-update (fn [this new-argv])
- :component-did-update (fn [this old-argv])
+ :component-did-update (fn [this old-argv old-state snapshot])
  :component-will-unmount (fn [this])
- :reagent-render (fn [args....])}   ;; or :render (fn [this])
+ :component-did-catch (fn [this error info])
+ :reagent-render (fn [args....])
+ ;; Or alternatively:
+ :render (fn [this])
+ ;; Deprecated methods:
+ :UNSAFE_component-will-receive-props (fn [this new-argv])
+ :UNSAFE_component-will-update (fn [this new-argv new-state])
+ :UNSAFE_component-will-mount (fn [this])}
 ```
 
 Everything is optional, except either :reagent-render or :render.
 
 Map keys should use `React.Component` method names (<a href="https://reactjs.org/docs/react-component.html)">https://reactjs.org/docs/react-component.html)</a>,
 and can be provided in snake-case or camelCase.
-Constructor function is defined using key `:get-initial-state`.
+
+State can be initialized using constructor, which matches React.Component class,
+or using getInitialState which matches old React createClass function and is
+now implemented by Reagent for compatibility.
+
+State can usually be anything, e.g. Cljs object. But if using getDerivedState
+methods, the state has to be plain JS object as React implementation uses
+Object.assign to merge partial state into the current state.
 
 React built-in static methods or properties are automatically defined as statics.</pre></div></div><div class="public anchor" id="var-create-element"><h3>create-element</h3><div class="usage"><code>(create-element type)</code><code>(create-element type props)</code><code>(create-element type props child)</code><code>(create-element type props child &amp; children)</code></div><div class="doc"><pre class="plaintext">Create a native React element, by calling React.createElement directly.
 
