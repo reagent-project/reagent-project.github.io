@@ -5,7 +5,7 @@
 <p>But, eventually, you’ll want to understand how that magic happens. Otherwise … one day, in the peace of a shower, or on that serene bike ride to work, your eyes will flick to the left and you’ll wonder “wait, how <strong>exactly</strong> has this EVER worked for me all this time?”. Which can be followed by other doubts: “if I don’t understand this, what else don’t I know?”, which can lead to “do I really understand ANYTHING?”. And, before you know it, you’ll be over at your parent’s house demanding to know if you were adopted.</p>
 <p>Best to nip these slippery slopes in the bud (and, equally, to never use mixed metaphors). Read on …</p>
 <h2><a href="#components" name="components"></a>Components</h2>
-<p>In an earlier tutorial <a href="null">Creating Reagent Components</a> , we saw that the centerpiece of a Reagent/React component is a <strong>renderer</strong> function. Optionally, a Component might have other lifecycle functions, but a renderer function is central and mandatory.</p>
+<p>In an earlier tutorial <a href="CreatingReagentComponents.html">Creating Reagent Components</a>, we saw that the centerpiece of a Reagent/React component is a <strong>renderer</strong> function. Optionally, a Component might have other lifecycle functions, but a renderer function is central and mandatory.</p>
 <p>We also saw that Reagent render functions turn data into hiccup: <code>data -&gt; hiccup</code></p>
 <h2><a href="#meet-greet" name="meet-greet"></a>Meet greet</h2>
 <p>Here’s an example Component:</p>
@@ -98,7 +98,7 @@
 <p>As a result, <strong>the <code>square</code> version will be more efficient at “re-render time”</strong>. Only the DOM which needs to be re-rendered will be done. At our toy scale in this tutorial it hardly matters but, if <code>greet</code> was a more substantial child component, this gain in efficiency could be significant.</p>
 <p>Armed with a bit more knowledge, we’ll revisit this subject at the end of the next Tutorial.</p>
 <h2><a href="#a-further-significant-why" name="a-further-significant-why"></a>A Further, Significant “Why”</h2>
-<p>In the examples above, we’ve explored <a href="https://github.com/Day8/re-frame/wiki/Creating%20Reagent%20Components">Form-1 components</a> - the simplest kind - and we’ve seen we have some choice regarding use of <code>()</code> or <code>[]</code>. Eventually, I claim that <code>[]</code> is much preferred, but you can get away with <code>()</code>, up to a point. </p>
+<p>In the examples above, we’ve explored <a href="CreatingReagentComponents.md#form-1-a-simple-function">Form-1 components</a> - the simplest kind - and we’ve seen we have some choice regarding use of <code>()</code> or <code>[]</code>. Eventually, I claim that <code>[]</code> is much preferred, but you can get away with <code>()</code>, up to a point. </p>
 <p><strong>But</strong> … the moment you start using Form-2 or Form-3 components, you absolutely must be using <code>[]</code>. No choice. Using <code>()</code> just won’t work at all. Given the explanations above, I’m hoping you can work out why. Either that or just shrug and use <code>[]</code> forever more. </p>
 <h3><a href="#appendix-1" name="appendix-1"></a>Appendix #1</h3>
 <p><code>hiccup</code> can be created like any normal cljs data structure. You don’t have to use literals.</p>
