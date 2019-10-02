@@ -36,18 +36,38 @@
 </code></pre>
 <p>Tests contain example of using old React lifecycle Context API (<code>context-wrapper</code> function): <a href="https://github.com/reagent-project/reagent/blob/master/test/reagenttest/testreagent.cljs#L1141-L1165">tests</a></p>
 <h2><a href="#error-boundaries" name="error-boundaries"></a><a href="https://reactjs.org/docs/error-boundaries.html">Error boundaries</a></h2>
-<p>You can use <code>ComponentDidCatch</code> lifecycle method with <code>create-class</code>:</p>
+<p><a href="https://reactjs.org/docs/react-component.html#static-getderivedstatefromerror">Relevant method docs</a></p>
+<p>You can use <code>getDerivedStateFromError</code> (since React 16.6.0 and Reagent 0.9) (and <code>ComponentDidCatch</code>) lifecycle method with <code>create-class</code>:</p>
+<pre><code class="cljs">(defn error-boundary [comp]
+  (let [error (r/atom nil)]
+    (r/create-class
+      {:component-did-catch (fn [this e info])
+       :get-derived-state-from-error-test (fn [e]
+                                            (reset! error e)
+                                            #js {})
+       :reagent-render (fn [comp]
+                          (if @error
+                            [:div
+                             "Something went wrong."
+                             [:button {:on-click #(reset! error nil)} "Try again"]]
+                            comp))})))
+</code></pre>
+<p>Alternatively, one could use React state instead of RAtom to keep track of error state, which can be more obvious with the new <code>getDerivedStateFromError</code> method:</p>
 <pre><code class="cljs">(defn error-boundary [comp]
   (r/create-class
-    {:component-did-catch (fn [this e info]
-                            (reset! error e))
-     :reagent-render (fn [comp]
-                        (if @error
-                          [:div
-                           "Something went wrong."
-                           [:button {:on-click #(reset! error nil)} "Try again"]]
-                          comp))}))
+    {:constructor (fn [this props]
+                    (set! (.-state this) #js {:error nil}))
+     :component-did-catch (fn [this e info])
+     :get-derived-state-from-error-test (fn [error] #js {:error error})
+     :render (fn [this]
+               (r/as-element
+                 (if @error
+                   [:div
+                    "Something went wrong."
+                    [:button {:on-click #(.setState this #js {:error nil})} "Try again"]]
+                   (into [:&lt;&gt;] (r/children this)))})))
 </code></pre>
+<p>As per React docs, <code>getDerivedStateFromError</code> is what should update the state after error, it can be also used to update RAtom as in Reagent the Ratom is available in function closure even for static methods. <code>ComponentDidCatch</code> can be used for side-effects, like logging the error.</p>
 <h2><a href="#hooks" name="hooks"></a><a href="https://reactjs.org/docs/hooks-intro.html">Hooks</a></h2>
 <p>Hooks can’t be used inside class components, and Reagent implementation creates a class component from every function (i.e. Reagent component).</p>
 <p>However, you can use React components using Hooks inside Reagent, or use <a href="https://github.com/Lokeh/hx">hx</a> components inside Reagent. Also, it is possible to create React components from Reagent quite easily, because React function component is just a function that happens to return React elements, and <code>r/as-element</code> does just that:</p>
