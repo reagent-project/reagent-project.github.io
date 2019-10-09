@@ -42,7 +42,7 @@
   (let [error (r/atom nil)]
     (r/create-class
       {:component-did-catch (fn [this e info])
-       :get-derived-state-from-error-test (fn [e]
+       :get-derived-state-from-error (fn [e]
                                             (reset! error e)
                                             #js {})
        :reagent-render (fn [comp]
@@ -58,7 +58,7 @@
     {:constructor (fn [this props]
                     (set! (.-state this) #js {:error nil}))
      :component-did-catch (fn [this e info])
-     :get-derived-state-from-error-test (fn [error] #js {:error error})
+     :get-derived-state-from-error (fn [error] #js {:error error})
      :render (fn [this]
                (r/as-element
                  (if @error
