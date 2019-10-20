@@ -33,7 +33,7 @@
                :font-weight "bold"}
       "Alert"]
 </code></pre>
-<p>The map form is the same as <a href="https://reactjs.org/docs/dom-elements.html#style">React’s style attribute</a>, except that when using the map form of the style attribute, the keys should be the same name as the CSS attribute as shown in the above example (not camel cased as is required JavaScript).</p>
+<p>The map form is the same as <a href="https://reactjs.org/docs/dom-elements.html#style">React’s style attribute</a>, except that when using the map form of the style attribute, the keys should be the same as the CSS attribute as shown in the example above (not in camel case as is required JavaScript).</p>
 <h2><a href="#special-interpretation-of-attribute" name="special-interpretation-of-attribute"></a>Special interpretation of <code>class</code> attribute</h2>
 <p>In JavaScript, <code>class</code> is a reserved keyword, so React uses the <code>className</code> to specify class attibutes. Reagent just uses <code>class</code>.</p>
 <p>As of reagent 0.8.0, the <code>class</code> attribute accepts a collection of classes and will remove any nil value:</p>
@@ -47,7 +47,7 @@
 <p>is the same as this:</p>
 <pre><code class="clojure">[:div {:id "my-id"}]
 </code></pre>
-<p>One or more classes can indicated for an element with a <code>.</code> and the class-name like this:</p>
+<p>One or more classes can be indicated for an element with a <code>.</code> and the class-name like this:</p>
 <pre><code class="clojure">[:div.my-class.my-other-class.etc]
 </code></pre>
 <p>which is the same as:</p>
@@ -60,7 +60,7 @@
 <pre><code class="clojure">[:div {:id "my-id" :class ["my-class" "my-other-class"]}]
 </code></pre>
 <h2><a href="#special-notation-for-nested-elements" name="special-notation-for-nested-elements"></a>Special notation for nested elements</h2>
-<p>Reagent extends standard Hiccup in one way: it is possible to “squeeze” elements together by using a <code>&gt;</code> character.</p>
+<p>Reagent extends standard Hiccup in one way: it is possible to stack elements together by using a <code>&gt;</code> character.</p>
 <p>This:</p>
 <pre><code class="clojure">[:div
   [:p
@@ -88,7 +88,7 @@
   <li>A keyword like <code>:div</code> or <code>:span</code>, which it will create using React.createElement</li>
   <li>A symbol like <code>my-component</code>.</li>
 </ol>
-<p>If it is symbol, then reagent will evaluate a function by that name. Reagent expects one of three things from this function:</p>
+<p>If it’s a symbol, then reagent will evaluate a function by that name. Reagent expects one of three things from this function:</p>
 <ol>
   <li>A Hiccup vector. Reagent creates a React component with the function as its render method and uses the Hiccup vector for the initial render.</li>
   <li>A ClojureScript function. Reagent will then create a React component with this inner function as the render method and will then call the inner function for the initial render.</li>
