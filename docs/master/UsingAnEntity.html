@@ -4,7 +4,7 @@
 <p>How can I use an entity like “nbsp”?</p>
 <h3><a href="#answer" name="answer"></a>Answer</h3>
 <p>If you try to do this:</p>
-<pre><code class="clj">[:div  "hello" "&amp;nbsp;" "there"]     ;; &lt;--- note: attempt to use an entity
+<pre><code class="clj">[:div "hello" "&amp;nbsp;" "there"]     ;; &lt;--- note: attempt to use an entity
 </code></pre>
 <p>then you will see the string for the entity. Which is not what you want. </p>
 <p>Instead you should do this:</p>
@@ -18,7 +18,7 @@
   <li>Use it like this …</li>
 </ol>
 <p><code>clj
-   [:div "hello"  (gstring/unescapeEntities "&amp;nbsp;") "there"]
+   [:div "hello" (gstring/unescapeEntities "&amp;nbsp;") "there"]
 </code></p>
 <p><strong>Note:</strong> <code>unescapeEntities</code> relies on the DOM to produce a string with unescape entities; in <code>nodejs</code> the DOM is unlikely to be available (unless you try using <a href="https://www.npmjs.com/package/jsdom-global"><code>jsdom</code></a>).</p>
 <hr />
