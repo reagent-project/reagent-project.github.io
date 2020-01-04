@@ -65,10 +65,10 @@
 <p>Child component 2: </p>
 <pre><code class="clj">(defn more-button
   "I'm a button labelled 'More' which increments counter when clicked"
-  [counter]                             ;; a ratom
+  [counter]                                ;; a ratom
   [:div  {:class "button-class"
- 	     :on-click  #(swap! counter inc)}   ;; increment the int value in counter
-	     "More"])      
+          :on-click  #(swap! counter inc)} ;; increment the int value in counter
+   "More"])    
 </code></pre>
 <p>And, finally, a Form-2 parent Component which uses these two child components:</p>
 <pre><code class="clj">(defn parent
