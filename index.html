@@ -83,7 +83,7 @@
    one entry-point that is necessary for most applications: <code>reagent.dom/render</code>.</p><p>It takes two arguments: a component, and a DOM node. For
    example, splashing the very first example all over the page would
    look like this:</p><div><div class="demo-source clearfix"><h3 class="demo-heading">Source</h3><pre><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">ns</span> <span style="color:#5050c0;font-weight:bold">example</span>
-  <span style="color:#940">(</span><span style="color:blue">:require</span> <span style="color:#44a">[</span>reagent.core <span style="color:blue">:as</span> r<span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span></pre><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">simple-component</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:blue">:require</span> <span style="color:#44a">[</span>reagent.dom <span style="color:blue">:as</span> rdom<span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span></pre><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">simple-component</span> <span style="color:#940">[</span><span style="color:#940">]</span>
   <span style="color:#940">[</span><span style="color:blue">:div</span>
    <span style="color:#44a">[</span><span style="color:blue">:p</span> <span style="color:green">&quot;I am a component!&quot;</span><span style="color:#44a">]</span>
    <span style="color:#44a">[</span><span style="color:blue">:p.someclass</span>
@@ -158,4 +158,4 @@
    the browser the slightest.</p><p>Incidentally, this page also uses another React trick: the
    entire page is pre-rendered using Node, and <code>reagent.dom.server/render-to-string</code>. When it is loaded
    into the browser, React automatically attaches event-handlers to
-   the already present DOM tree.</p></div></div><a href="https://github.com/reagent-project/reagent" class="github-badge"><img style="position:absolute;top:0;left:0;border:0" alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"/></a></div></div></div><script>var pageConfig = {"page-path":"/index.html"}</script><script src="js/main.js?65785d" type="text/javascript"></script></body></html>
+   the already present DOM tree.</p></div></div><a href="https://github.com/reagent-project/reagent" class="github-badge"><img style="position:absolute;top:0;left:0;border:0" alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"/></a></div></div></div><script>var pageConfig = {"page-path":"/index.html"}</script><script src="js/main.js?0ff30a" type="text/javascript"></script></body></html>
