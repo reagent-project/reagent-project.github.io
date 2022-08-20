@@ -119,24 +119,24 @@ f will be called just before components are rendered.</pre></div></div><div clas
 React, for example in JSX. A single argument, props, is passed to
 the component, converted to a map.</pre></div></div><div class="public anchor" id="var-reaction"><h3>reaction</h3><h4 class="type">macro</h4><div class="usage"><code>(reaction &amp; body)</code></div><div class="doc"><pre class="plaintext">Creates Reaction from the body, returns a derefable
 containing the result of the body. If the body derefs
-reactive values (Reagent atons, track, etc), the body
+reactive values (Reagent atoms, track, etc), the body
 will run again and the value of the Reaction is updated.
 
 New Reaction is created everytime reaction is called,
 so caller needs to take care that new reaction isn't created
 e.g. every component render, by using with-let, form-2 or form-3
 components or other solutions. Consider using reagent.core/track,
-for function that caches the derafable value, and can thus be safely
+for function that caches the derefable value, and can thus be safely
 used in e.g. render function safely.</pre></div></div><div class="public anchor" id="var-reaction"><h3>reaction</h3><h4 class="type">macro</h4><div class="usage"><code>(reaction &amp; body)</code></div><div class="doc"><pre class="plaintext">Creates Reaction from the body, returns a derefable
 containing the result of the body. If the body derefs
-reactive values (Reagent atons, track, etc), the body
+reactive values (Reagent atoms, track, etc), the body
 will run again and the value of the Reaction is updated.
 
 New Reaction is created everytime reaction is called,
 so caller needs to take care that new reaction isn't created
 e.g. every component render, by using with-let, form-2 or form-3
 components or other solutions. Consider using reagent.core/track,
-for function that caches the derafable value, and can thus be safely
+for function that caches the derefable value, and can thus be safely
 used in e.g. render function safely.</pre></div></div><div class="public anchor" id="var-render"><h3>render</h3><h4 class="deprecated">deprecated in 0.10.0</h4><div class="usage"><code>(render &amp; _)</code></div><div class="doc"><pre class="plaintext"></pre></div></div><div class="public anchor" id="var-replace-state"><h3>replace-state</h3><div class="usage"><code>(replace-state this new-state)</code></div><div class="doc"><pre class="plaintext">Set state of a component.
 Equivalent to `(reset! (state-atom this) new-state)`</pre></div></div><div class="public anchor" id="var-rswap.21"><h3>rswap!</h3><div class="usage"><code>(rswap! a f &amp; args)</code></div><div class="doc"><pre class="plaintext">Swaps the value of a to be `(apply f current-value-of-atom args)`.
 
