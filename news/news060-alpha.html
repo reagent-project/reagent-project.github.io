@@ -1,2 +1,217 @@
 <!doctype html>
-<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><base href="../"/><link href="css/built.css?973e6a" rel="stylesheet"/><title>Reagent: News in 0.6.0-alpha</title></head><body><div id="main-content"><div></div></div><script></script><script src="js/main.js?0790f2" type="text/javascript"></script></body></html>
+<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><base href="../"/><link href="css/built.css?973e6a" rel="stylesheet"/><title>Reagent: News in 0.6.0-alpha</title></head><body><div id="main-content"><div><div><div class="nav"><ul class="nav"><li class="brand"><a href="index.html">Reagent:</a></li><li><a href="index.html">Intro</a></li><li><a href="news/index.html">News</a></li><li><a href="https://github.com/reagent-project/reagent">GitHub</a></li><li><a href="http://reagent-project.github.io/docs/master/">API</a></li></ul></div><div></div><div class="reagent-demo"><h1><a href="news/news060-alpha.html">News in 0.6.0-alpha</a></h1><span>2015-12-06</span><div class="demo-text"><p>Reagent 0.6.0-alpha contains new reactivity helpers, better
+    integration with native React components, a new version of
+    React (0.14.3), new React dependencies (<code>react-dom</code>
+    and <code>react-dom-server</code>), better performance, and much
+    more. </p><p>This is a quite big release, so it probably contains a fair
+    amount of bugs as well…</p><div class="demo-text"><section class="demo-text"><h2>Breaking changes</h2><ul><li>Reagent now depends on <code>cljsjs/react-dom</code>
+         and <code>cljsjs/react-dom-server</code> (see below).</li><li>The javascript interop macros <code>.&#x27;</code>
+         and <code>.!</code>, in the <code>reagent.interop</code>
+         namespace are now called <code>$</code> and <code>$!</code>
+         respectively (the old names clashed with bootstrapped
+         ClojureScript).</li><li>Reactions, i.e <code>cursor</code> called with a
+         function, <code>reagent.ratom/reaction</code>, <code>reagent.ratom/run!</code>
+         and <code>reagent.ratom/make-reaction</code> are now lazy and
+         executed asynchronously. Previously, reactions used to
+         execute immediately whenever the atoms they depended on
+         changed. This could cause performance issues in code with
+         expensive reactions and frequent updates to state. However,
+         this change may break existing code that depends on the
+         timing of side-effects from running
+         reactions. <code>flush</code> can be used to force outstanding
+         reactions to run at a given time.</li><li>Reactions now only trigger updates of dependent
+         components and other reactions if they produce a new result,
+         compared with <code>=</code>.
+         Previously, <code>identical?</code> was used.</li><li><code>next-tick</code> is now guaranteed to execute its
+         argument before the next render (more on that below.)</li></ul></section><h2>track: Use any function as a reactive value</h2><p><code>reagent.core/track</code> takes a function, and
+       optional arguments for that function, and gives a
+       derefable (i.e ”atom-like”) value, containing whatever is
+       returned by that function. If the tracked function depends on a
+       Reagent atom, it is called again whenever that atom changes –
+       just like a Reagent component function. If the value returned
+       by <code>track</code> is used in a component, the component is
+       re-rendered when the value returned by the function changes. </p><p>In other words, <code>@(r/track foo x)</code> gives the
+       same result as <code>(foo x)</code> – but in the first case,
+       foo is only called again when the atom(s) it depends on
+       changes.</p><p>Here&#x27;s an example: </p><div><div class="demo-example clearfix"><a class="demo-example-hide">hide</a><h3 class="demo-heading">Example </h3><div class="simple-demo"><ul><li>John Smith</li><li>Maggie Johnson</li></ul></div></div><div class="demo-source clearfix"><h3 class="demo-heading">Source</h3><pre><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">ns</span> <span style="color:#5050c0;font-weight:bold">example.core</span>
+  <span style="color:#940">(</span><span style="color:blue">:require</span> <span style="color:#44a">[</span>reagent.core <span style="color:blue">:as</span> r<span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span></pre><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defonce</span> <span style="color:#5050c0;font-weight:bold">app-state</span> <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">r/atom</span> <span style="color:#44a">{</span><span style="color:blue">:people</span>
+                            <span style="color:#272">{</span>1 <span style="color:#940">{</span><span style="color:blue">:name</span> <span style="color:green">&quot;John Smith&quot;</span><span style="color:#940">}</span>
+                             2 <span style="color:#940">{</span><span style="color:blue">:name</span> <span style="color:green">&quot;Maggie Johnson&quot;</span><span style="color:#940">}</span><span style="color:#272">}</span><span style="color:#44a">}</span><span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">people</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:blue">:people</span> @app-state<span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">person-keys</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">-&gt;</span> @<span style="color:#44a">(</span><span style="color:#687868;font-weight:bold">r/track</span> people<span style="color:#44a">)</span>
+      keys
+      sort<span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">person</span> <span style="color:#940">[</span>id<span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">-&gt;</span> @<span style="color:#44a">(</span><span style="color:#687868;font-weight:bold">r/track</span> people<span style="color:#44a">)</span>
+      <span style="color:#44a">(</span>get id<span style="color:#44a">)</span><span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">name-comp</span> <span style="color:#940">[</span>id<span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">let</span> <span style="color:#44a">[</span>p @<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/track</span> person id<span style="color:#272">)</span><span style="color:#44a">]</span>
+    <span style="color:#44a">[</span><span style="color:blue">:li</span>
+     <span style="color:#272">(</span><span style="color:blue">:name</span> p<span style="color:#272">)</span><span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">name-list</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">let</span> <span style="color:#44a">[</span>ids @<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/track</span> person-keys<span style="color:#272">)</span><span style="color:#44a">]</span>
+    <span style="color:#44a">[</span><span style="color:blue">:ul</span>
+     <span style="color:#272">(</span><span style="color:#687868;font-weight:bold">for</span> <span style="color:#940">[</span>i ids<span style="color:#940">]</span>
+       ^<span style="color:#940">{</span><span style="color:blue">:key</span> i<span style="color:#940">}</span> <span style="color:#940">[</span>name-comp i<span style="color:#940">]</span><span style="color:#272">)</span><span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span></pre></pre></div></div><p>Here, the <code>name-list</code> component will only be
+       re-rendered if the keys of the <code>:people</code> map
+       changes. Every <code>name-comp</code> only renders again when
+       needed, etc.</p><p>Use of <code>track</code> can improve performance in
+       three ways:</p><ul><li>It can be used as a cache for an expensive function,
+        that is automatically updated if that function depends on Reagent
+        atoms (or other tracks, cursors, etc).</li><li>It can also be used to limit the number of times a
+        component is re-rendered. The user of <code>track</code> is
+        only updated when the function’s result changes. In other
+        words, you can use track as a kind of generalized, read-only
+        cursor.</li><li>Every use of <code>track</code> with the same arguments
+        will only result in one execution of the function. E.g the two
+        uses of <code>@(r/track people)</code> in the example above
+        will only result in one call to the <code>people</code>
+        function (both initially, and when the state atom changes).</li></ul><p>If you&#x27;ve been using <code>reagent.ratom/reaction</code>
+       etc, <code>track</code> should be quite familiar. The main
+       difference is that <code>track</code> uses named functions and
+       variables, rather than depending on closures, and that you
+       don’t have to manage their creation manually (since tracks are
+       automatically cached and reused).</p><p><b>Note: </b>The first argument to <code>track</code>
+       should be a named function, i.e not an anonymous one. Also,
+       beware of lazy data sequences: don’t use deref (i.e ”@”) with
+       the <code>for</code> macro, unless wrapped
+       in <code>doall</code> (just like in Reagent components). </p><h2>track!</h2><p><code>track!</code> is another new function. It works just
+       like <code>track</code>, except that the function passed is
+       invoked immediately, and continues to be invoked whenever any
+       atoms used within it changes.</p><p>For example, given this function:</p><div><div class="demo-source clearfix"><h3 class="demo-heading">Source</h3><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">log-app-state</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span>prn @app-state<span style="color:#940">)</span><span style="color:#272">)</span></pre></div></div><p>you could use <code>(defonce logger (r/track!
+       log-app-state))</code> to monitor changes
+       to <code>app-state</code>. <code>log-app-state</code> would
+       continue to run until you stop it, using <code>(r/dispose!
+       logger)</code>.</p><h2>with-let: Handling destruction</h2><p>Reagent now has a new way of writing components that need
+       to do something when they are no longer around:
+       the <code>with-let</code> macro. It looks just
+       like <code>let</code> – but the bindings only execute once,
+       and it takes an optional <code>finally</code> clause, that
+       runs when the component is no longer rendered.</p><p>For example: here&#x27;s a component that sets up an event
+       listener for mouse moves, and stops listening when the
+       component is removed.</p><div><div class="demo-example clearfix"><a class="demo-example-hide">hide</a><h3 class="demo-heading">Example </h3><div class="simple-demo"><div>Pointer moved to: </div></div></div><div class="demo-source clearfix"><h3 class="demo-heading">Source</h3><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">mouse-pos-comp</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">r/with-let</span> <span style="color:#44a">[</span>pointer <span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/atom</span> nil<span style="color:#272">)</span>
+               handler #<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">swap!</span> pointer <span style="color:#687868;font-weight:bold">assoc</span>
+                               <span style="color:blue">:x</span> <span style="color:#940">(</span>.-pageX <span style="color:#687868;font-weight:bold">%</span><span style="color:#940">)</span>
+                               <span style="color:blue">:y</span> <span style="color:#940">(</span>.-pageY <span style="color:#687868;font-weight:bold">%</span><span style="color:#940">)</span><span style="color:#272">)</span>
+               _ <span style="color:#272">(</span>.addEventListener <span style="color:#687868;font-weight:bold">js/document</span> <span style="color:green">&quot;mousemove&quot;</span> handler<span style="color:#272">)</span><span style="color:#44a">]</span>
+    <span style="color:#44a">[</span><span style="color:blue">:div</span>
+     <span style="color:green">&quot;Pointer moved to: &quot;</span>
+     <span style="color:#272">(</span><span style="color:#687868;font-weight:bold">str</span> @pointer<span style="color:#272">)</span><span style="color:#44a">]</span>
+    <span style="color:#44a">(</span><span style="color:#687868;font-weight:bold">finally</span>
+      <span style="color:#272">(</span>.removeEventListener <span style="color:#687868;font-weight:bold">js/document</span> <span style="color:green">&quot;mousemove&quot;</span> handler<span style="color:#272">)</span><span style="color:#44a">)</span><span style="color:#940">)</span><span style="color:#272">)</span></pre></div></div><p>The same thing could of course be achieved with React
+       lifecycle methods, but that would be a lot more verbose.</p><p><code>with-let</code> can also be combined
+       with <code>track</code> (and other reactive contexts). For
+       example, the component above could be written as: </p><div><div class="demo-example clearfix"><a class="demo-example-hide">hide</a><h3 class="demo-heading">Example </h3><div class="simple-demo"><div>Pointer moved to: </div></div></div><div class="demo-source clearfix"><h3 class="demo-heading">Source</h3><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">mouse-pos</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">r/with-let</span> <span style="color:#44a">[</span>pointer <span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/atom</span> nil<span style="color:#272">)</span>
+               handler #<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">swap!</span> pointer <span style="color:#687868;font-weight:bold">assoc</span>
+                               <span style="color:blue">:x</span> <span style="color:#940">(</span>.-pageX <span style="color:#687868;font-weight:bold">%</span><span style="color:#940">)</span>
+                               <span style="color:blue">:y</span> <span style="color:#940">(</span>.-pageY <span style="color:#687868;font-weight:bold">%</span><span style="color:#940">)</span><span style="color:#272">)</span>
+               _ <span style="color:#272">(</span>.addEventListener <span style="color:#687868;font-weight:bold">js/document</span> <span style="color:green">&quot;mousemove&quot;</span> handler<span style="color:#272">)</span><span style="color:#44a">]</span>
+    @pointer
+    <span style="color:#44a">(</span><span style="color:#687868;font-weight:bold">finally</span>
+      <span style="color:#272">(</span>.removeEventListener <span style="color:#687868;font-weight:bold">js/document</span> <span style="color:green">&quot;mousemove&quot;</span> handler<span style="color:#272">)</span><span style="color:#44a">)</span><span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">tracked-pos</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">[</span><span style="color:blue">:div</span>
+   <span style="color:green">&quot;Pointer moved to: &quot;</span>
+   <span style="color:#44a">(</span><span style="color:#687868;font-weight:bold">str</span> @<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/track</span> mouse-pos<span style="color:#272">)</span><span style="color:#44a">)</span><span style="color:#940">]</span><span style="color:#272">)</span></pre></div></div><p>The <code>finally</code> clause will run
+       when <code>mouse-pos</code> is no longer tracked anywhere, i.e
+       in this case when <code>tracked-pos</code>is unmounted.</p><p><code>with-let</code> can also generally be used instead of
+       returning functions from components that keep local state, and
+       may be a bit easier to read.</p><section class="demo-text"><h2>Event handling with rswap!</h2><p><code>rswap!</code> is another new function in 0.6.0. It
+        works like standard <code>swap!</code> except that it</p><ul><li>always returns nil</li><li>allows recursive applications of <code>rswap!</code> on the same
+         atom.</li></ul><p>That makes <code>rswap!</code> especially suited for event
+        handling.</p><p>Here’s an example that uses event handling
+        with <code>rswap!</code> to edit the data introduced in the
+        section about <code>track</code> above:</p><div><div class="demo-example clearfix"><a class="demo-example-hide">hide</a><h3 class="demo-heading">Example </h3><div class="simple-demo"><div><ul><li>John Smith</li><li>Maggie Johnson</li></ul><div><input value="John Smith"/></div><div><input value="Maggie Johnson"/></div><input type="button" value="Add person"/></div></div></div><div class="demo-source clearfix"><h3 class="demo-heading">Source</h3><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">event-handler</span> <span style="color:#940">[</span>state <span style="color:#44a">[</span>event-name id value<span style="color:#44a">]</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">case</span> event-name
+    <span style="color:blue">:set-name</span>   <span style="color:#44a">(</span><span style="color:#687868;font-weight:bold">assoc-in</span> state <span style="color:#272">[</span><span style="color:blue">:people</span> id <span style="color:blue">:name</span><span style="color:#272">]</span>
+                          value<span style="color:#44a">)</span>
+    <span style="color:blue">:add-person</span> <span style="color:#44a">(</span><span style="color:#687868;font-weight:bold">let</span> <span style="color:#272">[</span>new-key <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">-&gt;&gt;</span> state <span style="color:blue">:people</span> keys <span style="color:#44a">(</span>apply max<span style="color:#44a">)</span> <span style="color:#687868;font-weight:bold">inc</span><span style="color:#940">)</span><span style="color:#272">]</span>
+                  <span style="color:#272">(</span><span style="color:#687868;font-weight:bold">assoc-in</span> state <span style="color:#940">[</span><span style="color:blue">:people</span> new-key<span style="color:#940">]</span>
+                            <span style="color:#940">{</span><span style="color:blue">:name</span> <span style="color:green">&quot;&quot;</span><span style="color:#940">}</span><span style="color:#272">)</span><span style="color:#44a">)</span>
+    state<span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">emit</span> <span style="color:#940">[</span>e<span style="color:#940">]</span>
+  <span style="color:gray;font-style:italic">;; (js/console.log &quot;Handling event&quot; (str e))</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">r/rswap!</span> app-state event-handler e<span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">name-edit</span> <span style="color:#940">[</span>id<span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">let</span> <span style="color:#44a">[</span>p @<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/track</span> person id<span style="color:#272">)</span><span style="color:#44a">]</span>
+    <span style="color:#44a">[</span><span style="color:blue">:div</span>
+     <span style="color:#272">[</span><span style="color:blue">:input</span> <span style="color:#940">{</span><span style="color:blue">:value</span> <span style="color:#44a">(</span><span style="color:blue">:name</span> p<span style="color:#44a">)</span>
+              <span style="color:blue">:on-change</span> #<span style="color:#44a">(</span>emit <span style="color:#272">[</span><span style="color:blue">:set-name</span> id <span style="color:#940">(</span>.. <span style="color:#687868;font-weight:bold">%</span>  -target -value<span style="color:#940">)</span><span style="color:#272">]</span><span style="color:#44a">)</span><span style="color:#940">}</span><span style="color:#272">]</span><span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span>
+
+<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">edit-fields</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">let</span> <span style="color:#44a">[</span>ids @<span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/track</span> person-keys<span style="color:#272">)</span><span style="color:#44a">]</span>
+    <span style="color:#44a">[</span><span style="color:blue">:div</span>
+     <span style="color:#272">[</span>name-list<span style="color:#272">]</span>
+     <span style="color:#272">(</span><span style="color:#687868;font-weight:bold">for</span> <span style="color:#940">[</span>i ids<span style="color:#940">]</span>
+       ^<span style="color:#940">{</span><span style="color:blue">:key</span> i<span style="color:#940">}</span> <span style="color:#940">[</span>name-edit i<span style="color:#940">]</span><span style="color:#272">)</span>
+     <span style="color:#272">[</span><span style="color:blue">:input</span> <span style="color:#940">{</span><span style="color:blue">:type</span> &#x27;button
+              <span style="color:blue">:value</span> <span style="color:green">&quot;Add person&quot;</span>
+              <span style="color:blue">:on-click</span> #<span style="color:#44a">(</span>emit <span style="color:#272">[</span><span style="color:blue">:add-person</span><span style="color:#272">]</span><span style="color:#44a">)</span><span style="color:#940">}</span><span style="color:#272">]</span><span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span></pre></div></div><p>All events are passed through the <code>emit</code>
+        function, consisting of a trivial application
+        of <code>rswap!</code> and some optional logging. This is the
+        only place where application state actually changes – the rest
+        is pure functions.</p><p>The actual event handling is done
+        in <code>event-handler</code>, which takes state and event as
+        parameters, and returns a new state (events are represented by
+        vectors here, with an event name in the first position).</p><p>All the UI components have to do is then just to return
+        some markup, and set up routing of events through the <code>emit</code>
+        function. </p><p>This architecture basically divides the application into
+        two logical functions: </p><ul><li>The first takes state and an event as input, and returns
+         the next state.</li><li>The other takes state as input, and returns a UI
+         definition.</li></ul><p>This simple application could probably just as well use
+        the common <code>swap!</code> instead of <code>rswap!</code>,
+        but using <code>swap!</code> in React’s event handlers may
+        trigger warnings due to unexpected return values, and may
+        cause severe headaches if an event handler called by <code>emit</code>
+        itself emits a new event (that would result in lost
+        events, and much confusion).</p><p>For a more structured version of a similar approach, see
+        the excellent <a href="https://github.com/Day8/re-frame">re-frame</a>
+        framework.</p></section><section class="demo-text"><h2>New React version and new namespaces</h2><p>Reagent now depends on React version 0.14.3. React itself
+        is now split into three parts, with separate packages for
+        browser specific code, and HTML generation respectively.</p><p>To reflect that, two new namespaces have been introduced
+        in Reagent as well: <code>reagent.dom</code>
+        and <code>reagent.dom.server</code>. They contain functions
+        that used to be in <code>reagent.core</code>. </p><p><code>reagent.dom</code> contains: </p><ul><li><code>render</code></li><li><code>unmount-component-at-node</code></li><li><code>dom-node</code></li><li><code>force-update-all</code></li></ul><p><code>reagent.dom.server</code> contains: </p><ul><li><code>render-to-string</code></li><li><code>render-to-static-markup</code></li></ul><p>These functions are still available
+        in <code>reagent.core</code> in this release (for backward
+        compatibility reasons), but they may be deprecated in the
+        future.</p><p>The changes in React also mean that if you specify the
+        React version to use in your project.clj,
+        with <code>cljsjs/react</code> in the <code>:dependencies</code>
+        section, you now have to specify <code>cljsjs/react-dom</code>
+        and <code>cljsjs/react-dom-server</code> instead.</p></section><section class="demo-text"><h2>Better interop with native React</h2><p>The output of <code>create-class</code> can now be used
+        directly in JSX.</p><p>”Native React components” can now be used directly in
+        Reagent’s hiccup forms, using this syntax: <code>[:&gt;
+        nativeComp {:key &quot;value&quot;}]</code>. This might sometimes be more
+        convenient than using <code>adapt-react-class</code>. </p><p>Reagent should now also be a bit easier to use in
+        node.js. If global React is not
+        defined (i.e <code>React</code>, <code>ReactDOM</code>
+        and <code>ReactDOMServer</code>), Reagent tries to
+        use <code>require</code> instead, to get react, react-dom and
+        react-dom/server from npm.</p></section><section class="demo-text"><h2>Better cursor</h2><p>Cursors are now cached, which should make them a bit
+        easier to use. Previously, every instance
+        of <code>cursor</code> had its own state.
+        Now <code>cursor</code>s called with the same arguments share
+        data, which means that components like this now make sense: </p><div><div class="demo-example clearfix"><a class="demo-example-hide">hide</a><h3 class="demo-heading">Example </h3><div class="simple-demo"><p>A person: <!-- -->John Smith</p></div></div><div class="demo-source clearfix"><h3 class="demo-heading">Source</h3><pre><span style="color:#272">(</span><span style="color:#687868;font-weight:bold">defn</span> <span style="color:#5050c0;font-weight:bold">cursor-example</span> <span style="color:#940">[</span><span style="color:#940">]</span>
+  <span style="color:#940">(</span><span style="color:#687868;font-weight:bold">let</span> <span style="color:#44a">[</span>first-person <span style="color:#272">(</span><span style="color:#687868;font-weight:bold">r/cursor</span> app-state <span style="color:#940">[</span><span style="color:blue">:people</span> 1<span style="color:#940">]</span><span style="color:#272">)</span><span style="color:#44a">]</span>
+    <span style="color:#44a">[</span><span style="color:blue">:p</span> <span style="color:green">&quot;A person: &quot;</span> <span style="color:#272">(</span><span style="color:blue">:name</span> @first-person<span style="color:#272">)</span><span style="color:#44a">]</span><span style="color:#940">)</span><span style="color:#272">)</span></pre></div></div><p>Previously cursors were really only useful (in the sense
+        that unnecessary re-renderings were avoided) when passed as
+        arguments to child components.</p></section><section class="demo-text"><h2>Tapping into the rendering loop</h2><p>The <code>next-tick</code> function now has a more
+        predictable timing. The function passed
+        to <code>next-tick</code> is now invoked immediately before the
+        next rendering (which is in turn triggered
+        using <code>requestAnimationFrame</code>).</p><p><code>after-update</code> works just
+        like <code>next-tick</code>, except that the function given is
+        invoked immediately <b>after</b> the next rendering.</p></section></div></div></div><a href="https://github.com/reagent-project/reagent" class="github-badge"><img style="position:absolute;top:0;left:0;border:0" alt="Fork me on GitHub" src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"/></a></div></div></div><script>var pageConfig = {"page-path":"/news/news060-alpha.html"}</script><script src="js/main.js?0790f2" type="text/javascript"></script></body></html>
