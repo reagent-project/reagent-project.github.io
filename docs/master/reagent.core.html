@@ -105,10 +105,10 @@ used. This may be noticed with add-watch.</pre></div></div><div class="public an
 </pre></div></div><div class="public anchor" id="var-flush"><h3>flush</h3><div class="usage"><code>(flush)</code></div><div class="doc"><pre class="plaintext">Render dirty components immediately.
 
 Note that this may not work in event handlers, since React.js does
-batching of updates there.</pre></div></div><div class="public anchor" id="var-force-update"><h3>force-update</h3><div class="usage"><code>(force-update this)</code><code>(force-update this deep)</code></div><div class="doc"><pre class="plaintext">Force a component to re-render immediately.
+batching of updates there.</pre></div></div><div class="public anchor" id="var-force-update"><h3>force-update</h3><div class="usage"><code>(force-update this)</code></div><div class="doc"><pre class="plaintext">Force a component to re-render immediately.
 
 If the second argument is true, child components will also be
-re-rendered, even is their arguments have not changed.</pre></div></div><div class="public anchor" id="var-is-client"><h3>is-client</h3><div class="usage"></div><div class="doc"><pre class="plaintext"></pre></div></div><div class="public anchor" id="var-merge-props"><h3>merge-props</h3><div class="usage"><code>(merge-props)</code><code>(merge-props defaults)</code><code>(merge-props defaults props)</code><code>(merge-props defaults props &amp; others)</code></div><div class="doc"><pre class="plaintext">Utility function that merges some maps, handling `:class` and `:style`.
+re-rendered, even if their arguments have not changed.</pre></div></div><div class="public anchor" id="var-is-client"><h3>is-client</h3><div class="usage"></div><div class="doc"><pre class="plaintext"></pre></div></div><div class="public anchor" id="var-merge-props"><h3>merge-props</h3><div class="usage"><code>(merge-props)</code><code>(merge-props defaults)</code><code>(merge-props defaults props)</code><code>(merge-props defaults props &amp; others)</code></div><div class="doc"><pre class="plaintext">Utility function that merges some maps, handling `:class` and `:style`.
 
 The :class value is always normalized (using `class-names`) even if no
 merging is done.</pre></div></div><div class="public anchor" id="var-next-tick"><h3>next-tick</h3><div class="usage"><code>(next-tick f)</code></div><div class="doc"><pre class="plaintext">Run f using requestAnimationFrame or equivalent.
