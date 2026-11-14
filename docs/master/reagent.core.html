@@ -14,7 +14,13 @@ re-rendered.</pre></div></div><div class="public anchor" id="var-children"><h3>c
 Reagent allows classes to be defined as:
 - Strings
 - Named objects (Symbols or Keywords)
-- Collections of previous types</pre></div></div><div class="public anchor" id="var-create-class"><h3>create-class</h3><div class="usage"><code>(create-class spec)</code><code>(create-class spec compiler)</code></div><div class="doc"><pre class="plaintext">Creates JS class based on provided Clojure map, for example:
+- Collections of previous types, including nested collections
+- nil values, which are ignored
+
+```cljs
+(class-names :a ["b" nil [:c [:d]]])
+;; =&gt; "a b c d"
+```</pre></div></div><div class="public anchor" id="var-create-class"><h3>create-class</h3><div class="usage"><code>(create-class spec)</code><code>(create-class spec compiler)</code></div><div class="doc"><pre class="plaintext">Creates JS class based on provided Clojure map, for example:
 
 ```cljs
 {;; Constructor
