@@ -62,6 +62,13 @@ npm run e2e:page
 </code></pre>
 <p>Then open <a href="http://127.0.0.1:8091">http://127.0.0.1:8091</a>.</p>
 <h2 id="js-libraries">JS libraries</h2>
+<p>If a JS component (e.g. a text field from a component library) renders the
+input element, Reagent only sees the component and the workaround isn't
+applied. Such a controlled input behaves badly even when <code>:on-change</code> updates
+a ratom synchronously: the cursor jumps to the end when typing in the middle,
+fast typing loses keys, and IME input (e.g. Korean or Chinese) doubles letters.
+The test page under <a href="#trying-it-out">Trying it out</a> shows this, next to the
+same component with Reagent's input passed to it.</p>
 <p>For JS libraries, usually the best solution is if the library provides an option to
 use custom component to create the input element, which enables
 Reagent to create the input element:</p>
@@ -81,4 +88,4 @@ Reagent to create the input element:</p>
 <span class="hl-comment">;; When key changes, old component is unmounted and new one created, and the new component will use the new default-value</span>
 </code></pre>
 <p>(Similar workaround can be also used with DOM inputs)</p>
-</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/ControlledInputs.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/">Archive</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#async-state-updates">Async state updates</a></li><li class="toc-h2"><a href="#known-issues">Known issues</a></li><li class="toc-h2"><a href="#trying-it-out">Trying it out</a></li><li class="toc-h2"><a href="#js-libraries">JS libraries</a></li><li class="toc-h2"><a href="#react-native">React-native</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/ControlledInputs.html"}</script><script src="js/main.js?575b56" type="text/javascript"></script></body></html>
+</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/ControlledInputs.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/">Archive</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#async-state-updates">Async state updates</a></li><li class="toc-h2"><a href="#known-issues">Known issues</a></li><li class="toc-h2"><a href="#trying-it-out">Trying it out</a></li><li class="toc-h2"><a href="#js-libraries">JS libraries</a></li><li class="toc-h2"><a href="#react-native">React-native</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/ControlledInputs.html"}</script><script src="js/main.js?16accb" type="text/javascript"></script></body></html>
