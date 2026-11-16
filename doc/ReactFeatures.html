@@ -1,0 +1,284 @@
+<!doctype html>
+<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Reagent: React Features</title><base href="../"/><link href="css/built.css?9dcfd2" rel="stylesheet"/><script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script></head><body><div id="main-content"><div><div class="site"><header class="site-header"><div class="site-header-inner"><a href="index.html" class="brand"><span class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <path stroke="#000" stroke-width="10.751" stroke-linejoin="round" paint-order="markers fill stroke" d="M5.375 5.375h53.249v53.249H5.375z"/>
+    <path d="M16.734 59.233h30.532c1.857 0 3.134-.5 3.714-1.4.58-1 .465-2.1-.58-3.5l-13.35-18.1v-9.1h1.741c.465 0 .813-.1 1.161-.4.348-.3.464-.6.464-1s-.116-.7-.464-1c-.348-.3-.696-.4-1.16-.4H25.208c-.465 0-.813.1-1.161.4-.348.3-.464.6-.464 1s.116.7.464 1c.348.3.696.4 1.16.4h1.742v9.1l-13.35 18.1c-1.045 1.4-1.16 2.5-.58 3.5.696.9 1.973 1.4 3.714 1.4zm13.118-21.5l.58-.7v-9.9H33.8v9.9l.58.7 13.467 18.6H16.502z" fill="#303c3c"/>
+    <path fill="#00d8ff" d="M35.889 42.633h-7.778l-9.055 12.6H45.06z"/>
+    <path d="M180 439.416a5.09 5.09 0 1 1-10.179 0 5.09 5.09 0 1 1 10.179 0z" transform="matrix(.56482 0 0 .5518 -69.11 -222.593)" fill="#00d8ff" stroke="#00d8ff"/>
+    <path d="M37.217 12.657a2.325 2.325 0 1 1-4.65 0 2.325 2.325 0 1 1 4.65 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".457"/>
+    <path d="M31.676 6.053a1.17 1.17 0 1 0-2.341 0 1.17 1.17 0 1 0 2.341 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".23"/>
+</svg>
+</span>Reagent</a><nav class="site-nav"><a href="doc/index.html">Guide</a><a href="api/index.html">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/index.html">Documentation index</a></li><li><a href="doc/Security.html">Security</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Tutorials</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Using [square brackets] instead of (parentheses)</a></li><li><a href="doc/WhenDoComponentsUpdate.html">When do components update?</a></li><li><a href="doc/ManagingState.html">[WIP] Managing State: atoms, cursors, Reactions, and tracking</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing: How Reagent Renders Changes to Application State</a></li><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html" class="active">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li></ul></li><li><span class="sidebar-section">Frequently Asked Questions</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Why isn&#x27;t my Component re-rendering?</a></li><li><a href="doc/FAQ/UsingRefs.html">How do I use React&#x27;s &quot;refs&quot;</a></li><li><a href="doc/FAQ/UsingAnEntity.html">How can I use an entity like &quot;nbsp&quot;?</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Why is my attribute (like autoFocus) missing?</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">How can I use React&#x27;s dangerouslySetInnerHTML?</a></li><li><a href="doc/FAQ/CljsjsReactProblems.html">Reagent doesn&#x27;t work after updating dependencies</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">How do I force Component re-creation?</a></li><li><a href="doc/FAQ/HtmlEntities.html">Using HTML entities</a></li></ul></li><li><span class="sidebar-section">Examples</span><ul><li><a href="doc/examples/material-ui.html">Material-UI v1</a></li><li><a href="doc/examples/smooth-ui.html">Smooth UI</a></li></ul></li><li><span class="sidebar-section">Other</span><ul><li><a href="doc/2.0-upgrade.html">Reagent 2.0 upgrade guide</a></li><li><a href="doc/reagent1.html">Reagent 1 and React 18</a></li><li><a href="doc/0.8-upgrade.html">0.8 Upgrade guide</a></li><li><a href="doc/development.html">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/index.html">API reference</a></li><li><a href="api/reagent.core.html">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><p class="review-notice"><strong>Not reviewed yet: </strong>this page may be outdated or inconsistent with the other guides. The <a href="api/index.html">API reference</a> is generated from the current source.</p><div class="markdown"><h1 id="react-features">React Features</h1>
+<p>Most React features should be usable from Reagent, even if Reagent doesn't
+provide functions to use them directly.</p>
+<h2 id="fragments"><a href="https://reactjs.org/docs/fragments.html">Fragments</a></h2>
+<p>JSX:</p>
+<pre><code>function example() {
+  return (
+    &lt;React.Fragment&gt;
+      &lt;ChildA /&gt;
+      &lt;ChildB /&gt;
+      &lt;ChildC /&gt;
+    &lt;/React.Fragment&gt;
+  );
+}
+</code></pre>
+<p>Reagent:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">example</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:&lt;&gt;</span>
+   <span class="hl-p2">[</span>child-a<span class="hl-p2">]</span>
+   <span class="hl-p2">[</span>child-b<span class="hl-p2">]</span>
+   <span class="hl-p2">[</span>child-c<span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Reagent syntax follows <a href="https://reactjs.org/docs/fragments.html#short-syntax">React Fragment short syntax</a>.</p>
+<h2 id="context"><a href="https://reactjs.org/docs/context.html">Context</a></h2>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defonce</span> <span class="hl-def">my-context</span> <span class="hl-p1">(</span><span class="hl-builtin">react/createContext</span> <span class="hl-string">&quot;default&quot;</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">Provider</span> <span class="hl-p1">(</span>.-Provider my-context<span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">Consumer</span> <span class="hl-p1">(</span>.-Consumer my-context<span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">rdom/render</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:&gt;</span> Provider <span class="hl-p2">{</span><span class="hl-keyword">:value</span> <span class="hl-string">&quot;bar&quot;</span><span class="hl-p2">}</span>
+   <span class="hl-p2">[</span><span class="hl-keyword">:&gt;</span> Consumer <span class="hl-p0">{</span><span class="hl-p0">}</span>
+    <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span>v<span class="hl-p1">]</span>
+      <span class="hl-p1">(</span><span class="hl-builtin">r/as-element</span> <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Context: &quot;</span> v<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">]</span>
+  container<span class="hl-p0">)</span>
+</code></pre>
+<p><a href="https://github.com/reagent-project/reagent/blob/master/examples/react-context/src/example/core.cljs">Context example project</a>
+better explains how
+<code>:&gt;</code> or <code>adapt-react-class</code> convert the properties to JS objects,
+and shows how to use Cljs values with context.</p>
+<p>Alternatively you can use the <a href="https://reactjs.org/docs/context.html#classcontexttype">static contextType property</a></p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defonce</span> <span class="hl-def">my-context</span> <span class="hl-p1">(</span><span class="hl-builtin">react/createContext</span> <span class="hl-string">&quot;default&quot;</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">Provider</span> <span class="hl-p1">(</span>.-Provider my-context<span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">show-context</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">r/create-class</span>
+   <span class="hl-p2">{</span><span class="hl-keyword">:context-type</span> my-context
+    <span class="hl-keyword">:reagent-render</span> <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+                      <span class="hl-p1">[</span><span class="hl-keyword">:p</span> <span class="hl-p2">(</span>.-context <span class="hl-p0">(</span>reagent.core/current-component<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-comment">;; Alternatively with metadata on a form-1 component:</span>
+<span class="hl-comment">;;</span>
+<span class="hl-comment">;; (def show-context</span>
+<span class="hl-comment">;;   ^{:context-type my-context}</span>
+<span class="hl-comment">;;   (fn []</span>
+<span class="hl-comment">;;     [:p (.-context (reagent.core/current-component))]))</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">rdom/render</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:&gt;</span> Provider <span class="hl-p2">{</span><span class="hl-keyword">:value</span> <span class="hl-string">&quot;bar&quot;</span><span class="hl-p2">}</span>
+   <span class="hl-p2">[</span>show-context<span class="hl-p2">]</span><span class="hl-p1">]</span>
+  container<span class="hl-p0">)</span>
+</code></pre>
+<p>Context value can also be retrieved using <code>useContext</code> hook:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">show-context</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>v <span class="hl-p0">(</span><span class="hl-builtin">react/useContext</span> my-context<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:p</span> v<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">rdom/render</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:&gt;</span> Provider <span class="hl-p2">{</span><span class="hl-keyword">:value</span> <span class="hl-string">&quot;bar&quot;</span><span class="hl-p2">}</span>
+   <span class="hl-p2">[</span><span class="hl-keyword">:f&gt;</span> show-context<span class="hl-p2">]</span><span class="hl-p1">]</span>
+  container<span class="hl-p0">)</span>
+</code></pre>
+<p>Tests contain example of using old React lifecycle Context API (<code>context-wrapper</code> function):
+<a href="https://github.com/reagent-project/reagent/blob/master/test/reagenttest/testreagent.cljs#L1159-L1168">tests</a></p>
+<h2 id="error-boundaries"><a href="https://reactjs.org/docs/error-boundaries.html">Error boundaries</a></h2>
+<p><a href="https://reactjs.org/docs/react-component.html#static-getderivedstatefromerror">Relevant method docs</a></p>
+<p>You can use <code>getDerivedStateFromError</code> (since React 16.6.0 and Reagent 0.9) (and <code>ComponentDidCatch</code>) lifecycle method with <code>create-class</code>:</p>
+<p>FIXME: React 18 Concurrent Mode / React 19: It looks like component-did-catch
+only works if get-derived-state-from-error modifies component React state?</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">error-boundary</span> <span class="hl-p1">[</span>comp<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>error <span class="hl-p0">(</span><span class="hl-builtin">r/atom</span> <span class="hl-builtin">nil</span><span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">(</span><span class="hl-builtin">r/create-class</span>
+      <span class="hl-p0">{</span><span class="hl-keyword">:component-did-catch</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this e info<span class="hl-p2">]</span><span class="hl-p1">)</span>
+       <span class="hl-keyword">:get-derived-state-from-error</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>e<span class="hl-p2">]</span>
+                                            <span class="hl-p2">(</span><span class="hl-builtin">reset!</span> error e<span class="hl-p2">)</span>
+                                            #js <span class="hl-p2">{</span><span class="hl-p2">}</span><span class="hl-p1">)</span>
+       <span class="hl-keyword">:reagent-render</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>comp<span class="hl-p2">]</span>
+                          <span class="hl-p2">(</span><span class="hl-builtin">if</span> @error
+                            <span class="hl-p0">[</span><span class="hl-keyword">:div</span>
+                             <span class="hl-string">&quot;Something went wrong.&quot;</span>
+                             <span class="hl-p1">[</span><span class="hl-keyword">:button</span> <span class="hl-p2">{</span><span class="hl-keyword">:on-click</span> <span class="hl-p0">#(</span><span class="hl-builtin">reset!</span> error <span class="hl-builtin">nil</span><span class="hl-p0">)</span><span class="hl-p2">}</span> <span class="hl-string">&quot;Try again&quot;</span><span class="hl-p1">]</span><span class="hl-p0">]</span>
+                            comp<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">}</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Alternatively, one could use React state instead of RAtom to keep track of error state, which
+can be more obvious with the new <code>getDerivedStateFromError</code> method:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">error-boundary</span> <span class="hl-p1">[</span>comp<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">r/create-class</span>
+    <span class="hl-p2">{</span><span class="hl-keyword">:constructor</span> <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span>this props<span class="hl-p1">]</span>
+                    <span class="hl-p1">(</span>set! <span class="hl-p2">(</span>.-state this<span class="hl-p2">)</span> #js <span class="hl-p2">{</span><span class="hl-keyword">:error</span> <span class="hl-builtin">nil</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+     <span class="hl-keyword">:component-did-catch</span> <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span>this e info<span class="hl-p1">]</span><span class="hl-p0">)</span>
+     <span class="hl-keyword">:get-derived-state-from-error</span> <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span>error<span class="hl-p1">]</span> #js <span class="hl-p1">{</span><span class="hl-keyword">:error</span> error<span class="hl-p1">}</span><span class="hl-p0">)</span>
+     <span class="hl-keyword">:render</span> <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span>this<span class="hl-p1">]</span>
+               <span class="hl-p1">(</span><span class="hl-builtin">r/as-element</span>
+                 <span class="hl-p2">(</span><span class="hl-builtin">if-let</span> <span class="hl-p0">[</span>error <span class="hl-p1">(</span>.. this -state -error<span class="hl-p1">)</span><span class="hl-p0">]</span>
+                   <span class="hl-p0">[</span><span class="hl-keyword">:div</span>
+                    <span class="hl-string">&quot;Something went wrong.&quot;</span>
+                    <span class="hl-p1">[</span><span class="hl-keyword">:button</span> <span class="hl-p2">{</span><span class="hl-keyword">:on-click</span> <span class="hl-p0">#(</span>.setState this #js <span class="hl-p1">{</span><span class="hl-keyword">:error</span> <span class="hl-builtin">nil</span><span class="hl-p1">}</span><span class="hl-p0">)</span><span class="hl-p2">}</span> <span class="hl-string">&quot;Try again&quot;</span><span class="hl-p1">]</span><span class="hl-p0">]</span>
+                   comp<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>As per React docs, <code>getDerivedStateFromError</code> is what should update the state
+after error, it can be also used to update RAtom as in Reagent the Ratom is available
+in function closure even for static methods. <code>ComponentDidCatch</code> can be used
+for side-effects, like logging the error.</p>
+<h2 id="function-components"><a href="https://reactjs.org/docs/components-and-props.html#function-and-class-components">Function components</a></h2>
+<p>JavaScript functions are valid React components, but Reagent implementation
+by default turns the ClojureScript functions referred in Hiccup-vectors to
+Class components.</p>
+<p>However, some React features, like Hooks, only work with Functional components.
+There are several ways to use functions as components with Reagent:</p>
+<p>Calling <code>r/create-element</code> directly with a ClojureScript function doesn't
+wrap the component in any Reagent wrappers, and will create functional components.
+In this case you need to use <code>r/as-element</code> inside the function to convert
+Hiccup-style markup to elements, or just return React Elements yourself.
+You also can't use Ratoms here, as Ratom implementation requires that the component
+is wrapped by Reagent.</p>
+<p><code>:r&gt;</code> shortcut can be used to create components similar to <code>r/create-element</code>, and the children Hiccup forms
+are converted to React element automatically.</p>
+<p>Using <code>adapt-react-class</code> or <code>:&gt;</code> is also calls <code>create-element</code>, but that
+also does automatic conversion of ClojureScript parameters to JS objects,
+which isn't usually desired if the component is ClojureScript function.</p>
+<p>New way is to configure Reagent Hiccup-compiler to create functional components:
+<a href="doc/ReagentCompiler.html">Read Compiler documentation</a></p>
+<p><code>:f&gt;</code> shortcut can be used to create function components from Reagent components (functions),
+where both RAtoms and Hooks work.</p>
+<h2 id="hooks"><a href="https://reactjs.org/docs/hooks-intro.html">Hooks</a></h2>
+<pre class="hl"><code><span class="hl-comment">;; This is used with :f&gt; so both Hooks and RAtoms work here</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">example</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span><span class="hl-p0">[</span><span class="hl-builtin">count</span> set-count<span class="hl-p0">]</span> <span class="hl-p0">(</span><span class="hl-builtin">react/useState</span> <span class="hl-number">0</span><span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:div</span>
+     <span class="hl-p0">[</span><span class="hl-keyword">:p</span> <span class="hl-string">&quot;You clicked &quot;</span> <span class="hl-builtin">count</span> <span class="hl-string">&quot; times&quot;</span><span class="hl-p0">]</span>
+     <span class="hl-p0">[</span><span class="hl-keyword">:button</span>
+      <span class="hl-p1">{</span><span class="hl-keyword">:on-click</span> <span class="hl-p2">#(</span>set-count <span class="hl-builtin">inc</span><span class="hl-p2">)</span><span class="hl-p1">}</span>
+      <span class="hl-string">&quot;Click&quot;</span><span class="hl-p0">]</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">)</span>
+
+<span class="hl-p2">(</span><span class="hl-builtin">defn</span> <span class="hl-def">root</span> <span class="hl-p0">[</span><span class="hl-p0">]</span>
+  <span class="hl-p0">[</span><span class="hl-keyword">:div</span>
+   <span class="hl-p1">[</span><span class="hl-keyword">:f&gt;</span> example<span class="hl-p1">]</span><span class="hl-p0">]</span><span class="hl-p2">)</span>
+</code></pre>
+<h3 id="pre-10-workaround">Pre 1.0 workaround</h3>
+<p>NOTE: This section still refers to workaround using Hooks inside
+class components, read the previous section to create functional components.</p>
+<p>Hooks can't be used inside class components, and Reagent implementation creates
+a class component from every function (i.e. Reagent component).</p>
+<p>However, you can use React components using Hooks inside Reagent, or use
+<a href="https://github.com/Lokeh/hx">hx</a> components inside Reagent. Also, it is
+possible to create React components from Reagent quite easily, because React
+function component is just a function that happens to return React elements,
+and <code>r/as-element</code> does just that:</p>
+<pre class="hl"><code><span class="hl-comment">;; This is React function component. Can't use Ratoms here!</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">example</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span><span class="hl-p0">[</span><span class="hl-builtin">count</span> set-count<span class="hl-p0">]</span> <span class="hl-p0">(</span><span class="hl-builtin">react/useState</span> <span class="hl-number">0</span><span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">(</span><span class="hl-builtin">r/as-element</span>
+      <span class="hl-p0">[</span><span class="hl-keyword">:div</span>
+       <span class="hl-p1">[</span><span class="hl-keyword">:p</span> <span class="hl-string">&quot;You clicked &quot;</span> <span class="hl-builtin">count</span> <span class="hl-string">&quot; times&quot;</span><span class="hl-p1">]</span>
+       <span class="hl-p1">[</span><span class="hl-keyword">:button</span>
+        <span class="hl-p2">{</span><span class="hl-keyword">:on-click</span> <span class="hl-p0">#(</span>set-count <span class="hl-builtin">inc</span><span class="hl-p0">)</span><span class="hl-p2">}</span>
+        <span class="hl-string">&quot;Click&quot;</span><span class="hl-p1">]</span><span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-comment">;; Reagent component</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">reagent-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+   <span class="hl-comment">;; Note :&gt; to use a function as React component</span>
+   <span class="hl-p2">[</span><span class="hl-keyword">:&gt;</span> example<span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>If you need to pass RAtom state into these components, dereference them in
+the Reagent components and pass the value (and if needed, function to update them)
+as properties into the React function component.</p>
+<h2 id="portals"><a href="https://reactjs.org/docs/portals.html">Portals</a></h2>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">reagent-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>el <span class="hl-p0">(</span>.. <span class="hl-builtin">js/document</span> <span class="hl-p1">(</span>getElementById <span class="hl-string">&quot;portal-el&quot;</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">(</span>react-dom/createPortal <span class="hl-p0">(</span><span class="hl-builtin">r/as-element</span> <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;foo&quot;</span><span class="hl-p1">]</span><span class="hl-p0">)</span> el<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<h2 id="server-side-rendering-ssr"><a href="https://react.dev/reference/react-dom/server">Server-Side Rendering (SSR)</a></h2>
+<p>See <a href="doc/ServerSideRendering.html">Server Side Rendering</a></p>
+<pre class="hl"><code><span class="hl-p0">(</span>reagent.dom.server/render-to-string
+   <span class="hl-p1">(</span>reagent.core/as-element <span class="hl-p2">[</span>main-component<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<h2 id="hydrate"><a href="https://reactjs.org/docs/react-dom.html#hydrate">Hydrate</a></h2>
+<pre class="hl"><code><span class="hl-p0">(</span>react-dom/hydrate <span class="hl-p1">(</span><span class="hl-builtin">r/as-element</span> <span class="hl-p2">[</span>main-component<span class="hl-p2">]</span><span class="hl-p1">)</span> container<span class="hl-p0">)</span>
+</code></pre>
+<h2 id="component-classes">Component classes</h2>
+<p>For interop with React libraries, you might need to pass Component classes to other components as parameter. If you have a Reagent component (a function) you can use <code>r/reactify-component</code> which creates a Class from the function. With a <a href="doc/ReagentCompiler.html">function components compiler</a> (<code>{:function-components true}</code>), it creates a React function component instead, so the Reagent component can also use React hooks.</p>
+<p>If the parent Component awaits classes with some custom methods or properties, you need to be careful and probably should use <code>r/create-class</code>. In this case you don't want to use <code>r/reactify-component</code> with a function (even if the function returns a class) because <code>r/reactify-component</code> wraps the function in another Component class, and parent Component doesn't see the correct class.</p>
+<pre class="hl"><code><span class="hl-comment">;; Correct way</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">editor</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">r/create-class</span>
+    <span class="hl-p2">{</span><span class="hl-keyword">:get-input-node</span> <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span>this<span class="hl-p1">]</span> ...<span class="hl-p0">)</span>
+     <span class="hl-keyword">:reagent-render</span> <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span><span class="hl-p1">]</span> <span class="hl-p1">[</span><span class="hl-keyword">:input</span> ...<span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">)</span>
+
+<span class="hl-p2">[</span><span class="hl-keyword">:&gt;</span> SomeComponent
+ <span class="hl-p0">{</span><span class="hl-keyword">:editor-component</span> editor<span class="hl-p0">}</span><span class="hl-p2">]</span>
+
+<span class="hl-comment">;; Often incorrect way</span>
+<span class="hl-p2">(</span><span class="hl-builtin">defn</span> <span class="hl-def">editor</span> <span class="hl-p0">[</span>parameter<span class="hl-p0">]</span>
+  <span class="hl-p0">(</span><span class="hl-builtin">r/create-class</span>
+    <span class="hl-p1">{</span><span class="hl-keyword">:get-input-node</span> <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span>this<span class="hl-p0">]</span> ...<span class="hl-p2">)</span>
+     <span class="hl-keyword">:reagent-render</span> <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span><span class="hl-p0">]</span> <span class="hl-p0">[</span><span class="hl-keyword">:input</span> ...<span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">}</span><span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span>
+
+<span class="hl-p1">[</span><span class="hl-keyword">:&gt;</span> SomeComponent
+ <span class="hl-p2">{</span><span class="hl-keyword">:editor-component</span> <span class="hl-p0">(</span><span class="hl-builtin">r/reactify-component</span> editor<span class="hl-p0">)</span><span class="hl-p2">}</span><span class="hl-p1">]</span>
+</code></pre>
+<p>In the latter case, <code>:editor-component</code> is a Reagent wrapper class component, which doesn't have the <code>getInputNode</code> method and is rendered using the Component created by <code>create-class</code> and which has the method.</p>
+<p>If you need to add static methods or properties, you need to modify <code>create-class</code> return value yourself. The function handles the built-in static-methods (<code>:childContextTypes :contextTypes :contextType :getDerivedStateFromProps :getDerivedStateFromError</code>), but not others.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">let</span> <span class="hl-p1">[</span>klass <span class="hl-p2">(</span><span class="hl-builtin">r/create-class</span> ...<span class="hl-p2">)</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span>set! <span class="hl-p2">(</span>.-static-property klass<span class="hl-p2">)</span> <span class="hl-string">&quot;foobar&quot;</span><span class="hl-p1">)</span>
+  <span class="hl-p1">(</span>set! <span class="hl-p2">(</span>.-static-method klass<span class="hl-p2">)</span> <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span>param<span class="hl-p0">]</span> ...<span class="hl-p2">)</span><span class="hl-p1">)</span>
+  klass<span class="hl-p0">)</span>
+</code></pre>
+<h2 id="suspense"><a href="https://react.dev/reference/react/Suspense">Suspense</a></h2>
+<p><code>React.Suspense</code> itself should work the same as in React itself. Just use
+<code>r/as-element</code> to provide the fallback element. This will be enough when
+you just need to provide fallbacks for some components from JS libs
+which use suspending.</p>
+<p>In React 19 suspending a component should be easy with <code>React.use</code> function.</p>
+<p>In React 18 you need to throw an Promise to suspend a component (seems like
+this isn't recommended by React docs though). You need to take some care
+to now throw multiple times(?) and always return the same Promise object
+when the loading in in progress(?). When promise is resolved, the component
+is re-rendered automatically, so the result doesn't need to be stored
+in a RAtom (or state hook.)</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">data</span> #js <span class="hl-p1">{</span><span class="hl-keyword">:current</span> <span class="hl-builtin">nil</span><span class="hl-p1">}</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">slow-data-request</span> <span class="hl-p1">(</span><span class="hl-builtin">js/Promise.</span> <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span>resolve _reject<span class="hl-p0">]</span>
+                                      <span class="hl-p0">(</span><span class="hl-builtin">js/setTimeout</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span><span class="hl-p2">]</span>
+                                                       <span class="hl-p2">(</span>set! <span class="hl-p0">(</span>.-current data<span class="hl-p0">)</span> <span class="hl-string">&quot;ready!&quot;</span><span class="hl-p2">)</span>
+                                                       <span class="hl-p2">(</span>resolve<span class="hl-p2">)</span><span class="hl-p1">)</span>
+                                                     <span class="hl-number">2000</span><span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">slow-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">when</span> <span class="hl-p2">(</span><span class="hl-builtin">nil?</span> <span class="hl-p0">(</span>.-current data<span class="hl-p0">)</span><span class="hl-p2">)</span>
+    <span class="hl-comment">;; React 18, in 19 react/use replaces throwing Promises to suspend</span>
+    <span class="hl-comment">;; an component.</span>
+    <span class="hl-p2">(</span>throw slow-data-request<span class="hl-p2">)</span><span class="hl-p1">)</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-p2">(</span>.-current data<span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">simple-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+   <span class="hl-p2">[</span><span class="hl-keyword">:&gt;</span> <span class="hl-builtin">react/Suspense</span>
+    <span class="hl-p0">{</span><span class="hl-keyword">:fallback</span> <span class="hl-p1">(</span><span class="hl-builtin">r/as-element</span> <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;loading&quot;</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">}</span>
+    <span class="hl-p0">[</span>slow-component<span class="hl-p0">]</span><span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<h2 id="dangerouslysetinnerhtml"><a href="https://react.dev/reference/react-dom/components/common#dangerously-setting-the-inner-html">DangerouslySetInnerHTML</a></h2>
+<p>Use <code>reagent.core/unsafe-html</code> to wrap the values.</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:dangerouslySetInnerHTML</span> <span class="hl-p2">(</span><span class="hl-builtin">r/unsafe-html</span> <span class="hl-string">&quot;&lt;img .../&gt;&quot;</span><span class="hl-p2">)</span><span class="hl-p1">}</span><span class="hl-p0">]</span>
+</code></pre>
+<p>See <a href="doc/Security.html">Security</a></p>
+<h2 id="strictmode"><a href="https://react.dev/reference/react/StrictMode">StrictMode</a></h2>
+<p>(React 18/19 Concurrent Mode, i.e. createRoot)</p>
+<p>React StrictMode should help with finding bugs in your React components. With
+Reagent this unfortunately might not be helpful.</p>
+<blockquote>
+<p>Your components will re-render an extra time to find bugs caused by impure rendering.
+<a href="https://react.dev/reference/react/StrictMode#fixing-bugs-found-by-double-rendering-in-development">Fixing bugs found by double rendering in development </a></p>
+</blockquote>
+<p><a href="https://react.dev/blog/2022/03/29/react-v18#new-strict-mode-behaviors">React v18, New Strict Mode Behaviors</a></p>
+<p>In Reagent, triggering a side-effects from render functions has been somewhat
+common use, though it is not recommended in React. The Reagent demo site timer-component
+for example uses <code>js/setTimeout</code> directly in the render function to trigger
+<code>seconds-elapsed</code> update every second. This is a side-effect and using <code>StrictMode</code>
+causes the <code>js/setTimeout</code> to be called twice, making the timer run double speed.</p>
+<p>If you want to follow React best-practices you can enable StrictMode in your
+application but you then need to be careful to see you trigger such
+side-effects using <code>useEffect</code> hook or similar methods.</p>
+</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/ReactFeatures.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/index.html">Old release notes</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#fragments">Fragments</a></li><li class="toc-h2"><a href="#context">Context</a></li><li class="toc-h2"><a href="#error-boundaries">Error boundaries</a></li><li class="toc-h2"><a href="#function-components">Function components</a></li><li class="toc-h2"><a href="#hooks">Hooks</a></li><li class="toc-h3"><a href="#pre-10-workaround">Pre 1.0 workaround</a></li><li class="toc-h2"><a href="#portals">Portals</a></li><li class="toc-h2"><a href="#server-side-rendering-ssr">Server-Side Rendering (SSR)</a></li><li class="toc-h2"><a href="#hydrate">Hydrate</a></li><li class="toc-h2"><a href="#component-classes">Component classes</a></li><li class="toc-h2"><a href="#suspense">Suspense</a></li><li class="toc-h2"><a href="#dangerouslysetinnerhtml">DangerouslySetInnerHTML</a></li><li class="toc-h2"><a href="#strictmode">StrictMode</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/ReactFeatures.html"}</script><script src="js/main.js?a2a98f" type="text/javascript"></script></body></html>

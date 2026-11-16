@@ -1,0 +1,212 @@
+<!doctype html>
+<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Reagent: reagent.core</title><base href="../"/><link href="css/built.css?9dcfd2" rel="stylesheet"/><script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script></head><body><div id="main-content"><div><div class="site"><header class="site-header"><div class="site-header-inner"><a href="index.html" class="brand"><span class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <path stroke="#000" stroke-width="10.751" stroke-linejoin="round" paint-order="markers fill stroke" d="M5.375 5.375h53.249v53.249H5.375z"/>
+    <path d="M16.734 59.233h30.532c1.857 0 3.134-.5 3.714-1.4.58-1 .465-2.1-.58-3.5l-13.35-18.1v-9.1h1.741c.465 0 .813-.1 1.161-.4.348-.3.464-.6.464-1s-.116-.7-.464-1c-.348-.3-.696-.4-1.16-.4H25.208c-.465 0-.813.1-1.161.4-.348.3-.464.6-.464 1s.116.7.464 1c.348.3.696.4 1.16.4h1.742v9.1l-13.35 18.1c-1.045 1.4-1.16 2.5-.58 3.5.696.9 1.973 1.4 3.714 1.4zm13.118-21.5l.58-.7v-9.9H33.8v9.9l.58.7 13.467 18.6H16.502z" fill="#303c3c"/>
+    <path fill="#00d8ff" d="M35.889 42.633h-7.778l-9.055 12.6H45.06z"/>
+    <path d="M180 439.416a5.09 5.09 0 1 1-10.179 0 5.09 5.09 0 1 1 10.179 0z" transform="matrix(.56482 0 0 .5518 -69.11 -222.593)" fill="#00d8ff" stroke="#00d8ff"/>
+    <path d="M37.217 12.657a2.325 2.325 0 1 1-4.65 0 2.325 2.325 0 1 1 4.65 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".457"/>
+    <path d="M31.676 6.053a1.17 1.17 0 1 0-2.341 0 1.17 1.17 0 1 0 2.341 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".23"/>
+</svg>
+</span>Reagent</a><nav class="site-nav"><a href="doc/index.html">Guide</a><a href="api/index.html">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/index.html">Documentation index</a></li><li><a href="doc/Security.html">Security</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Tutorials</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Using [square brackets] instead of (parentheses)</a></li><li><a href="doc/WhenDoComponentsUpdate.html">When do components update?</a></li><li><a href="doc/ManagingState.html">[WIP] Managing State: atoms, cursors, Reactions, and tracking</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing: How Reagent Renders Changes to Application State</a></li><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li></ul></li><li><span class="sidebar-section">Frequently Asked Questions</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Why isn&#x27;t my Component re-rendering?</a></li><li><a href="doc/FAQ/UsingRefs.html">How do I use React&#x27;s &quot;refs&quot;</a></li><li><a href="doc/FAQ/UsingAnEntity.html">How can I use an entity like &quot;nbsp&quot;?</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Why is my attribute (like autoFocus) missing?</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">How can I use React&#x27;s dangerouslySetInnerHTML?</a></li><li><a href="doc/FAQ/CljsjsReactProblems.html">Reagent doesn&#x27;t work after updating dependencies</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">How do I force Component re-creation?</a></li><li><a href="doc/FAQ/HtmlEntities.html">Using HTML entities</a></li></ul></li><li><span class="sidebar-section">Examples</span><ul><li><a href="doc/examples/material-ui.html">Material-UI v1</a></li><li><a href="doc/examples/smooth-ui.html">Smooth UI</a></li></ul></li><li><span class="sidebar-section">Other</span><ul><li><a href="doc/2.0-upgrade.html">Reagent 2.0 upgrade guide</a></li><li><a href="doc/reagent1.html">Reagent 1 and React 18</a></li><li><a href="doc/0.8-upgrade.html">0.8 Upgrade guide</a></li><li><a href="doc/development.html">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/index.html">API reference</a></li><li><a href="api/reagent.core.html" class="active">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><h1>reagent.core</h1><div class="markdown"><p>Components, Reagent atoms, cursors, reactions and React interop.</p>
+</div><section class="api-var"><h3 id="adapt-react-class"><a href="#adapt-react-class" class="anchor">adapt-react-class</a><span class="api-type">function</span></h3><pre class="api-usage">(adapt-react-class c)</pre><div class="markdown"><p>Returns an adapter for a native React class, that may be used
+just like a Reagent component function or class in Hiccup forms.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L52" class="api-source">Source</a></section><section class="api-var"><h3 id="after-render"><a href="#after-render" class="anchor">after-render</a><span class="api-type">function</span></h3><pre class="api-usage">(after-render f)</pre><div class="markdown"><p>Run f using requestAnimationFrame or equivalent.</p>
+<p>f will be called just after any queued renders in the next animation
+frame (and even if no renders actually occur).</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L360" class="api-source">Source</a></section><section class="api-var"><h3 id="argv"><a href="#argv" class="anchor">argv</a><span class="api-type">function</span></h3><pre class="api-usage">(argv this)</pre><div class="markdown"><p>Returns the entire Hiccup form passed to the component.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L177" class="api-source">Source</a></section><section class="api-var"><h3 id="as-element"><a href="#as-element" class="anchor">as-element</a><span class="api-type">function</span></h3><pre class="api-usage">(as-element form)
+(as-element form compiler)</pre><div class="markdown"><p>Turns a vector of Hiccup syntax into a React element. Returns form
+unchanged if it is not a vector.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L46" class="api-source">Source</a></section><section class="api-var"><h3 id="atom"><a href="#atom" class="anchor">atom</a><span class="api-type">function</span></h3><pre class="api-usage">(atom x)
+(atom x &amp; rest)</pre><div class="markdown"><p>Like clojure.core/atom, except that it keeps track of derefs.
+Reagent components that derefs one of these are automatically
+re-rendered.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L221" class="api-source">Source</a></section><section class="api-var"><h3 id="children"><a href="#children" class="anchor">children</a><span class="api-type">function</span></h3><pre class="api-usage">(children this)</pre><div class="markdown"><p>Returns the children passed to a component.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L171" class="api-source">Source</a></section><section class="api-var"><h3 id="class-names"><a href="#class-names" class="anchor">class-names</a><span class="api-type">function</span></h3><pre class="api-usage">(class-names)
+(class-names class)
+(class-names class1 class2)
+(class-names class1 class2 &amp; others)</pre><div class="markdown"><p>Function which normalizes and combines class values to a string</p>
+<p>Reagent allows classes to be defined as:</p>
+<ul>
+<li>Strings</li>
+<li>Named objects (Symbols or Keywords)</li>
+<li>Collections of previous types, including nested collections</li>
+<li>nil values, which are ignored</li>
+</ul>
+<pre class="hl"><code><span class="hl-p0">(</span>class-names <span class="hl-keyword">:a</span> <span class="hl-p1">[</span><span class="hl-string">&quot;b&quot;</span> <span class="hl-builtin">nil</span> <span class="hl-p2">[</span><span class="hl-keyword">:c</span> <span class="hl-p0">[</span><span class="hl-keyword">:d</span><span class="hl-p0">]</span><span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+<span class="hl-comment">;; =&gt; &quot;a b c d&quot;</span>
+</code></pre>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L183" class="api-source">Source</a></section><section class="api-var"><h3 id="create-class"><a href="#create-class" class="anchor">create-class</a><span class="api-type">function</span></h3><pre class="api-usage">(create-class spec)
+(create-class spec compiler)</pre><div class="markdown"><p>Creates JS class based on provided Clojure map, for example:</p>
+<pre class="hl"><code><span class="hl-p0">{</span><span class="hl-comment">;; Constructor</span>
+ <span class="hl-keyword">:constructor</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this props<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:get-initial-state</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-comment">;; Static methods</span>
+ <span class="hl-keyword">:get-derived-state-from-props</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>props state<span class="hl-p2">]</span> partial-state<span class="hl-p1">)</span>
+ <span class="hl-keyword">:get-derived-state-from-error</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>error<span class="hl-p2">]</span> partial-state<span class="hl-p1">)</span>
+ <span class="hl-comment">;; Methods</span>
+ <span class="hl-keyword">:get-snapshot-before-update</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this old-argv new-argv<span class="hl-p2">]</span> snapshot<span class="hl-p1">)</span>
+ <span class="hl-keyword">:should-component-update</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this old-argv new-argv<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:component-did-mount</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:component-did-update</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this old-argv old-state snapshot<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:component-will-unmount</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:component-did-catch</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this error info<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:reagent-render</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>args....<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-comment">;; Or alternatively:</span>
+ <span class="hl-keyword">:render</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-comment">;; Deprecated methods:</span>
+ <span class="hl-keyword">:UNSAFE_component-will-receive-props</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this new-argv<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:UNSAFE_component-will-update</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this new-argv new-state<span class="hl-p2">]</span><span class="hl-p1">)</span>
+ <span class="hl-keyword">:UNSAFE_component-will-mount</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">}</span>
+</code></pre>
+<p>Everything is optional, except either :reagent-render or :render.</p>
+<p>Map keys should use <code>React.Component</code> method names (<a href="https://reactjs.org/docs/react-component.html">https://reactjs.org/docs/react-component.html</a>),
+and can be provided in kebab-case or camelCase.</p>
+<p>State can be initialized using constructor, which matches React.Component class,
+or using getInitialState which matches old React createClass function and is
+now implemented by Reagent for compatibility.</p>
+<p>State can usually be anything, e.g. Cljs object. But if using getDerivedState
+methods, the state has to be plain JS object as React implementation uses
+Object.assign to merge partial state into the current state.</p>
+<p>React built-in static methods or properties are automatically defined as statics.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L75" class="api-source">Source</a></section><section class="api-var"><h3 id="create-compiler"><a href="#create-compiler" class="anchor">create-compiler</a><span class="api-type">function</span></h3><pre class="api-usage">(create-compiler opts)</pre><div class="markdown"><p>Creates Compiler object with given <code>opts</code>,
+this can be passed to <code>render</code>, <code>as-element</code> and other functions to control
+how they turn the Reagent-style Hiccup into React components and elements.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L373" class="api-source">Source</a></section><section class="api-var"><h3 id="create-element"><a href="#create-element" class="anchor">create-element</a><span class="api-type">function</span></h3><pre class="api-usage">(create-element type)
+(create-element type props)
+(create-element type props child)
+(create-element type props child &amp; children)</pre><div class="markdown"><p>Create a native React element, by calling React.createElement directly.</p>
+<p>That means the second argument must be a javascript object (or nil), and
+that any Reagent hiccup forms must be processed with as-element. For example
+like this:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">r/create-element</span> <span class="hl-string">&quot;div&quot;</span> #js<span class="hl-p1">{</span><span class="hl-keyword">:className</span> <span class="hl-string">&quot;foo&quot;</span><span class="hl-p1">}</span>
+  <span class="hl-string">&quot;Hi &quot;</span> <span class="hl-p1">(</span><span class="hl-builtin">r/as-element</span> <span class="hl-p2">[</span><span class="hl-keyword">:strong</span> <span class="hl-string">&quot;world!&quot;</span><span class="hl-p2">]</span><span class="hl-p1">)</span>
+</code></pre>
+<p>which is equivalent to</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div.foo</span> <span class="hl-string">&quot;Hi&quot;</span> <span class="hl-p1">[</span><span class="hl-keyword">:strong</span> <span class="hl-string">&quot;world!&quot;</span><span class="hl-p1">]</span><span class="hl-p0">]</span>
+</code></pre>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L17" class="api-source">Source</a></section><section class="api-var"><h3 id="current-component"><a href="#current-component" class="anchor">current-component</a><span class="api-type">function</span></h3><pre class="api-usage">(current-component)</pre><div class="markdown"><p>Returns the current React component (a.k.a <code>this</code>) in a component
+function.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L120" class="api-source">Source</a></section><section class="api-var"><h3 id="cursor"><a href="#cursor" class="anchor">cursor</a><span class="api-type">function</span></h3><pre class="api-usage">(cursor src path)</pre><div class="markdown"><p>Provide a cursor into a Reagent atom.</p>
+<p>Behaves like a Reagent atom but focuses updates and derefs to
+the specified path within the wrapped Reagent atom. e.g.,</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">let</span> <span class="hl-p1">[</span>c <span class="hl-p2">(</span>cursor ra <span class="hl-p0">[</span><span class="hl-keyword">:nested</span> <span class="hl-keyword">:content</span><span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">]</span>
+  ... @c <span class="hl-comment">;; equivalent to (get-in @ra [:nested :content])</span>
+  ... <span class="hl-p1">(</span><span class="hl-builtin">reset!</span> c <span class="hl-number">42</span><span class="hl-p1">)</span> <span class="hl-comment">;; equivalent to (swap! ra assoc-in [:nested :content] 42)</span>
+  ... <span class="hl-p1">(</span><span class="hl-builtin">swap!</span> c <span class="hl-builtin">inc</span><span class="hl-p1">)</span> <span class="hl-comment">;; equivalence to (swap! ra update-in [:nested :content] inc)</span>
+  <span class="hl-p0">)</span>
+</code></pre>
+<p>The first parameter can also be a function, that should look
+something like this:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">set-get</span>
+  <span class="hl-p1">(</span><span class="hl-p2">[</span>k<span class="hl-p2">]</span> <span class="hl-p2">(</span><span class="hl-builtin">get-in</span> @state k<span class="hl-p2">)</span><span class="hl-p1">)</span>
+  <span class="hl-p1">(</span><span class="hl-p2">[</span>k v<span class="hl-p2">]</span> <span class="hl-p2">(</span><span class="hl-builtin">swap!</span> state <span class="hl-builtin">assoc-in</span> k v<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>The function will be called with one argument – the path passed to
+cursor – when the cursor is deref'ed, and two arguments (path and
+new value) when the cursor is modified.</p>
+<p>Given that set-get function, (and that state is a Reagent atom, or
+another cursor) these cursors are equivalent:
+<code>(cursor state [:foo])</code> and <code>(cursor set-get [:foo])</code>.</p>
+<p>Note that a cursor is lazy: it doesn't watch the source atom by
+itself, so its value is only updated when the cursor is deref'ed or
+changed through the cursor (<code>reset!</code>/<code>swap!</code>). Watches added with
+<code>add-watch</code> on a cursor are therefore not called when the source atom
+is changed directly, unless the cursor is deref'ed in a reactive
+context (a component render, <code>track!</code>, <code>run!</code>, a reaction), in which
+case they are called when queued updates are processed (next
+animation frame, or <code>flush</code>). Intermediate values may be
+skipped. A cursor that watched its source eagerly would have to be
+disposed to avoid leaking.</p>
+<p>To react to changes of the source atom outside components, either
+<code>add-watch</code> the source atom and compare the value at the path, or use
+<code>(track! (fn [] (do-something @c)))</code> and <code>dispose!</code> it when done.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L281" class="api-source">Source</a></section><section class="api-var"><h3 id="defc"><a href="#defc" class="anchor">defc</a><span class="api-type">macro</span></h3><pre class="api-usage">(defc name doc-string? attr-map? [params*] prepost-map? body)
+(defc name doc-string? attr-map? ([params*] prepost-map? body) + attr-map?)</pre><div class="markdown"><p>Create a Reagent function component</p>
+<p>The functions works like other components (defined using regular defn) when
+used inside hiccup elements (<code>[component]</code>), but it can't be used like a regular
+function. The created function is a React JS function component, i.e., it
+takes single js-props argument, and the function body is already wrapped to
+use Reagent implementation to work with Ratoms etc.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.clj#L29" class="api-source">Source</a></section><section class="api-var"><h3 id="dispose!"><a href="#dispose!" class="anchor">dispose!</a><span class="api-type">function</span></h3><pre class="api-usage">(dispose! x)</pre><div class="markdown"><p>Stop the result of track! from updating.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L252" class="api-source">Source</a></section><section class="api-var"><h3 id="flush"><a href="#flush" class="anchor">flush</a><span class="api-type">function</span></h3><pre class="api-usage">(flush)</pre><div class="markdown"><p>Render dirty components immediately.</p>
+<p>Note that this may not work in event handlers, since React.js does
+batching of updates there.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L211" class="api-source">Source</a></section><section class="api-var"><h3 id="force-update"><a href="#force-update" class="anchor">force-update</a><span class="api-type">function</span></h3><pre class="api-usage">(force-update this)</pre><div class="markdown"><p>Force a component to re-render immediately.</p>
+<p>If the second argument is true, child components will also be
+re-rendered, even if their arguments have not changed.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L155" class="api-source">Source</a></section><section class="api-var"><h3 id="is-client"><a href="#is-client" class="anchor">is-client</a><span class="api-type">var</span></h3><p class="api-nodoc">No docstring.</p><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L15" class="api-source">Source</a></section><section class="api-var"><h3 id="merge-props"><a href="#merge-props" class="anchor">merge-props</a><span class="api-type">function</span></h3><pre class="api-usage">(merge-props)
+(merge-props defaults)
+(merge-props defaults props)
+(merge-props defaults props &amp; others)</pre><div class="markdown"><p>Utility function that merges some maps, handling <code>:class</code> and <code>:style</code>.</p>
+<p>The :class value is always normalized (using <code>class-names</code>) even if no
+merging is done.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L201" class="api-source">Source</a></section><section class="api-var"><h3 id="next-tick"><a href="#next-tick" class="anchor">next-tick</a><span class="api-type">function</span></h3><pre class="api-usage">(next-tick f)</pre><div class="markdown"><p>Run f using requestAnimationFrame or equivalent.</p>
+<p>f will be called just before components are rendered.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L353" class="api-source">Source</a></section><section class="api-var"><h3 id="partial"><a href="#partial" class="anchor">partial</a><span class="api-type">function</span></h3><pre class="api-usage">(partial f &amp; args)</pre><div class="markdown"><p>Works just like clojure.core/partial, but the result can be compared with =</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L368" class="api-source">Source</a></section><section class="api-var"><h3 id="props"><a href="#props" class="anchor">props</a><span class="api-type">function</span></h3><pre class="api-usage">(props this)</pre><div class="markdown"><p>Returns the props passed to a component.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L165" class="api-source">Source</a></section><section class="api-var"><h3 id="reactify-component"><a href="#reactify-component" class="anchor">reactify-component</a><span class="api-type">function</span></h3><pre class="api-usage">(reactify-component c)
+(reactify-component c compiler)</pre><div class="markdown"><p>Returns an adapter for a Reagent component, that may be used from
+React, for example in JSX. A single argument, props, is passed to
+the component, converted to a map.</p>
+<p>With a compiler using <code>{:function-components true}</code> option, returns a
+React function component, so the Reagent component can use React hooks.
+Otherwise returns a class component.</p>
+<p>The result is a React component: to use it in Hiccup, use <code>:&gt;</code> like with
+other React components, or use the original Reagent component directly.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L59" class="api-source">Source</a></section><section class="api-var"><h3 id="reaction"><a href="#reaction" class="anchor">reaction</a><span class="api-type">macro</span></h3><pre class="api-usage">(reaction &amp; body)</pre><div class="markdown"><p>Creates Reaction from the body, returns a derefable
+containing the result of the body. If the body derefs
+reactive values (Reagent atoms, track, etc), the body
+will run again and the value of the Reaction is updated.</p>
+<p>New Reaction is created everytime reaction is called,
+so caller needs to take care that new reaction isn't created
+e.g. every component render, by using with-let, form-2 or form-3
+components or other solutions. Consider using reagent.core/track,
+for function that caches the derefable value, and can thus be safely
+used in e.g. render function safely.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.clj#L13" class="api-source">Source</a></section><section class="api-var"><h3 id="render"><a href="#render" class="anchor">render</a><span class="api-type">function</span><span class="api-deprecated">deprecated</span></h3><pre class="api-usage">(render &amp; _)</pre><p class="api-nodoc">No docstring.</p><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L390" class="api-source">Source</a></section><section class="api-var"><h3 id="replace-state"><a href="#replace-state" class="anchor">replace-state</a><span class="api-type">function</span></h3><pre class="api-usage">(replace-state this new-state)</pre><div class="markdown"><p>Set state of a component.
+Equivalent to <code>(reset! (state-atom this) new-state)</code></p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L139" class="api-source">Source</a></section><section class="api-var"><h3 id="rswap!"><a href="#rswap!" class="anchor">rswap!</a><span class="api-type">function</span></h3><pre class="api-usage">(rswap! a f &amp; args)</pre><div class="markdown"><p>Swaps the value of a to be <code>(apply f current-value-of-atom args)</code>.</p>
+<p>rswap! works like swap!, except that recursive calls to rswap! on
+the same atom are allowed – and it always returns nil.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L331" class="api-source">Source</a></section><section class="api-var"><h3 id="set-default-compiler!"><a href="#set-default-compiler!" class="anchor">set-default-compiler!</a><span class="api-type">function</span></h3><pre class="api-usage">(set-default-compiler! compiler)</pre><div class="markdown"><p>Globally sets the Compiler object used by <code>render</code>, <code>as-element</code> and other
+calls by default, when no <code>compiler</code> parameter is provided.</p>
+<p>Use <code>nil</code> value to restore the original default compiler.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L380" class="api-source">Source</a></section><section class="api-var"><h3 id="set-state"><a href="#set-state" class="anchor">set-state</a><span class="api-type">function</span></h3><pre class="api-usage">(set-state this new-state)</pre><div class="markdown"><p>Merge component state with new-state.
+Equivalent to <code>(swap! (state-atom this) merge new-state)</code></p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L147" class="api-source">Source</a></section><section class="api-var"><h3 id="state"><a href="#state" class="anchor">state</a><span class="api-type">function</span></h3><pre class="api-usage">(state this)</pre><div class="markdown"><p>Returns the state of a component, as set with replace-state or set-state.
+Equivalent to <code>(deref (r/state-atom this))</code></p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L132" class="api-source">Source</a></section><section class="api-var"><h3 id="state-atom"><a href="#state-atom" class="anchor">state-atom</a><span class="api-type">function</span></h3><pre class="api-usage">(state-atom this)</pre><div class="markdown"><p>Returns an atom containing a components state.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L126" class="api-source">Source</a></section><section class="api-var"><h3 id="track"><a href="#track" class="anchor">track</a><span class="api-type">function</span></h3><pre class="api-usage">(track f &amp; args)</pre><div class="markdown"><p>Takes a function and optional arguments, and returns a derefable
+containing the output of that function. If the function derefs
+Reagent atoms (or track, etc), the value will be updated whenever
+the atom changes.</p>
+<p>In other words, <code>@(track foo bar)</code> will produce the same result
+as <code>(foo bar)</code>, but foo will only be called again when the atoms it
+depends on changes, and will only trigger updates of components when
+its result changes.</p>
+<p>track is lazy, i.e the function is only evaluated on deref.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L228" class="api-source">Source</a></section><section class="api-var"><h3 id="track!"><a href="#track!" class="anchor">track!</a><span class="api-type">function</span></h3><pre class="api-usage">(track! f &amp; args)</pre><div class="markdown"><p>An eager version of track. The function passed is called
+immediately, and continues to be called when needed, until stopped
+with dispose!.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L244" class="api-source">Source</a></section><section class="api-var"><h3 id="unsafe-html"><a href="#unsafe-html" class="anchor">unsafe-html</a><span class="api-type">function</span></h3><pre class="api-usage">(unsafe-html s)</pre><div class="markdown"><p>Create a tagged value for use with :dangerouslySetInnerHTML. Reagent doesn't
+allow other values to be used with the property, to ensure data from external
+sources (using EDN or Transit) can't be used to accidentally create arbitrary
+HTML.</p>
+<p>See doc/Security.md</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L396" class="api-source">Source</a></section><section class="api-var"><h3 id="with-let"><a href="#with-let" class="anchor">with-let</a><span class="api-type">macro</span></h3><pre class="api-usage">(with-let bindings &amp; body)</pre><div class="markdown"><p>Bind variables as with let, except that when used in a component
+the bindings are only evaluated once. Also takes an optional finally
+clause at the end, that is executed when the component is
+destroyed.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.clj#L5" class="api-source">Source</a></section><section class="api-var"><h3 id="wrap"><a href="#wrap" class="anchor">wrap</a><span class="api-type">function</span></h3><pre class="api-usage">(wrap value reset-fn &amp; args)</pre><div class="markdown"><p>Provide a combination of value and callback, that looks like an atom.</p>
+<p>The first argument can be any value, that will be returned when the
+result is deref'ed.</p>
+<p>The second argument should be a function, that is called with the
+optional extra arguments provided to wrap, and the new value of the
+resulting 'atom'.</p>
+<p>Use for example like this:</p>
+<pre class="hl"><code><span class="hl-p0">(</span>wrap <span class="hl-p1">(</span><span class="hl-keyword">:foo</span> @state<span class="hl-p1">)</span>
+      <span class="hl-builtin">swap!</span> state <span class="hl-builtin">assoc</span> <span class="hl-keyword">:foo</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Probably useful only for passing to child components.</p>
+</div><a href="https://github.com/reagent-project/reagent/blob/master/src/reagent/core.cljs#L257" class="api-source">Source</a></section></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/index.html">Old release notes</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#adapt-react-class">adapt-react-class</a></li><li class="toc-h2"><a href="#after-render">after-render</a></li><li class="toc-h2"><a href="#argv">argv</a></li><li class="toc-h2"><a href="#as-element">as-element</a></li><li class="toc-h2"><a href="#atom">atom</a></li><li class="toc-h2"><a href="#children">children</a></li><li class="toc-h2"><a href="#class-names">class-names</a></li><li class="toc-h2"><a href="#create-class">create-class</a></li><li class="toc-h2"><a href="#create-compiler">create-compiler</a></li><li class="toc-h2"><a href="#create-element">create-element</a></li><li class="toc-h2"><a href="#current-component">current-component</a></li><li class="toc-h2"><a href="#cursor">cursor</a></li><li class="toc-h2"><a href="#defc">defc</a></li><li class="toc-h2"><a href="#dispose!">dispose!</a></li><li class="toc-h2"><a href="#flush">flush</a></li><li class="toc-h2"><a href="#force-update">force-update</a></li><li class="toc-h2"><a href="#is-client">is-client</a></li><li class="toc-h2"><a href="#merge-props">merge-props</a></li><li class="toc-h2"><a href="#next-tick">next-tick</a></li><li class="toc-h2"><a href="#partial">partial</a></li><li class="toc-h2"><a href="#props">props</a></li><li class="toc-h2"><a href="#reactify-component">reactify-component</a></li><li class="toc-h2"><a href="#reaction">reaction</a></li><li class="toc-h2"><a href="#render">render</a></li><li class="toc-h2"><a href="#replace-state">replace-state</a></li><li class="toc-h2"><a href="#rswap!">rswap!</a></li><li class="toc-h2"><a href="#set-default-compiler!">set-default-compiler!</a></li><li class="toc-h2"><a href="#set-state">set-state</a></li><li class="toc-h2"><a href="#state">state</a></li><li class="toc-h2"><a href="#state-atom">state-atom</a></li><li class="toc-h2"><a href="#track">track</a></li><li class="toc-h2"><a href="#track!">track!</a></li><li class="toc-h2"><a href="#unsafe-html">unsafe-html</a></li><li class="toc-h2"><a href="#with-let">with-let</a></li><li class="toc-h2"><a href="#wrap">wrap</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/api/reagent.core.html"}</script><script src="js/main.js?a2a98f" type="text/javascript"></script></body></html>

@@ -1,0 +1,376 @@
+<!doctype html>
+<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Reagent: [WIP] Managing State: atoms, cursors, Reactions, and tracking</title><base href="../"/><link href="css/built.css?9dcfd2" rel="stylesheet"/><script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script></head><body><div id="main-content"><div><div class="site"><header class="site-header"><div class="site-header-inner"><a href="index.html" class="brand"><span class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <path stroke="#000" stroke-width="10.751" stroke-linejoin="round" paint-order="markers fill stroke" d="M5.375 5.375h53.249v53.249H5.375z"/>
+    <path d="M16.734 59.233h30.532c1.857 0 3.134-.5 3.714-1.4.58-1 .465-2.1-.58-3.5l-13.35-18.1v-9.1h1.741c.465 0 .813-.1 1.161-.4.348-.3.464-.6.464-1s-.116-.7-.464-1c-.348-.3-.696-.4-1.16-.4H25.208c-.465 0-.813.1-1.161.4-.348.3-.464.6-.464 1s.116.7.464 1c.348.3.696.4 1.16.4h1.742v9.1l-13.35 18.1c-1.045 1.4-1.16 2.5-.58 3.5.696.9 1.973 1.4 3.714 1.4zm13.118-21.5l.58-.7v-9.9H33.8v9.9l.58.7 13.467 18.6H16.502z" fill="#303c3c"/>
+    <path fill="#00d8ff" d="M35.889 42.633h-7.778l-9.055 12.6H45.06z"/>
+    <path d="M180 439.416a5.09 5.09 0 1 1-10.179 0 5.09 5.09 0 1 1 10.179 0z" transform="matrix(.56482 0 0 .5518 -69.11 -222.593)" fill="#00d8ff" stroke="#00d8ff"/>
+    <path d="M37.217 12.657a2.325 2.325 0 1 1-4.65 0 2.325 2.325 0 1 1 4.65 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".457"/>
+    <path d="M31.676 6.053a1.17 1.17 0 1 0-2.341 0 1.17 1.17 0 1 0 2.341 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".23"/>
+</svg>
+</span>Reagent</a><nav class="site-nav"><a href="doc/index.html">Guide</a><a href="api/index.html">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/index.html">Documentation index</a></li><li><a href="doc/Security.html">Security</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Tutorials</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Using [square brackets] instead of (parentheses)</a></li><li><a href="doc/WhenDoComponentsUpdate.html">When do components update?</a></li><li><a href="doc/ManagingState.html" class="active">[WIP] Managing State: atoms, cursors, Reactions, and tracking</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing: How Reagent Renders Changes to Application State</a></li><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li></ul></li><li><span class="sidebar-section">Frequently Asked Questions</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Why isn&#x27;t my Component re-rendering?</a></li><li><a href="doc/FAQ/UsingRefs.html">How do I use React&#x27;s &quot;refs&quot;</a></li><li><a href="doc/FAQ/UsingAnEntity.html">How can I use an entity like &quot;nbsp&quot;?</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Why is my attribute (like autoFocus) missing?</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">How can I use React&#x27;s dangerouslySetInnerHTML?</a></li><li><a href="doc/FAQ/CljsjsReactProblems.html">Reagent doesn&#x27;t work after updating dependencies</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">How do I force Component re-creation?</a></li><li><a href="doc/FAQ/HtmlEntities.html">Using HTML entities</a></li></ul></li><li><span class="sidebar-section">Examples</span><ul><li><a href="doc/examples/material-ui.html">Material-UI v1</a></li><li><a href="doc/examples/smooth-ui.html">Smooth UI</a></li></ul></li><li><span class="sidebar-section">Other</span><ul><li><a href="doc/2.0-upgrade.html">Reagent 2.0 upgrade guide</a></li><li><a href="doc/reagent1.html">Reagent 1 and React 18</a></li><li><a href="doc/0.8-upgrade.html">0.8 Upgrade guide</a></li><li><a href="doc/development.html">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/index.html">API reference</a></li><li><a href="api/reagent.core.html">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><p class="review-notice"><strong>Not reviewed yet: </strong>this page may be outdated or inconsistent with the other guides. The <a href="api/index.html">API reference</a> is generated from the current source.</p><div class="markdown"><h1 id="managing-state-atoms-cursors-reactions-and-tracking">Managing state: atoms, cursors, Reactions, and tracking</h1>
+<p>Although it is possible to update reagent components by remounting the entire component tree with <code>reagent.dom/render</code>, Reagent comes with a sophisticated state management library based on <code>reagent.core/atom</code>, which allows components to track application state and update only when needed. Reagent also provides cursors, which are like ratoms but can be constructed from portions of one or more other ratoms to limit or expand which ratoms a component watches. Finally, Reagent provides a set of tracking primitives called reactions and a set of utility functions to build more customized state management.</p>
+<p><strong>TODO is this right?</strong></p>
+<h2 id="intro-to-atoms">Intro to atoms</h2>
+<p>Reagent provides an implementation of atom that you can create with <code>reagent/atom</code> and use just like a normal Clojure atom, which are often referred to as &quot;ratoms&quot; to distinguish from normal atoms. Reagent tracks any dereferences to ratoms made during a component's render function.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">ns</span> <span class="hl-def">example</span>
+  <span class="hl-p1">(</span><span class="hl-keyword">:require</span> <span class="hl-p2">[</span>reagent.core <span class="hl-keyword">:as</span> r<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">click-count</span> <span class="hl-p1">(</span><span class="hl-builtin">r/atom</span> <span class="hl-number">0</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">counting-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+   <span class="hl-string">&quot;The atom &quot;</span> <span class="hl-p2">[</span><span class="hl-keyword">:code</span> <span class="hl-string">&quot;click-count&quot;</span><span class="hl-p2">]</span> <span class="hl-string">&quot; has value: &quot;</span>
+   @click-count <span class="hl-string">&quot;. &quot;</span>
+   <span class="hl-p2">[</span><span class="hl-keyword">:input</span> <span class="hl-p0">{</span><span class="hl-keyword">:type</span> <span class="hl-string">&quot;button&quot;</span> <span class="hl-keyword">:value</span> <span class="hl-string">&quot;Click me!&quot;</span>
+            <span class="hl-keyword">:on-click</span> <span class="hl-p1">#(</span><span class="hl-builtin">swap!</span> click-count <span class="hl-builtin">inc</span><span class="hl-p1">)</span><span class="hl-p0">}</span><span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<h3 id="mutating-a-ratom">Mutating a ratom</h3>
+<p>You manipulate using the standard <code>reset!</code> and <code>swap!</code> functions.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">reset!</span> state-atom <span class="hl-p1">{</span><span class="hl-keyword">:counter</span> <span class="hl-number">0</span><span class="hl-p1">}</span><span class="hl-p0">)</span>
+</code></pre>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">swap!</span> state-atom <span class="hl-builtin">assoc</span> <span class="hl-keyword">:counter</span> <span class="hl-number">15</span><span class="hl-p0">)</span>
+</code></pre>
+<h3 id="dereferencing-a-ratom">Dereferencing a ratom</h3>
+<p>You access the atom using <code>deref</code> or the shorthand <code>@</code>.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-keyword">:counter</span> <span class="hl-p1">(</span><span class="hl-builtin">deref</span> state-atom<span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-keyword">:counter</span> @state-atom<span class="hl-p0">)</span>
+</code></pre>
+<h3 id="the-effect-of-dereferencing-a-ratom">The effect of dereferencing a ratom</h3>
+<ul>
+<li>A dereference to the ratom during its render function will cause that component to re-render whenever any part of that ratom is updated. (See the section below on cursors to get finer control over update behavior.)</li>
+<li>Dereferencing a ratom in a callback or event handler after the render function has run will not make the component react to any changes to the ratom (though of course any <em>changes</em> to the ratom made in an event handler will make any watching components re-render).</li>
+</ul>
+<h3 id="rswap">rswap!</h3>
+<p><code>rswap!</code> works like standard <code>swap!</code> except that it</p>
+<ul>
+<li>always returns <code>nil</code></li>
+<li>allows recursive applications of <code>rswap!</code> on the same atom</li>
+</ul>
+<p>That makes <code>rswap!</code> especially suited for event handling.</p>
+<p>Here’s an example that uses event handling with <code>rswap!</code>:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">event-handler</span> <span class="hl-p1">[</span>state <span class="hl-p2">[</span>event-name id value<span class="hl-p2">]</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">case</span> event-name
+    <span class="hl-keyword">:set-name</span>   <span class="hl-p2">(</span><span class="hl-builtin">assoc-in</span> state <span class="hl-p0">[</span><span class="hl-keyword">:people</span> id <span class="hl-keyword">:name</span><span class="hl-p0">]</span> value<span class="hl-p2">)</span>
+    <span class="hl-keyword">:add-person</span> <span class="hl-p2">(</span><span class="hl-builtin">let</span> <span class="hl-p0">[</span>new-key <span class="hl-p1">(</span><span class="hl-builtin">-&gt;&gt;</span> state <span class="hl-keyword">:people</span> keys <span class="hl-p2">(</span>apply max<span class="hl-p2">)</span> <span class="hl-builtin">inc</span><span class="hl-p1">)</span><span class="hl-p0">]</span>
+              <span class="hl-p0">(</span><span class="hl-builtin">assoc-in</span> state <span class="hl-p1">[</span><span class="hl-keyword">:people</span> new-key<span class="hl-p1">]</span> <span class="hl-p1">{</span><span class="hl-keyword">:name</span> <span class="hl-string">&quot;&quot;</span><span class="hl-p1">}</span><span class="hl-p0">)</span><span class="hl-p2">)</span>
+    state<span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">emit</span> <span class="hl-p1">[</span>e<span class="hl-p1">]</span>
+  <span class="hl-comment">;; (js/console.log &quot;Handling event&quot; (str e))</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">r/rswap!</span> app-state event-handler e<span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">name-edit</span> <span class="hl-p1">[</span>id<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>p @<span class="hl-p0">(</span><span class="hl-builtin">r/track</span> person id<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:div</span>
+     <span class="hl-p0">[</span><span class="hl-keyword">:input</span> <span class="hl-p1">{</span><span class="hl-keyword">:value</span>     <span class="hl-p2">(</span><span class="hl-keyword">:name</span> p<span class="hl-p2">)</span>
+          <span class="hl-keyword">:on-change</span> <span class="hl-p2">#(</span>emit <span class="hl-p0">[</span><span class="hl-keyword">:set-name</span> id <span class="hl-p1">(</span>.. <span class="hl-builtin">%</span> -target -value<span class="hl-p1">)</span><span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">}</span><span class="hl-p0">]</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">edit-fields</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>ids @<span class="hl-p0">(</span><span class="hl-builtin">r/track</span> person-keys<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:div</span>
+     <span class="hl-p0">[</span>name-list<span class="hl-p0">]</span>
+     <span class="hl-p0">(</span><span class="hl-builtin">for</span> <span class="hl-p1">[</span>i ids<span class="hl-p1">]</span>
+       ^<span class="hl-p1">{</span><span class="hl-keyword">:key</span> i<span class="hl-p1">}</span> <span class="hl-p1">[</span>name-edit i<span class="hl-p1">]</span><span class="hl-p0">)</span>
+     <span class="hl-p0">[</span><span class="hl-keyword">:input</span> <span class="hl-p1">{</span><span class="hl-keyword">:type</span>     'button
+              <span class="hl-keyword">:value</span>    <span class="hl-string">&quot;Add person&quot;</span>
+              <span class="hl-keyword">:on-click</span> <span class="hl-p2">#(</span>emit <span class="hl-p0">[</span><span class="hl-keyword">:add-person</span><span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">}</span><span class="hl-p0">]</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>All events are passed through the emit function, consisting of a trivial application of <code>rswap!</code> and some optional logging. This is the only place where application state actually changes – the rest is pure functions.</p>
+<p>The actual event handling is done in event-handler, which takes state and event as parameters, and returns a new state (events are represented by vectors here, with an event name in the first position).</p>
+<p>All the UI components have to do is then just to return some markup, and set up routing of events through the emit function.</p>
+<p>This architecture basically divides the application into two logical functions:</p>
+<ul>
+<li>
+<p>The first takes state and an event as input, and returns the next state.</p>
+</li>
+<li>
+<p>The other takes state as input, and returns a UI definition.</p>
+</li>
+</ul>
+<p>This simple application could probably just as well use the common <code>swap!</code> instead of <code>rswap!</code>, but using <code>swap!</code> in React’s event handlers may trigger warnings due to unexpected return values, and may cause severe headaches if an event handler called by emit itself emits a new event (that would result in lost events, and much confusion).</p>
+<p>For a more structured version of a similar approach, see the excellent re-frame framework.</p>
+<p><strong>TODO: is this the right example for rswap? If this is just re-frame light, maybe this shouldn't be in here. It would be better to have a more concise example.</strong></p>
+<h2 id="cursors">Cursors</h2>
+<p>Any component that dereferences a state atom will update whenever any part of it is updated. If you are storing all state in a single atom (not uncommon), it will cause every component to update whenever the state is updated. Performance-wise, this may be acceptable, depending on how many elements you have and how often your state updates, because React itself will not manipulate the DOM unless the components actually change.</p>
+<p>Reagent provides cursors, which behave like atoms but operate like pointers into a larger atom (or into multiple parts of multiple atoms).</p>
+<p>Cursors are created with <code>reagent/cursor</code>, which takes a ratom and a keypath (like <code>get-in</code>):</p>
+<pre class="hl"><code><span class="hl-comment">;; First create a ratom</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">state</span> <span class="hl-p1">(</span><span class="hl-builtin">reagent/atom</span> <span class="hl-p2">{</span><span class="hl-keyword">:foo</span> <span class="hl-p0">{</span><span class="hl-keyword">:bar</span> <span class="hl-string">&quot;BAR&quot;</span><span class="hl-p0">}</span>
+                          <span class="hl-keyword">:baz</span> <span class="hl-string">&quot;BAZ&quot;</span>
+                          <span class="hl-keyword">:quux</span> <span class="hl-string">&quot;QUUX&quot;</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-comment">;; Now create a cursor</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">bar-cursor</span> <span class="hl-p1">(</span><span class="hl-builtin">reagent/cursor</span> state <span class="hl-p2">[</span><span class="hl-keyword">:foo</span> <span class="hl-keyword">:bar</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">quux-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">js/console.log</span> <span class="hl-string">&quot;quux-component is rendering&quot;</span><span class="hl-p1">)</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-p2">(</span><span class="hl-keyword">:quux</span> @state<span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">bar-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">js/console.log</span> <span class="hl-string">&quot;bar-component is rendering&quot;</span><span class="hl-p1">)</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span> @bar-cursor<span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">mount-root</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">rdom/render</span> <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-p0">[</span>quux-component<span class="hl-p0">]</span> <span class="hl-p0">[</span>bar-component<span class="hl-p0">]</span><span class="hl-p2">]</span>
+    <span class="hl-p2">(</span>.getElementById <span class="hl-builtin">js/document</span> <span class="hl-string">&quot;app&quot;</span><span class="hl-p2">)</span><span class="hl-p1">)</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">js/setTimeout</span> <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span><span class="hl-p0">]</span> <span class="hl-p0">(</span><span class="hl-builtin">swap!</span> state <span class="hl-builtin">assoc</span> <span class="hl-keyword">:baz</span> <span class="hl-string">&quot;NEW BAZ&quot;</span><span class="hl-p0">)</span><span class="hl-p2">)</span> <span class="hl-number">1000</span><span class="hl-p1">)</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">js/setTimeout</span> <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span><span class="hl-p0">]</span> <span class="hl-p0">(</span><span class="hl-builtin">swap!</span> state <span class="hl-builtin">assoc-in</span> <span class="hl-p1">[</span><span class="hl-keyword">:foo</span> <span class="hl-keyword">:bar</span><span class="hl-p1">]</span> <span class="hl-string">&quot;NEW BAR&quot;</span><span class="hl-p0">)</span><span class="hl-p2">)</span> <span class="hl-number">2000</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+
+<span class="hl-comment">;; Console output:</span>
+<span class="hl-comment">;; quux-component is rendering</span>
+<span class="hl-comment">;; bar-component is rendering</span>
+<span class="hl-comment">;; After 1 second:</span>
+<span class="hl-comment">;; quux-component is rendering</span>
+<span class="hl-comment">;; After 2 seconds:</span>
+<span class="hl-comment">;; quux-component is rendering</span>
+<span class="hl-comment">;; bar-component is rendering</span>
+</code></pre>
+<p>Both <code>bar-component</code> and <code>quux-component</code> update whenever their respective cursors/atoms update, but because <code>bar-component</code>'s cursor is limited only to the relevant portion of the app-state, it only re-renders when <code>[:foo :bar]</code> updates, whereas <code>quux-component</code> updates each time <code>app-state</code> changes, even though <code>:quux</code> never changes.</p>
+<h3 id="cursors-are-lazy-add-watch-on-a-cursor">Cursors are lazy: <code>add-watch</code> on a cursor</h3>
+<p>A cursor doesn't watch its source atom by itself. Its value is only updated when the cursor is dereferenced, or when it is changed through the cursor (<code>reset!</code>/<code>swap!</code> on the cursor). This is by design: a cursor that eagerly watched its source atom would keep that watch forever, so every cursor would need to be explicitly destroyed after use to avoid a memory leak. Lazy cursors also perform better.</p>
+<p>Inside components this is not noticeable, because the component dereferences the cursor when rendering. But it matters for watches added with <code>add-watch</code>:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">state</span> <span class="hl-p1">(</span><span class="hl-builtin">r/atom</span> <span class="hl-p2">{</span><span class="hl-keyword">:a</span> <span class="hl-number">1</span> <span class="hl-keyword">:b</span> <span class="hl-number">1</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">a-cursor</span> <span class="hl-p1">(</span><span class="hl-builtin">r/cursor</span> state <span class="hl-p2">[</span><span class="hl-keyword">:a</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">add-watch</span> a-cursor <span class="hl-keyword">:log</span> <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>_ _ old new<span class="hl-p2">]</span> <span class="hl-p2">(</span><span class="hl-builtin">js/console.log</span> <span class="hl-string">&quot;a:&quot;</span> old <span class="hl-string">&quot;-&gt;&quot;</span> new<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">swap!</span> state <span class="hl-builtin">assoc</span> <span class="hl-keyword">:a</span> <span class="hl-number">2</span><span class="hl-p0">)</span>
+<span class="hl-comment">;; Nothing is logged: nothing has dereferenced the cursor.</span>
+
+@a-cursor
+<span class="hl-comment">;; Logs &quot;a: nil -&gt; 2&quot;. The watch is called when the cursor is dereferenced,</span>
+<span class="hl-comment">;; with the previous value the cursor had seen (here nil, as it had never been read).</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">swap!</span> state <span class="hl-builtin">assoc</span> <span class="hl-keyword">:a</span> <span class="hl-number">3</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">swap!</span> state <span class="hl-builtin">assoc</span> <span class="hl-keyword">:a</span> <span class="hl-number">4</span><span class="hl-p0">)</span>
+@a-cursor
+<span class="hl-comment">;; Logs &quot;a: 2 -&gt; 4&quot;. The intermediate value 3 was never seen.</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">reset!</span> a-cursor <span class="hl-number">5</span><span class="hl-p0">)</span>
+<span class="hl-comment">;; Logs &quot;a: 4 -&gt; 5&quot;. Changes made through the cursor notify the watches immediately.</span>
+</code></pre>
+<p>If the cursor is dereferenced in a reactive context (a component render, <code>r/track!</code>, <code>run!</code> or a reaction), it does follow its source atom, and watches on the cursor are called for changes to the source atom when Reagent processes queued updates (on the next animation frame, or on <code>r/flush</code>). Several changes before that are seen as one. Once nothing reactive dereferences the cursor anymore, it is lazy again.</p>
+<p>If you need to react to changes of the source atom outside a component, use one of these instead of <code>add-watch</code> on a cursor:</p>
+<pre class="hl"><code><span class="hl-comment">;; 1. Watch the source atom and compare the value at the path.</span>
+<span class="hl-comment">;;    Synchronous, sees every change. Remove the watch when done.</span>
+<span class="hl-p0">(</span><span class="hl-builtin">add-watch</span> state <span class="hl-keyword">:a-changed</span>
+           <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>_ _ old new<span class="hl-p2">]</span>
+             <span class="hl-p2">(</span><span class="hl-builtin">let</span> <span class="hl-p0">[</span>old-a <span class="hl-p1">(</span><span class="hl-builtin">get-in</span> old <span class="hl-p2">[</span><span class="hl-keyword">:a</span><span class="hl-p2">]</span><span class="hl-p1">)</span>
+                   new-a <span class="hl-p1">(</span><span class="hl-builtin">get-in</span> new <span class="hl-p2">[</span><span class="hl-keyword">:a</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">]</span>
+               <span class="hl-p0">(</span><span class="hl-builtin">when-not</span> <span class="hl-p1">(</span>identical? old-a new-a<span class="hl-p1">)</span>
+                 <span class="hl-p1">(</span><span class="hl-builtin">js/console.log</span> <span class="hl-string">&quot;a:&quot;</span> old-a <span class="hl-string">&quot;-&gt;&quot;</span> new-a<span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span>remove-watch state <span class="hl-keyword">:a-changed</span><span class="hl-p0">)</span>
+
+<span class="hl-comment">;; 2. Use track! with a function that dereferences the cursor.</span>
+<span class="hl-comment">;;    Runs now, and again when the cursor value changes (batched, like</span>
+<span class="hl-comment">;;    component updates). Dispose it when done.</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">a-logger</span> <span class="hl-p1">(</span><span class="hl-builtin">r/track!</span> <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span><span class="hl-p0">]</span> <span class="hl-p0">(</span><span class="hl-builtin">js/console.log</span> <span class="hl-string">&quot;a is&quot;</span> @a-cursor<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">r/dispose!</span> a-logger<span class="hl-p0">)</span>
+</code></pre>
+<h3 id="more-general-cursors">More general cursors</h3>
+<p>The cursor mechanism is more general than described above. You can pass a function that performs arbitrary transformations on one or more atoms.
+<strong>TODO (DO WE NEED TO EXPLAIN THIS?)</strong></p>
+<p>Reagent also provides the <code>reagent/wrap</code> mechanism, which also derives a new atom but provides more general functionality. Where a cursor will always update the atom from which it was derived, <code>reagent/wrap</code> takes an atom and a callback that will be called whenever the derived atom is updated. Replacing <code>(r/cursor n [:first-name])</code> with <code>(r/wrap first-name swap! n assoc :first-name)]</code> gives essentially the same results.
+<strong>TODO (WHAT UTILITY DOES THIS HAVE?)</strong></p>
+<h2 id="reactions">Reactions</h2>
+<p>Reactions are like cursors called with a function.</p>
+<p>When reactions produce a new result (as determined by <code>=</code>), they cause other dependent reactions and components to update.</p>
+<p>The function <code>make-reaction</code>, and its macro <code>reaction</code> are used to create a <code>Reaction</code>, which is a type that belongs to a number of protocols such as <code>IWatchable</code>, <code>IAtom</code>, <code>IReactiveAtom</code>, <code>IDeref</code>, <code>IReset</code>, <code>ISwap</code>, <code>IRunnable</code>, etc. which make it atom-like: ie it can be watched, derefed, reset, swapped on, and additionally, tracks its derefs, behave reactively, and so on.</p>
+<p>Reactions are what give <code>r/atom</code>, <code>r/cursor</code>, and <code>r/wrap</code> their power.</p>
+<p><code>make-reaction</code> takes one argument, <code>f</code>, and an optional options map. The options map specifies what happens to <code>f</code>:</p>
+<ul>
+<li><code>auto-run</code> (boolean) specifies whether <code>f</code> runs on change</li>
+<li><code>on-set</code> and <code>on-dispose</code> are run when the reaction is set and unset from the DOM</li>
+<li><code>derefed</code> <strong>TODO unclear</strong></li>
+</ul>
+<p>Reactions are very useful when</p>
+<ul>
+<li>You need a way in which a component only updates based on part of the ratom state. (reagent/cursor can also be used for this scenario)</li>
+<li>When you want to combine two <code>ratoms</code> and produce a result</li>
+<li>You want the component to use some transformed value of <code>ratom</code></li>
+</ul>
+<p>Here's an example:</p>
+<pre class="hl"><code> <span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">app-state</span> <span class="hl-p1">(</span><span class="hl-builtin">reagent/atom</span> <span class="hl-p2">{</span><span class="hl-keyword">:state-var-1</span> <span class="hl-p0">{</span><span class="hl-keyword">:var-a</span> <span class="hl-number">2</span>
+                                             <span class="hl-keyword">:var-b</span> <span class="hl-number">3</span><span class="hl-p0">}</span>
+                               <span class="hl-keyword">:state-var-2</span> <span class="hl-p0">{</span><span class="hl-keyword">:var-a</span> <span class="hl-number">7</span>
+                                             <span class="hl-keyword">:var-b</span> <span class="hl-number">9</span><span class="hl-p0">}</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+ <span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">app-var2a-reaction</span> <span class="hl-p1">(</span>reagent.ratom/make-reaction
+                          <span class="hl-p2">#(</span><span class="hl-builtin">get-in</span> @app-state <span class="hl-p0">[</span><span class="hl-keyword">:state-var-2</span> <span class="hl-keyword">:var-a</span><span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+
+ <span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">component-using-make-reaction</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+   <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;component-using-make-reaction&quot;</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;state-var-2 - var-a : &quot;</span> @app-var2a-reaction<span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+</code></pre>
+<p>The below example uses <code>reagent.ratom/reaction</code> macro, which provides syntactic sugar compared to
+using plain <code>make-reaction</code>:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">let</span> <span class="hl-p1">[</span>username <span class="hl-p2">(</span><span class="hl-builtin">reagent/atom</span> <span class="hl-string">&quot;&quot;</span><span class="hl-p2">)</span>
+      password <span class="hl-p2">(</span><span class="hl-builtin">reagent/atom</span> <span class="hl-string">&quot;&quot;</span><span class="hl-p2">)</span>
+      fields-populated? <span class="hl-p2">(</span>reagent.ratom/reaction <span class="hl-p0">(</span>every? not-empty <span class="hl-p1">[</span>@username @password<span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">]</span>
+ <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Is username and password populated ?&quot;</span> @fields-populated?<span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Reactions are executed asynchronously, so be sure to call <code>flush</code> if you depend on reaction side effects.</p>
+<h2 id="the-track-function">The track function</h2>
+<p><code>reagent.core/track</code> takes a function, and optional arguments for that function, and gives a derefable (i.e &quot;atom-like&quot;) value, containing whatever is returned by that function. If the tracked function depends on a Reagent atom, it is called again whenever that atom changes – just like a Reagent component function. If the value returned by <code>track</code> is used in a component, the component is re-rendered when the value returned by the function changes.</p>
+<p>In other words, <code>@(r/track foo x)</code> gives the same result as <code>(foo x)</code> – but in the first case, foo is only called again when the atom(s) it depends on changes.</p>
+<p>Here's an example:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">ns</span> <span class="hl-def">example.core</span>
+  <span class="hl-p1">(</span><span class="hl-keyword">:require</span> <span class="hl-p2">[</span>reagent.core <span class="hl-keyword">:as</span> r<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defonce</span> <span class="hl-def">app-state</span> <span class="hl-p1">(</span><span class="hl-builtin">r/atom</span> <span class="hl-p2">{</span><span class="hl-keyword">:people</span>
+                              <span class="hl-p0">{</span><span class="hl-number">1</span> <span class="hl-p1">{</span><span class="hl-keyword">:name</span> <span class="hl-string">&quot;John Smith&quot;</span><span class="hl-p1">}</span>
+                               <span class="hl-number">2</span> <span class="hl-p1">{</span><span class="hl-keyword">:name</span> <span class="hl-string">&quot;Maggie Johnson&quot;</span><span class="hl-p1">}</span><span class="hl-p0">}</span><span class="hl-p2">}</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">people</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-keyword">:people</span> @app-state<span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">person-keys</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">-&gt;</span> @<span class="hl-p2">(</span><span class="hl-builtin">r/track</span> people<span class="hl-p2">)</span>
+      keys
+      sort<span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">person</span> <span class="hl-p1">[</span>id<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">-&gt;</span> @<span class="hl-p2">(</span><span class="hl-builtin">r/track</span> people<span class="hl-p2">)</span>
+      <span class="hl-p2">(</span><span class="hl-builtin">get</span> id<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">name-comp</span> <span class="hl-p1">[</span>id<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>p @<span class="hl-p0">(</span><span class="hl-builtin">r/track</span> person id<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:li</span>
+     <span class="hl-p0">(</span><span class="hl-keyword">:name</span> p<span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">name-list</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>ids @<span class="hl-p0">(</span><span class="hl-builtin">r/track</span> person-keys<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:ul</span>
+     <span class="hl-p0">(</span><span class="hl-builtin">for</span> <span class="hl-p1">[</span>i ids<span class="hl-p1">]</span>
+       ^<span class="hl-p1">{</span><span class="hl-keyword">:key</span> i<span class="hl-p1">}</span> <span class="hl-p1">[</span>name-comp i<span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Here, the name-list component will only be re-rendered if the keys of the :people map changes. Every name-comp only renders again when needed, etc.</p>
+<p>Use of track can improve performance in three ways:</p>
+<ol>
+<li>It can be used as a cache for an expensive function, that is automatically updated if that function depends on Reagent atoms (or other tracks, cursors, etc).</li>
+<li>It can also be used to limit the number of times a component is re-rendered. The user of track is only updated when the function’s result changes. In other words, you can use track as a kind of generalized, read-only cursor.</li>
+<li>Every use of track with the same arguments will only result in one execution of the function. E.g the two uses of <code>@(r/track people)</code> in the example above will only result in one call to the people function (both initially, and when the state atom changes).</li>
+</ol>
+<p><em>Note:</em> Compared to reactions, <code>reagent.ratom/reaction</code> and <code>track</code> are similar. The main differences are that track uses named functions and variables, rather than depending on closures, and that you don’t have to manage their creation manually (since tracks are automatically cached and reused).</p>
+<p><em>Note:</em> The first argument to track should be a named function, i.e not an anonymous one. Also, beware of lazy data sequences: don’t use deref (i.e ”@”) with the for macro, unless wrapped in doall (just like in Reagent components, see <a href="#derefs-inside-lazy-sequences">Derefs inside lazy sequences</a>).</p>
+<h3 id="the-track-function">The track! function</h3>
+<p><code>track!</code> works just like track, except that the function passed is invoked immediately, and continues to be invoked whenever any atoms used within it changes.</p>
+<p>For example, given this function:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">log-app-state</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span>prn @app-state<span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>you could use <code>(defonce logger (r/track! log-app-state))</code> to monitor changes to app-state. <code>log-app-state</code> would continue to run until you stop it, using <code>(r/dispose! logger)</code>.</p>
+<h2 id="caveats-of-reactive-derefs">Caveats of reactive derefs</h2>
+<p>Components, reactions and tracks find their dependencies by recording which
+ratoms (and cursors, reactions, tracks) are dereferenced while their function
+runs. Only derefs that actually happen during that run are recorded, which has
+some consequences.</p>
+<h3 id="derefs-inside-lazy-sequences">Derefs inside lazy sequences</h3>
+<p>In development builds, this warning means a deref happened while Reagent was
+turning a lazy sequence into React elements:</p>
+<pre><code>Warning: Reactive deref not supported in lazy seq, it should be wrapped in doall
+</code></pre>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">items</span> <span class="hl-p1">(</span><span class="hl-builtin">r/atom</span> <span class="hl-p2">[</span><span class="hl-string">&quot;a&quot;</span> <span class="hl-string">&quot;b&quot;</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">selected</span> <span class="hl-p1">(</span><span class="hl-builtin">r/atom</span> <span class="hl-number">0</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">item-list</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:ul</span>
+   <span class="hl-p2">(</span><span class="hl-builtin">for</span> <span class="hl-p0">[</span><span class="hl-p1">[</span>i item<span class="hl-p1">]</span> <span class="hl-p1">(</span>map-indexed <span class="hl-builtin">vector</span> @items<span class="hl-p1">)</span><span class="hl-p0">]</span>
+     ^<span class="hl-p0">{</span><span class="hl-keyword">:key</span> i<span class="hl-p0">}</span>
+     <span class="hl-p0">[</span><span class="hl-keyword">:li</span> <span class="hl-p1">{</span><span class="hl-keyword">:class</span> <span class="hl-p2">(</span><span class="hl-builtin">when</span> <span class="hl-p0">(</span><span class="hl-builtin">=</span> i @selected<span class="hl-p0">)</span> <span class="hl-string">&quot;selected&quot;</span><span class="hl-p2">)</span><span class="hl-p1">}</span> item<span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p><code>for</code> and <code>map</code> return lazy sequences. The body doesn't run when <code>item-list</code>
+runs, but later, whenever something first walks the sequence. That is not
+necessarily inside the component's reactive context. (A sequence passed to a
+child component is realized in the child's render, for example.) Reagent can't
+reliably attribute these derefs to the right component, so it doesn't support
+them:</p>
+<ul>
+<li>In development builds, the derefs inside the sequence are <strong>not</strong> registered
+as dependencies, and the warning is printed. Above, <code>item-list</code> re-renders
+when <code>items</code> changes (deref outside the <code>for</code>), but not when <code>selected</code>
+changes.</li>
+<li>Production builds skip the check, so whether the deref is tracked depends on
+where the sequence happens to be realized. Don't rely on it.</li>
+</ul>
+<p>Fix it by making sure the derefs run during the render function:</p>
+<pre class="hl"><code><span class="hl-comment">;; 1. Deref outside the lazy sequence (usually the clearest, and the deref</span>
+<span class="hl-comment">;;    only runs once instead of once per item)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">item-list</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>sel @selected<span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:ul</span>
+     <span class="hl-p0">(</span><span class="hl-builtin">for</span> <span class="hl-p1">[</span><span class="hl-p2">[</span>i item<span class="hl-p2">]</span> <span class="hl-p2">(</span>map-indexed <span class="hl-builtin">vector</span> @items<span class="hl-p2">)</span><span class="hl-p1">]</span>
+       ^<span class="hl-p1">{</span><span class="hl-keyword">:key</span> i<span class="hl-p1">}</span>
+       <span class="hl-p1">[</span><span class="hl-keyword">:li</span> <span class="hl-p2">{</span><span class="hl-keyword">:class</span> <span class="hl-p0">(</span><span class="hl-builtin">when</span> <span class="hl-p1">(</span><span class="hl-builtin">=</span> i sel<span class="hl-p1">)</span> <span class="hl-string">&quot;selected&quot;</span><span class="hl-p0">)</span><span class="hl-p2">}</span> item<span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-comment">;; 2. Realize the sequence immediately with doall</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">item-list</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:ul</span>
+   <span class="hl-p2">(</span>doall
+     <span class="hl-p0">(</span><span class="hl-builtin">for</span> <span class="hl-p1">[</span><span class="hl-p2">[</span>i item<span class="hl-p2">]</span> <span class="hl-p2">(</span>map-indexed <span class="hl-builtin">vector</span> @items<span class="hl-p2">)</span><span class="hl-p1">]</span>
+       ^<span class="hl-p1">{</span><span class="hl-keyword">:key</span> i<span class="hl-p1">}</span>
+       <span class="hl-p1">[</span><span class="hl-keyword">:li</span> <span class="hl-p2">{</span><span class="hl-keyword">:class</span> <span class="hl-p0">(</span><span class="hl-builtin">when</span> <span class="hl-p1">(</span><span class="hl-builtin">=</span> i @selected<span class="hl-p1">)</span> <span class="hl-string">&quot;selected&quot;</span><span class="hl-p0">)</span><span class="hl-p2">}</span> item<span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+<span class="hl-comment">;; 3. Build the elements eagerly, e.g. with into</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">item-list</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">into</span> <span class="hl-p2">[</span><span class="hl-keyword">:ul</span><span class="hl-p2">]</span>
+        <span class="hl-p2">(</span>map-indexed <span class="hl-p0">(</span><span class="hl-builtin">fn</span> <span class="hl-p1">[</span>i item<span class="hl-p1">]</span>
+                       <span class="hl-p1">[</span><span class="hl-keyword">:li</span> <span class="hl-p2">{</span><span class="hl-keyword">:class</span> <span class="hl-p0">(</span><span class="hl-builtin">when</span> <span class="hl-p1">(</span><span class="hl-builtin">=</span> i @selected<span class="hl-p1">)</span> <span class="hl-string">&quot;selected&quot;</span><span class="hl-p0">)</span><span class="hl-p2">}</span> item<span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">)</span>
+        @items<span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Note that a vector of elements (e.g. the result of <code>mapv</code>) can't be used as a
+child directly, because Reagent would read it as a Hiccup form. Use <code>into</code> to
+add the elements to the parent, as above.</p>
+<p>The same applies to the functions given to <code>track</code> and <code>reaction</code>.</p>
+<h3 id="conditional-derefs-in-reactions">Conditional derefs in reactions</h3>
+<p>A reaction (or track) only depends on what it dereferenced the last time it
+ran. A ratom or reaction that is dereferenced only in some branch becomes a
+dependency the first time that branch runs. Because of how Reagent orders
+updates, a reaction that started depending on another reaction this way can
+run <em>before</em> that reaction has been updated, and see its previous value. The
+reaction then runs again with the up-to-date value, so the final value is
+correct, but the intermediate run sees an inconsistent state (&quot;glitch&quot;).</p>
+<p>Example, from <a href="https://github.com/reagent-project/reagent/issues/568">issue #568</a>:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">x</span> <span class="hl-p1">(</span><span class="hl-builtin">r/atom</span> <span class="hl-number">0</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">a</span> <span class="hl-p1">(</span><span class="hl-builtin">r/reaction</span> <span class="hl-p2">(</span>+ @x <span class="hl-number">10</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">b</span> <span class="hl-p1">(</span><span class="hl-builtin">r/reaction</span> <span class="hl-p2">(</span>- @a <span class="hl-number">10</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>   <span class="hl-comment">;; always equal to @x</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">z</span> <span class="hl-p1">(</span><span class="hl-builtin">r/reaction</span>
+         <span class="hl-p2">(</span><span class="hl-builtin">let</span> <span class="hl-p0">[</span>x @x<span class="hl-p0">]</span>
+           <span class="hl-p0">(</span><span class="hl-builtin">if</span> <span class="hl-p1">(</span>&gt; x <span class="hl-number">0</span><span class="hl-p1">)</span>
+             <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>b @b<span class="hl-p2">]</span>
+               <span class="hl-comment">;; x and b should always be equal here, but they aren't</span>
+               <span class="hl-p2">(</span>+ x b<span class="hl-p2">)</span><span class="hl-p1">)</span>
+             x<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">app</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:span</span> @z<span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Calling <code>(swap! x inc)</code> repeatedly, with <code>app</code> mounted, the <code>(&gt; x 0)</code>
+branch sees these <code>[x b]</code> pairs:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-number">1</span> <span class="hl-number">1</span><span class="hl-p0">]</span> <span class="hl-p0">[</span><span class="hl-number">2</span> <span class="hl-number">1</span><span class="hl-p0">]</span> <span class="hl-p0">[</span><span class="hl-number">2</span> <span class="hl-number">2</span><span class="hl-p0">]</span> <span class="hl-p0">[</span><span class="hl-number">3</span> <span class="hl-number">2</span><span class="hl-p0">]</span> <span class="hl-p0">[</span><span class="hl-number">3</span> <span class="hl-number">3</span><span class="hl-p0">]</span> ...
+</code></pre>
+<p>After the first change, every change runs <code>z</code> twice: first with the old value
+of <code>b</code>, then with the new one. The final value of <code>z</code> (and so what <code>app</code>
+renders) is correct, but the intermediate run is a problem if the reaction has
+side effects, or throws when given inconsistent values.</p>
+<p>Component render functions are not affected in the same way: re-renders are
+batched and run after the queued reactions have run, so a render function sees
+the settled values.</p>
+<p>The workaround is to deref the value unconditionally, outside the condition:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">z</span> <span class="hl-p1">(</span><span class="hl-builtin">r/reaction</span>
+         <span class="hl-p2">(</span><span class="hl-builtin">let</span> <span class="hl-p0">[</span>x @x
+               b @b<span class="hl-p0">]</span>
+           <span class="hl-p0">(</span><span class="hl-builtin">if</span> <span class="hl-p1">(</span>&gt; x <span class="hl-number">0</span><span class="hl-p1">)</span>
+             <span class="hl-p1">(</span>+ x b<span class="hl-p1">)</span>
+             x<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Now <code>b</code> is a dependency from the first run, and <code>z</code> sees <code>[1 1] [2 2] [3 3] ...</code>.
+The trade-off is an extra dependency: <code>z</code> is also re-run when <code>b</code> changes while
+the condition is false and <code>b</code> isn't needed. Usually that is cheap, but keep it
+in mind if the reaction is expensive or <code>b</code> changes often.</p>
+</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/ManagingState.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/index.html">Old release notes</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#intro-to-atoms">Intro to atoms</a></li><li class="toc-h3"><a href="#mutating-a-ratom">Mutating a ratom</a></li><li class="toc-h3"><a href="#dereferencing-a-ratom">Dereferencing a ratom</a></li><li class="toc-h3"><a href="#the-effect-of-dereferencing-a-ratom">The effect of dereferencing a ratom</a></li><li class="toc-h3"><a href="#rswap">rswap!</a></li><li class="toc-h2"><a href="#cursors">Cursors</a></li><li class="toc-h3"><a href="#cursors-are-lazy-add-watch-on-a-cursor">Cursors are lazy: add-watch on a cursor</a></li><li class="toc-h3"><a href="#more-general-cursors">More general cursors</a></li><li class="toc-h2"><a href="#reactions">Reactions</a></li><li class="toc-h2"><a href="#the-track-function">The track function</a></li><li class="toc-h3"><a href="#the-track-function">The track! function</a></li><li class="toc-h2"><a href="#caveats-of-reactive-derefs">Caveats of reactive derefs</a></li><li class="toc-h3"><a href="#derefs-inside-lazy-sequences">Derefs inside lazy sequences</a></li><li class="toc-h3"><a href="#conditional-derefs-in-reactions">Conditional derefs in reactions</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/ManagingState.html"}</script><script src="js/main.js?a2a98f" type="text/javascript"></script></body></html>

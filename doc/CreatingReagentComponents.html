@@ -1,0 +1,237 @@
+<!doctype html>
+<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Reagent: Creating Reagent Components</title><base href="../"/><link href="css/built.css?9dcfd2" rel="stylesheet"/><script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script></head><body><div id="main-content"><div><div class="site"><header class="site-header"><div class="site-header-inner"><a href="index.html" class="brand"><span class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <path stroke="#000" stroke-width="10.751" stroke-linejoin="round" paint-order="markers fill stroke" d="M5.375 5.375h53.249v53.249H5.375z"/>
+    <path d="M16.734 59.233h30.532c1.857 0 3.134-.5 3.714-1.4.58-1 .465-2.1-.58-3.5l-13.35-18.1v-9.1h1.741c.465 0 .813-.1 1.161-.4.348-.3.464-.6.464-1s-.116-.7-.464-1c-.348-.3-.696-.4-1.16-.4H25.208c-.465 0-.813.1-1.161.4-.348.3-.464.6-.464 1s.116.7.464 1c.348.3.696.4 1.16.4h1.742v9.1l-13.35 18.1c-1.045 1.4-1.16 2.5-.58 3.5.696.9 1.973 1.4 3.714 1.4zm13.118-21.5l.58-.7v-9.9H33.8v9.9l.58.7 13.467 18.6H16.502z" fill="#303c3c"/>
+    <path fill="#00d8ff" d="M35.889 42.633h-7.778l-9.055 12.6H45.06z"/>
+    <path d="M180 439.416a5.09 5.09 0 1 1-10.179 0 5.09 5.09 0 1 1 10.179 0z" transform="matrix(.56482 0 0 .5518 -69.11 -222.593)" fill="#00d8ff" stroke="#00d8ff"/>
+    <path d="M37.217 12.657a2.325 2.325 0 1 1-4.65 0 2.325 2.325 0 1 1 4.65 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".457"/>
+    <path d="M31.676 6.053a1.17 1.17 0 1 0-2.341 0 1.17 1.17 0 1 0 2.341 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".23"/>
+</svg>
+</span>Reagent</a><nav class="site-nav"><a href="doc/index.html">Guide</a><a href="api/index.html">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/index.html">Documentation index</a></li><li><a href="doc/Security.html">Security</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Tutorials</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html" class="active">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Using [square brackets] instead of (parentheses)</a></li><li><a href="doc/WhenDoComponentsUpdate.html">When do components update?</a></li><li><a href="doc/ManagingState.html">[WIP] Managing State: atoms, cursors, Reactions, and tracking</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing: How Reagent Renders Changes to Application State</a></li><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li></ul></li><li><span class="sidebar-section">Frequently Asked Questions</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Why isn&#x27;t my Component re-rendering?</a></li><li><a href="doc/FAQ/UsingRefs.html">How do I use React&#x27;s &quot;refs&quot;</a></li><li><a href="doc/FAQ/UsingAnEntity.html">How can I use an entity like &quot;nbsp&quot;?</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Why is my attribute (like autoFocus) missing?</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">How can I use React&#x27;s dangerouslySetInnerHTML?</a></li><li><a href="doc/FAQ/CljsjsReactProblems.html">Reagent doesn&#x27;t work after updating dependencies</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">How do I force Component re-creation?</a></li><li><a href="doc/FAQ/HtmlEntities.html">Using HTML entities</a></li></ul></li><li><span class="sidebar-section">Examples</span><ul><li><a href="doc/examples/material-ui.html">Material-UI v1</a></li><li><a href="doc/examples/smooth-ui.html">Smooth UI</a></li></ul></li><li><span class="sidebar-section">Other</span><ul><li><a href="doc/2.0-upgrade.html">Reagent 2.0 upgrade guide</a></li><li><a href="doc/reagent1.html">Reagent 1 and React 18</a></li><li><a href="doc/0.8-upgrade.html">0.8 Upgrade guide</a></li><li><a href="doc/development.html">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/index.html">API reference</a></li><li><a href="api/reagent.core.html">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><p class="review-notice"><strong>Not reviewed yet: </strong>this page may be outdated or inconsistent with the other guides. The <a href="api/index.html">API reference</a> is generated from the current source.</p><h1>Creating Reagent Components</h1><div class="markdown"><p>In reagent, the fundamental building block is a <code>component</code>.</p>
+<p>Your reagent app will typically have many <code>components</code> - say, more than 5, but less than 100 - and the overall UI of a reagent app is the stitched-together-output from all of them, each contributing part of the overall HTML, typically in a hierarchical arrangement.</p>
+<p>So they're important and this document describes how to create them.</p>
+<h5 id="not-an-absolute-introduction">Not An Absolute Introduction</h5>
+<p>Although I stay as basic as possible, this document isn't an introductory tutorial. You should read it <em>after</em>
+you have already digested <a href="http://reagent-project.github.io/">The Official Introduction.</a></p>
+<p>This document is useful because it clarifies the basics. It represents an extra bit of learning which might save you from some annoying paper cuts.</p>
+<h5 id="contains-lies-and-distortions">Contains Lies And Distortions</h5>
+<p>I care more about providing a useful mental model than bogging down with the full truth. Some white lies and distortions follow.</p>
+<h2 id="the-core-of-a-component">The Core Of A Component</h2>
+<p>At the core of any <code>component</code> is a <code>render</code> function.</p>
+<p>A <code>render</code> function is the backbone, mandatory part of a <code>component</code>.  In fact, as you'll soon see, <code>components</code> will often collapse down to be nothing more than a <code>render</code> function.</p>
+<p>A <code>render</code> function turns data into HTML.  Data is supplied via the function parameters, and HTML is the return value.</p>
+<p>Data in, HTML out.</p>
+<p>Much of the time, a <code>render</code> function will be a <code>pure function</code>. If you pass the same data into a <code>render function</code>, then it will return the same HTML, and it won't side effect.</p>
+<p><em>Note</em>: ultimately, the surrounding reagent/React framework will cause non-pure side-effects because the returned HTML will be spliced into the DOM (mutating global state!), but here, for the moment, all we care about is the pureness of the <code>render</code> function itself)</p>
+<h2 id="the-three-ways">The Three Ways</h2>
+<p>There are three ways to create a <code>component</code>.</p>
+<p>Ordered by increasing complexity, they are:</p>
+<ol>
+<li><strong>via a simple render function</strong> - data in as parameters, and it returns HTML.</li>
+<li><strong>via a function which returns the render function</strong> - the returned function is the render function.</li>
+<li><strong>via a map of functions, one of which is the render</strong> the rest of the functions are <code>React lifecycle</code> methods which allow for some more advanced interventions.</li>
+</ol>
+<blockquote>
+<p>In all three cases, a <code>render</code> function is provided -- that's the backbone. The three creation methods differ only in terms of what they supply over and above a <code>renderer</code>.</p>
+</blockquote>
+<h2 id="form-1-a-simple-function">Form-1: A Simple Function</h2>
+<p>In the simplest case, a <code>component</code> collapses down to <em>only</em> be a <code>render</code> function.  You supply nothing else.</p>
+<p>Although a simple approach, in my experience, you'll probably use <code>Form-1</code> components about 40% of the time, perhaps more.  Simple and useful.</p>
+<p>You just write a regular clojurescript function which takes data as parameters and produces HTML.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">greet</span>
+   <span class="hl-p1">[</span>name<span class="hl-p1">]</span>                    <span class="hl-comment">;; data coming in is a string</span>
+   <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Hello &quot;</span> name<span class="hl-p1">]</span><span class="hl-p0">)</span>     <span class="hl-comment">;; returns Hiccup (HTML)</span>
+</code></pre>
+<p>Until now, I've talked about <code>render functions</code> returning HTML.  That isn't strictly speaking true, of course, as you've seen in the <a href="http://reagent-project.github.io/">The Offical Introduction.</a>  Instead, renderers always return clojurescript data structures which specify HTML via <code>Hiccup</code> format.</p>
+<p><code>Hiccup</code> uses vectors to represent HTML elements, and maps to represent an element's attributes.</p>
+<p>So this clojurescript data structure:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:style</span> <span class="hl-p2">{</span><span class="hl-keyword">:background</span> <span class="hl-string">&quot;blue&quot;</span><span class="hl-p2">}</span><span class="hl-p1">}</span> <span class="hl-string">&quot;hello &quot;</span> <span class="hl-string">&quot;there&quot;</span><span class="hl-p0">]</span>
+</code></pre>
+<p>is simply a clojurescript vector, containing a keyword, map and two strings. But when processed as <code>hiccup</code>, this data structure will produce the HTML:</p>
+<pre><code>&lt;div style=&quot;background:blue;&quot;&gt;hello there&lt;/div&gt;
+</code></pre>
+<p>To understand more about Hiccup see <a href="https://github.com/weavejester/hiccup/wiki">this Wiki.</a></p>
+<p><strong>Rookie mistake</strong></p>
+<p>At some point, you'll probably try to return sibling HTML elements in a normal cljs vector:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">wrong-component</span>
+   <span class="hl-p1">[</span>name<span class="hl-p1">]</span>
+   <span class="hl-p1">[</span><span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Hello&quot;</span><span class="hl-p2">]</span> <span class="hl-p2">[</span><span class="hl-keyword">:div</span> name<span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>     <span class="hl-comment">;; a vec of 2 [:div]</span>
+</code></pre>
+<p>That isn't valid Hiccup and you'll get a slightly baffling error. You'll have to correct this mistake by wrapping the two siblings in a parent [:div]:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">right-component</span>
+   <span class="hl-p1">[</span>name<span class="hl-p1">]</span>
+   <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+     <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Hello&quot;</span><span class="hl-p2">]</span>
+     <span class="hl-p2">[</span><span class="hl-keyword">:div</span> name<span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>     <span class="hl-comment">;; [:div] containing two nested [:divs]</span>
+</code></pre>
+<p>Alternatively, you could return a <a href="https://reactjs.org/docs/fragments.html">React Fragment</a>. In reagent, a React Fragment is created using the <code>:&lt;&gt;</code> Hiccup form.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">right-component</span>
+   <span class="hl-p1">[</span>name<span class="hl-p1">]</span>
+   <span class="hl-p1">[</span><span class="hl-keyword">:&lt;&gt;</span>
+     <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Hello&quot;</span><span class="hl-p2">]</span>
+     <span class="hl-p2">[</span><span class="hl-keyword">:div</span> name<span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Referring to the example in <a href="https://reactjs.org/docs/fragments.html">React's documentation</a>, the <code>Columns</code> component could be defined in reagent as:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">columns</span>
+  <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:&lt;&gt;</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:td</span> <span class="hl-string">&quot;Hello&quot;</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:td</span> <span class="hl-string">&quot;World&quot;</span><span class="hl-p2">]</span><span class="hl-p1">]</span>
+</code></pre>
+<h2 id="form-2-a-function-returning-a-function">Form-2:  A Function Returning A Function</h2>
+<p>Now, let's take one step up in complexity.  Sometimes, a component requires:</p>
+<ul>
+<li>some setup; or</li>
+<li>some local state; and of course</li>
+<li>a renderer</li>
+</ul>
+<p>The first two are optional, the last is not.</p>
+<p><code>Form-2</code> components are written as an <code>outer</code> function which returns an <code>inner</code> render.</p>
+<p>This example is taken from the tutorial:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">timer-component</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>seconds-elapsed <span class="hl-p0">(</span><span class="hl-builtin">reagent/atom</span> <span class="hl-number">0</span><span class="hl-p0">)</span><span class="hl-p2">]</span>     <span class="hl-comment">;; setup, and local state</span>
+    <span class="hl-p2">(</span><span class="hl-builtin">fn</span> <span class="hl-p0">[</span><span class="hl-p0">]</span>        <span class="hl-comment">;; inner, render function is returned</span>
+      <span class="hl-p0">(</span><span class="hl-builtin">js/setTimeout</span> <span class="hl-p1">#(</span><span class="hl-builtin">swap!</span> seconds-elapsed <span class="hl-builtin">inc</span><span class="hl-p1">)</span> <span class="hl-number">1000</span><span class="hl-p0">)</span>
+      <span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Seconds Elapsed: &quot;</span> @seconds-elapsed<span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>Here <code>timer-component</code> is the outer function, and it returns an inner, anonymous render function which closes over the initialised, local state <code>seconds-elapsed</code>.</p>
+<p>As before, the job of the render function is to turn data into HTML. That's the backbone. Its just that <code>Form-2</code> allows your renderer to close over some state created and initialised by the outer.</p>
+<p>In my experience, you'll use <code>Form-2</code> <code>components</code> at least 50% of the time.</p>
+<p>Let's be quite clear what is going on here:</p>
+<ul>
+<li><code>timer-component</code> is <strong>called once</strong> per component instance (and will create the state for that instance)</li>
+<li>the render function it returns will potentially be called <strong>many, many times</strong>. In fact, it will be called each time Reagent detects a possible difference in that <code>component</code>'s inputs.</li>
+</ul>
+<p><strong>Rookie mistake</strong></p>
+<p>When starting out, everyone makes this mistake with the <code>Form-2</code> construct: they forget to repeat the parameters in the inner, anonymous render function.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">outer</span>
+  <span class="hl-p1">[</span>a b c<span class="hl-p1">]</span>            <span class="hl-comment">;; &lt;--- parameters</span>
+  <span class="hl-comment">;;  ....</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>a b c<span class="hl-p2">]</span>        <span class="hl-comment">;; &lt;--- forgetting to repeat them, is a rookie mistake</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:div</span>
+      <span class="hl-p0">(</span><span class="hl-builtin">str</span> a b c<span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>So the rookie mistake is to forget to put in the <code>[a b c]</code> parameters on the inner render function.</p>
+<p>Remember, <code>outer</code> is called once <em>per component instance</em>.  Each time, the parameters to <code>outer</code> will hold the initial parameter values.  The renderer on the other hand, will be called by Reagent many times and, each time, potentially with alternative parameter values, but unless you repeat the parameters on the renderer it will close over those initial values in <code>outer</code>. As a result, the component renderer will stubbornly only ever render the original parameter values, not the updated ones, which can be baffling for a beginner.</p>
+<h2 id="form-3-a-class-with-life-cycle-methods">Form-3: A Class With Life Cycle Methods</h2>
+<p>Now, for the final step in complexity.</p>
+<p>In my experience, you'll probably use <code>Form-3</code> <code>components</code> less than 1% of the
+time, perhaps only when you want to use a js library like D3 or introduce some
+hand-crafted optimisations. Maybe.  While you'll ignore <code>Form-3</code> components
+most of the time, when you do need them, you need them bad. So pay attention,
+because they'll save your bacon one day.</p>
+<p>While the critical part of a component is its render function, sometimes we
+need to perform actions at various critical moments in a component's lifetime,
+like when it is first created, or when its about to be destroyed (removed from
+the DOM), or when its about to be updated, etc.</p>
+<p>With <code>Form-3</code> components, you can nominate <code>lifecycle methods</code>. reagent
+provides a very thin layer over React's own <code>lifecycle methods</code>. So, before
+going on, <a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">read all about React's lifecycle
+methods.</a>.</p>
+<p>Because React's lifecycle methods are object-oriented, they presume the ability
+to access <code>this</code> to obtain the current state of the component.  Accordingly,
+the signatures of the corresponding Reagent lifecycle methods all take a
+reference to the reagent component as the first argument.  This reference can
+be used with <code>r/props</code>, <code>r/children</code>, and <code>r/argv</code> to obtain the current
+props/arguments.  There are some unexpected details with these functions
+described below.  You may also find <code>r/dom-node</code> helpful, as a common use of
+form-3 components is to draw into a <code>canvas</code> element, and you will need access
+to the underlying DOM element to do so.</p>
+<p>A <code>Form-3</code> component definition looks like this:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">my-component</span>
+  <span class="hl-p1">[</span>x y z<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>some <span class="hl-p0">(</span>local but shared state<span class="hl-p0">)</span>      <span class="hl-comment">;; &lt;-- closed over by lifecycle fns</span>
+        can  <span class="hl-p0">(</span>go here<span class="hl-p0">)</span><span class="hl-p2">]</span>
+     <span class="hl-p2">(</span><span class="hl-builtin">reagent/create-class</span>                 <span class="hl-comment">;; &lt;-- expects a map of functions</span>
+       <span class="hl-p0">{</span><span class="hl-keyword">:display-name</span>  <span class="hl-string">&quot;my-component&quot;</span>      <span class="hl-comment">;; for more helpful warnings &amp; errors</span>
+
+        <span class="hl-keyword">:component-did-mount</span>               <span class="hl-comment">;; the name of a lifecycle function</span>
+        <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this<span class="hl-p2">]</span>
+          <span class="hl-p2">(</span>println <span class="hl-string">&quot;component-did-mount&quot;</span><span class="hl-p2">)</span><span class="hl-p1">)</span> <span class="hl-comment">;; your implementation</span>
+
+        <span class="hl-keyword">:component-did-update</span>              <span class="hl-comment">;; the name of a lifecycle function</span>
+        <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>this old-argv<span class="hl-p2">]</span>                <span class="hl-comment">;; reagent provides you the entire &quot;argv&quot;, not just the &quot;props&quot;</span>
+          <span class="hl-p2">(</span><span class="hl-builtin">let</span> <span class="hl-p0">[</span>new-argv <span class="hl-p1">(</span><span class="hl-builtin">rest</span> <span class="hl-p2">(</span><span class="hl-builtin">reagent/argv</span> this<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">]</span>
+            <span class="hl-p0">(</span>do-something new-argv old-argv<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span>
+
+        <span class="hl-comment">;; other lifecycle funcs can go in here</span>
+
+
+        <span class="hl-keyword">:reagent-render</span>        <span class="hl-comment">;; Note:  is not :render</span>
+         <span class="hl-p1">(</span><span class="hl-builtin">fn</span> <span class="hl-p2">[</span>x y z<span class="hl-p2">]</span>           <span class="hl-comment">;; remember to repeat parameters</span>
+            <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-p0">(</span><span class="hl-builtin">str</span> x <span class="hl-string">&quot; &quot;</span> y <span class="hl-string">&quot; &quot;</span> z<span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">}</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">reagent/render</span>
+    <span class="hl-p1">[</span>my-component <span class="hl-number">1</span> <span class="hl-number">2</span> <span class="hl-number">3</span><span class="hl-p1">]</span>         <span class="hl-comment">;; pass in x y z</span>
+    <span class="hl-p1">(</span>.-body <span class="hl-builtin">js/document</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-comment">;; or as a child in a larger Reagent component</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">homepage</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+   <span class="hl-p2">[</span><span class="hl-keyword">:h1</span> <span class="hl-string">&quot;Welcome&quot;</span><span class="hl-p2">]</span>
+   <span class="hl-p2">[</span>my-component <span class="hl-number">1</span> <span class="hl-number">2</span> <span class="hl-number">3</span><span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span> <span class="hl-comment">;; Be sure to put the Reagent class in square brackets to force it to render!</span>
+</code></pre>
+<p>Note the <code>old-argv</code> above in the signature for <code>component-did-update</code>.  Many of these Reagent lifecycle method analogs take <code>prev-argv</code> or <code>old-argv</code> (see the docstring for <code>reagent/create-class</code> for a full listing).  These <code>argv</code> arguments include the component constructor as the first argument, which should generally be ignored.  This is the same format returned by <code>(reagent/argv this)</code>.</p>
+<p>Alternately, you can use <code>(reagent/props this)</code> and <code>(reagent/children this)</code>, but, conceptually, these don't map as clearly to the <code>argv</code> concept.  Specifically, the arguments to your render function are actually passed as children (not props) to the underlying React component, <strong>unless the first argument is a map.</strong>   If the first argument is a map, then that map is passed as props, and the rest of the arguments are passed as children.  Using <code>props</code> and <code>children</code> may read a bit cleaner, but you do need to pay attention to whether you're passing a props map or not.</p>
+<p>Finally, note that some React lifecycle methods take <code>prevState</code> and <code>nextState</code>.  Because Reagent provides its own state management system, there is no access to these parameters in the lifecycle methods.</p>
+<p>It is possible to create <code>Form-3</code> <code>components</code> using <code>with-meta</code>.  However, <code>with-meta</code> is a bit clumsy and has no advantages over the above method, but be aware that an alternative way exists to achieve the same outcome.</p>
+<p><strong>Rookie mistake</strong></p>
+<p>In the code sample above, notice that the renderer function is identified via an odd keyword in the map given to <code>reagent/create-class</code>. It's called <code>:reagent-render</code> rather than the shorter, more obvious <code>:render</code>.</p>
+<p>Its a trap to mistakenly use <code>:render</code> because you won't get any errors, <strong>except</strong> the function you supply will only ever be called with one parameter, and it won't be the one you expect. <a href="https://github.com/reagent-project/reagent/issues/47#issuecomment-61056999">Some details here</a>.</p>
+<p><strong>Rookie mistake</strong></p>
+<p>While you can override <code>component-should-update</code> to achieve some performance improvements, you probably shouldn't unless you really, really know what you are doing. Resist the urge. Your current performance is just fine. :-)</p>
+<p><strong>Rookie mistake</strong></p>
+<p>Leaving out the <code>:display-name</code> entry.  If you leave it out, Reagent and React have no way of knowing the name of the component causing a problem. As a result, the warnings and errors they generate won't be as informative.</p>
+<hr />
+<h2 id="final-note">Final Note</h2>
+<p>Above I used the terms <code>Form-1</code>, <code>Form-2</code> and <code>Form-3</code>, but there's actually only one kind of component. It is just that there's <strong>3 different ways to create a component</strong>.</p>
+<p>At the end of the day, no matter how it is created, a component will end up with a render function and some life-cycle methods.  A component created via <code>Form-1</code> has the same basic structure as one created via <code>Form-3</code> because underneath they are all <a href="https://betweentwoparens.com/blog/what-the-reagent-component!/">just React components</a>.</p>
+<h2 id="appendix-a---lifting-the-lid-slightly">Appendix A - Lifting the Lid Slightly</h2>
+<p>Here's some further notes about Reagent's mechanics:</p>
+<ol>
+<li>When you provide a function as the first element of a hiccup vector <code>[my-func 1 2 3]</code>, Reagent will say &quot;hey I have been given a render function&quot;.  That function might be <code>Form-1</code> or <code>Form-2</code>, but it doesn't know at that point. It just sees a function.</li>
+<li>A render function by itself is not enough to make a React Component.  So, Reagent takes this render function and &quot;merges&quot; it with default lifecycle functions to form a React component.  (<code>Form-3</code>, of course, allows you to supply your own lifecycle functions)</li>
+<li>Some time later, when Reagent <strong>first</strong> wants to render this component, it will, unsurprisingly, call the render function which you supplied (<code>my-func</code> in the snippet above).  It will pass in the &quot;props&quot; (parameters) supplied by the rendering parent (<code>1 2 3</code> in the snippet above).</li>
+<li>If this first call to the render function returns hiccup (a vector of stuff):
+<ul>
+<li>Reagent will just interpret it. So this is what happens in the case of a <code>Form-1</code> function.</li>
+<li>If, however, this render function returns another function - ie. it is a <code>Form-2</code> outer function returning the inner function - then Reagent knows to replace the Component's render function with the newly returned inner function forever thereafter. So the outer will have been called once but, from that point forward, the inner function will be used for all further rendering. In fact,  Reagent will instantly call the inner function after the outer returns it, because Reagent wants a first rendering (hiccup) for the component.</li>
+</ul>
+</li>
+<li>So, in the case of <code>Form-2</code>, the outer function is called once and once only (with initial props/parameters), and the inner is called at least once (with initial props/parameters), but probably many, many times thereafter. Both will be called with the same arrangement of props/parameters - although the inner render function will see different values in those props/parameters, over time.</li>
+</ol>
+<h2 id="appendix-b---with-let-macro">Appendix B - with-let macro</h2>
+<p>The <code>with-let</code> macro looks just like <code>let</code> – but the bindings <strong>only execute once</strong>, and it takes an optional <code>finally</code> clause, that runs when the component is no longer rendered. This can be particularly useful because it can prevent the need for a form-2 component in many instances (like creating a local reagent atom in your component).</p>
+<p>For example: here's a component that sets up an event listener for mouse moves, and stops listening when the component is removed.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">mouse-pos-comp</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">r/with-let</span> <span class="hl-p2">[</span>pointer <span class="hl-p0">(</span><span class="hl-builtin">r/atom</span> <span class="hl-builtin">nil</span><span class="hl-p0">)</span>
+               handler <span class="hl-p0">#(</span><span class="hl-builtin">swap!</span> pointer <span class="hl-builtin">assoc</span>
+                               <span class="hl-keyword">:x</span> <span class="hl-p1">(</span>.-pageX <span class="hl-builtin">%</span><span class="hl-p1">)</span>
+                               <span class="hl-keyword">:y</span> <span class="hl-p1">(</span>.-pageY <span class="hl-builtin">%</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+               _ <span class="hl-p0">(</span>.addEventListener <span class="hl-builtin">js/document</span> <span class="hl-string">&quot;mousemove&quot;</span> handler<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:div</span>
+     <span class="hl-string">&quot;Pointer moved to: &quot;</span>
+     <span class="hl-p0">(</span><span class="hl-builtin">str</span> @pointer<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">(</span><span class="hl-builtin">finally</span>
+      <span class="hl-p0">(</span>.removeEventListener <span class="hl-builtin">js/document</span> <span class="hl-string">&quot;mousemove&quot;</span> handler<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>The same thing could of course be achieved with React lifecycle methods, but that would be a lot more verbose.</p>
+<p><code>with-let</code> can also be combined with <code>track</code> (and other Reactive contexts). For example, the component above could be written as:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">mouse-pos</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">r/with-let</span> <span class="hl-p2">[</span>pointer <span class="hl-p0">(</span><span class="hl-builtin">r/atom</span> <span class="hl-builtin">nil</span><span class="hl-p0">)</span>
+               handler <span class="hl-p0">#(</span><span class="hl-builtin">swap!</span> pointer <span class="hl-builtin">assoc</span>
+                               <span class="hl-keyword">:x</span> <span class="hl-p1">(</span>.-pageX <span class="hl-builtin">%</span><span class="hl-p1">)</span>
+                               <span class="hl-keyword">:y</span> <span class="hl-p1">(</span>.-pageY <span class="hl-builtin">%</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+               _ <span class="hl-p0">(</span>.addEventListener <span class="hl-builtin">js/document</span> <span class="hl-string">&quot;mousemove&quot;</span> handler<span class="hl-p0">)</span><span class="hl-p2">]</span>
+    @pointer
+    <span class="hl-p2">(</span><span class="hl-builtin">finally</span>
+      <span class="hl-p0">(</span>.removeEventListener <span class="hl-builtin">js/document</span> <span class="hl-string">&quot;mousemove&quot;</span> handler<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">tracked-pos</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+   <span class="hl-string">&quot;Pointer moved to: &quot;</span>
+   <span class="hl-p2">(</span><span class="hl-builtin">str</span> @<span class="hl-p0">(</span><span class="hl-builtin">r/track</span> mouse-pos<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>The <code>finally</code> clause will run when mouse-pos is no longer tracked anywhere, i.e in this case when tracked-pos is unmounted.</p>
+</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/CreatingReagentComponents.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/index.html">Old release notes</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#the-core-of-a-component">The Core Of A Component</a></li><li class="toc-h2"><a href="#the-three-ways">The Three Ways</a></li><li class="toc-h2"><a href="#form-1-a-simple-function">Form-1: A Simple Function</a></li><li class="toc-h2"><a href="#form-2-a-function-returning-a-function">Form-2:  A Function Returning A Function</a></li><li class="toc-h2"><a href="#form-3-a-class-with-life-cycle-methods">Form-3: A Class With Life Cycle Methods</a></li><li class="toc-h2"><a href="#final-note">Final Note</a></li><li class="toc-h2"><a href="#appendix-a---lifting-the-lid-slightly">Appendix A - Lifting the Lid Slightly</a></li><li class="toc-h2"><a href="#appendix-b---with-let-macro">Appendix B - with-let macro</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/CreatingReagentComponents.html"}</script><script src="js/main.js?a2a98f" type="text/javascript"></script></body></html>

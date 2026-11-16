@@ -1,0 +1,183 @@
+<!doctype html>
+<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Reagent: When do components update?</title><base href="../"/><link href="css/built.css?9dcfd2" rel="stylesheet"/><script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script></head><body><div id="main-content"><div><div class="site"><header class="site-header"><div class="site-header-inner"><a href="index.html" class="brand"><span class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <path stroke="#000" stroke-width="10.751" stroke-linejoin="round" paint-order="markers fill stroke" d="M5.375 5.375h53.249v53.249H5.375z"/>
+    <path d="M16.734 59.233h30.532c1.857 0 3.134-.5 3.714-1.4.58-1 .465-2.1-.58-3.5l-13.35-18.1v-9.1h1.741c.465 0 .813-.1 1.161-.4.348-.3.464-.6.464-1s-.116-.7-.464-1c-.348-.3-.696-.4-1.16-.4H25.208c-.465 0-.813.1-1.161.4-.348.3-.464.6-.464 1s.116.7.464 1c.348.3.696.4 1.16.4h1.742v9.1l-13.35 18.1c-1.045 1.4-1.16 2.5-.58 3.5.696.9 1.973 1.4 3.714 1.4zm13.118-21.5l.58-.7v-9.9H33.8v9.9l.58.7 13.467 18.6H16.502z" fill="#303c3c"/>
+    <path fill="#00d8ff" d="M35.889 42.633h-7.778l-9.055 12.6H45.06z"/>
+    <path d="M180 439.416a5.09 5.09 0 1 1-10.179 0 5.09 5.09 0 1 1 10.179 0z" transform="matrix(.56482 0 0 .5518 -69.11 -222.593)" fill="#00d8ff" stroke="#00d8ff"/>
+    <path d="M37.217 12.657a2.325 2.325 0 1 1-4.65 0 2.325 2.325 0 1 1 4.65 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".457"/>
+    <path d="M31.676 6.053a1.17 1.17 0 1 0-2.341 0 1.17 1.17 0 1 0 2.341 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".23"/>
+</svg>
+</span>Reagent</a><nav class="site-nav"><a href="doc/index.html">Guide</a><a href="api/index.html">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/index.html">Documentation index</a></li><li><a href="doc/Security.html">Security</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Tutorials</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Using [square brackets] instead of (parentheses)</a></li><li><a href="doc/WhenDoComponentsUpdate.html" class="active">When do components update?</a></li><li><a href="doc/ManagingState.html">[WIP] Managing State: atoms, cursors, Reactions, and tracking</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing: How Reagent Renders Changes to Application State</a></li><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li></ul></li><li><span class="sidebar-section">Frequently Asked Questions</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Why isn&#x27;t my Component re-rendering?</a></li><li><a href="doc/FAQ/UsingRefs.html">How do I use React&#x27;s &quot;refs&quot;</a></li><li><a href="doc/FAQ/UsingAnEntity.html">How can I use an entity like &quot;nbsp&quot;?</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Why is my attribute (like autoFocus) missing?</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">How can I use React&#x27;s dangerouslySetInnerHTML?</a></li><li><a href="doc/FAQ/CljsjsReactProblems.html">Reagent doesn&#x27;t work after updating dependencies</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">How do I force Component re-creation?</a></li><li><a href="doc/FAQ/HtmlEntities.html">Using HTML entities</a></li></ul></li><li><span class="sidebar-section">Examples</span><ul><li><a href="doc/examples/material-ui.html">Material-UI v1</a></li><li><a href="doc/examples/smooth-ui.html">Smooth UI</a></li></ul></li><li><span class="sidebar-section">Other</span><ul><li><a href="doc/2.0-upgrade.html">Reagent 2.0 upgrade guide</a></li><li><a href="doc/reagent1.html">Reagent 1 and React 18</a></li><li><a href="doc/0.8-upgrade.html">0.8 Upgrade guide</a></li><li><a href="doc/development.html">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/index.html">API reference</a></li><li><a href="api/reagent.core.html">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><p class="review-notice"><strong>Not reviewed yet: </strong>this page may be outdated or inconsistent with the other guides. The <a href="api/index.html">API reference</a> is generated from the current source.</p><h1>When do components update?</h1><div class="markdown"><p>In this, more intermediate, Reagent tutorial, we delve into the question: when do Components re-render and why?</p>
+<h2 id="components-are-reactive">Components Are Reactive</h2>
+<p>Reagent Components are &quot;reactive&quot; in the following way:</p>
+<ul>
+<li>each Component has a render function</li>
+<li>this render function turns <code>input data</code> into <code>hiccup</code>  (HTML)</li>
+<li>render functions are <strong>rerun</strong> when their <code>input data</code> changes, producing new hiccup</li>
+<li>that new hiccup is &quot;interpreted&quot; by Reagent and ultimately results in new HTML</li>
+</ul>
+<p>It is this whole <strong>re-running</strong> the renderer function thing that makes a Component reactive. It &quot;reacts&quot; to changes in its &quot;inputs&quot;, producing a new output.</p>
+<p>This page is about understanding how and why these reactions happen.</p>
+<h3 id="reactive-to-what">Reactive To What?</h3>
+<p>We start by looking at the <code>inputs</code> to the process.  What things, when they change value, trigger a re-run of a Component's renderer?</p>
+<p>Short answer is that there's two kinds of <code>input data</code>:</p>
+<ul>
+<li><code>props</code></li>
+<li><code>ratoms</code></li>
+</ul>
+<p>As we'll soon see, these two kinds of input are not quite equal. There are differences in the way they trigger.</p>
+<h2 id="1-props">1. Props</h2>
+<p>The first of these <code>inputs</code> is called <code>props</code>.</p>
+<p>Consider this example Component:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">greet</span>
+  <span class="hl-p1">[</span>name<span class="hl-p1">]</span>          <span class="hl-comment">;; name is a string            </span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Hello &quot;</span> name<span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p><code>name</code> is a <code>prop</code> (short for property).  In this example, it is a string value.  In our clojurescript/Reagent world, it takes the form of a parameter to the Component renderer, <code>greet</code>.</p>
+<p>Each time the value of <code>name</code> changes over time, <code>greet</code> will rerender.</p>
+<p>Wait, what? How exactly can the value of <code>name</code> change over time - isn't it just a parameter? Don't parameters only ever get one value, when the function is called?</p>
+<p>Well, you'll remember from previous tutorials that <code>greet</code> is going to be &quot;promoted&quot; to be the render function of a Component. As a Component renderer, it will get called at least once, but probably many, many times. So there will be the opportunity for <code>name</code> to have a different value each time <code>greet</code> is called and, in that sense, it is a value which can change over time.</p>
+<p>To understand further, imagine we had a parent Component, which uses <code>greet</code>:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">greet-family</span>
+  <span class="hl-p1">[</span><span class="hl-p1">]</span> 
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span> 
+    <span class="hl-p2">[</span>greet <span class="hl-string">&quot;Dad&quot;</span><span class="hl-p2">]</span>
+    <span class="hl-p2">[</span>greet <span class="hl-p0">(</span><span class="hl-builtin">str</span> <span class="hl-string">&quot;Bro-&quot;</span> <span class="hl-p1">(</span>rand-int <span class="hl-number">10</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>When Reagent interprets the hiccup returned by <code>greet-family</code>, it will create 3 further components:</p>
+<ul>
+<li>a <code>:div</code> component, with two <code>greet</code> children</li>
+<li>the 1st <code>greet</code> child will always be given the <code>name</code> &quot;Dad&quot;. Always the same prop</li>
+<li>the 2nd <code>greet</code> child will likely have a different value for <code>name</code> each time that <code>greet-family</code> renders. Perhaps &quot;Bro-1&quot; one time and &quot;Bro-5&quot; the next. Only 1 time in 10 will it be the same as last time.</li>
+</ul>
+<p>After a Component's renderer runs and produces hiccup, Reagent interprets it. When it processes the output of <code>greet-family</code>,  it will check to see if these 3 rerendered Components themselves need rerendering.  The test Reagent uses is a simple one: for each Component, are the newly supplied <code>props</code> different to those supplied in the last render. Have they &quot;changed&quot;?</p>
+<p>If the <code>props</code> are different, then that Component's render will be called to create new hiccup.  But if the <code>props</code> to that Component are the same as last time, then no need to rerender it.</p>
+<p>Obviously, the <code>[greet &quot;Dad&quot;]</code> component is rendered by <code>greet-family</code> the same way each time, and will get the same <code>props</code> every time and, so, it will not need re-rendering.  It will render once, at the beginning, but never again, no matter how many times its parent <code>greet-family</code> is rerendered.</p>
+<p>On the other hand, <code>[greet (str &quot;Bro-&quot; (rand-int 10))]</code> will often render a different <code>name</code> prop. So, if <code>greet-family</code> rerenders, then that child component will often re-render too ... although about 1 time in 10 the prop this time will be the same as last time, and Reagent will determine that it doesn't need to be rerendered.</p>
+<p>Which means we can now answer the question posed above - how can the value of <code>name</code> change over time for a given <code>greet</code> component?  Answer: when the parent Component re-renders, and supplies a new value as the <code>prop</code>.</p>
+<p><code>props</code> flow from the parent. <strong>A Component can't get new <code>props</code> unless its parent rerenders.</strong></p>
+<h2 id="2-ratoms">2. Ratoms</h2>
+<p>Let's now discuss the 2nd form of <code>input data</code> to a Component.</p>
+<p>This example is a bit contrived, but bear with me ...</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">name</span>  <span class="hl-p1">(</span>reagent.ratom/atom <span class="hl-string">&quot;Bear&quot;</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">ask-for-forgiveness</span>
+  <span class="hl-p1">[</span><span class="hl-p1">]</span>           <span class="hl-comment">;; &lt;--- no props     </span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Please &quot;</span> @name <span class="hl-string">&quot; with me&quot;</span><span class="hl-p1">]</span><span class="hl-p0">)</span>   <span class="hl-comment">;; notice that @</span>
+</code></pre>
+<p>We can see that <code>ask-for-forgiveness</code> will return the hiccup  <code>[:div &quot;Please &quot; &quot;Bear&quot; &quot; with me&quot;]</code></p>
+<p>Well, initially anyway, because initially <code>name</code> contains the string value &quot;Bear&quot;.</p>
+<p>Data is flowing into the render function via this <code>name</code> ratom.  Reagent will detect that this renderer has a ratom input, and it will watch that ratom for changes.</p>
+<p>If I suddenly got all scientific, and did this <code>(reset! name &quot;Ursidae&quot;)</code>, Reagent would detect the change in <code>name</code>, and it would re-run any Component renderer which is dependent upon it.  That means <code>ask-for-forgiveness</code> is re-run, producing the new hiccup <code>[:div &quot;Please &quot; &quot;Ursidae&quot; &quot; with me&quot;]</code>.</p>
+<p>Just so we're clear: a &quot;data input&quot; changes (the value in a ratom) and, then, the renderer is rerun to produce new hiccup.  The Component is reactive to the ratoms it derefs.</p>
+<h2 id="a-combination">A Combination</h2>
+<p>So that was the basics.</p>
+<p>Let's now look at how these things can combine. We're going to consider a case involving two child components, and a parent.</p>
+<p>Child Component 1:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">greet-number</span>
+  <span class="hl-string">&quot;I say hello to an integer&quot;</span>
+  <span class="hl-p1">[</span>num<span class="hl-p1">]</span>                             <span class="hl-comment">;; an integer</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-p2">(</span><span class="hl-builtin">str</span> <span class="hl-string">&quot;Hello #&quot;</span> num<span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span>       <span class="hl-comment">;; [:div &quot;Hello #1&quot;]</span>
+</code></pre>
+<p>Child component 2:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">more-button</span>
+  <span class="hl-string">&quot;I'm a button labelled 'More' which increments counter when clicked&quot;</span>
+  <span class="hl-p1">[</span>counter<span class="hl-p1">]</span>                                <span class="hl-comment">;; a ratom</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>  <span class="hl-p2">{</span><span class="hl-keyword">:class</span> <span class="hl-string">&quot;button-class&quot;</span>
+          <span class="hl-keyword">:on-click</span>  <span class="hl-p0">#(</span><span class="hl-builtin">swap!</span> counter <span class="hl-builtin">inc</span><span class="hl-p0">)</span><span class="hl-p2">}</span> <span class="hl-comment">;; increment the int value in counter</span>
+   <span class="hl-string">&quot;More&quot;</span><span class="hl-p1">]</span><span class="hl-p0">)</span>    
+</code></pre>
+<p>And, finally, a Form-2 parent Component which uses these two child components:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">parent</span>
+  <span class="hl-p1">[</span><span class="hl-p1">]</span> 
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>counter  <span class="hl-p0">(</span>reagent.ratom/atom <span class="hl-number">1</span><span class="hl-p0">)</span><span class="hl-p2">]</span>    <span class="hl-comment">;; the render closes over this state</span>
+    <span class="hl-p2">(</span><span class="hl-builtin">fn</span>  parent-renderer 
+      <span class="hl-p0">[</span><span class="hl-p0">]</span>
+      <span class="hl-p0">[</span><span class="hl-keyword">:div</span> 
+        <span class="hl-p1">[</span>greet-number @counter<span class="hl-p1">]</span>      <span class="hl-comment">;; notice the @. The prop is an int</span>
+        <span class="hl-p1">[</span>more-button counter<span class="hl-p1">]</span><span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>    <span class="hl-comment">;; no @ on counter</span>
+</code></pre>
+<p>With this setup, answer this question: what rerendering happens each time the <code>more-button</code> gets clicked and <code>counter</code> gets incremented?</p>
+<p>Don't read on. Test yourself. Spend 30 seconds working it out.</p>
+<p>Answer:</p>
+<ol>
+<li>Reagent will notice that <code>counter</code> has changed and that is an <code>input ratom</code> to <code>parent-renderer</code>, and it will rerun that renderer.</li>
+<li>Reagent will interpret the hiccup returned by <code>parent-renderer</code>, and it will determine that a new (integer) prop has been supplied in the <code>[greet-number @counter]</code> Component, and it will then rerender that component too.</li>
+</ol>
+<p>Wait. Is that it?  Why doesn't the <code>[more-button counter]</code> component rerender too?  After all, its <code>prop</code> <code>counter</code> has changed???</p>
+<p>No, I promise it won't rerender. But why not?  The answer is a bit subtle.</p>
+<p>You see, <code>counter</code> itself hasn't changed. It is still the same ratom it was before. The value <strong>in</strong> <code>counter</code> has been incremented, but <code>counter</code> itself is still the same ratom.  So from Reagent's point of view <code>[more-button counter]</code> involves the same <code>prop</code> as &quot;last time&quot; and it concludes that there's no need for a rerender of that component.</p>
+<p>Had <code>more-button</code> dereferenced the <code>counter</code> ratom THEN the change in <code>counter</code> should have triggered a rerender of <code>more-button</code>.  But if you look at <code>more-button</code> you'll see no <code>@counter</code>. There is no dereference.</p>
+<p>If you truly understand this example, then you've gone a long way to officially getting it.</p>
+<h2 id="different">Different</h2>
+<p>Although they are both ways to trigger a reactive re-render, the two kinds of <code>inputs</code> have different properties:</p>
+<ol>
+<li>the definition of &quot;changed&quot; applied</li>
+<li>treatment of lifecycle functions</li>
+</ol>
+<h2 id="changed">Changed?</h2>
+<p>Till now, I've said a renderer will be re-run when an input value &quot;changed&quot;.  But I've been carefully avoiding any definition of &quot;changed&quot;.</p>
+<p>You see, there's at least two definitions: <code>=</code> and <code>identical?</code></p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">x1</span>  <span class="hl-p1">{</span><span class="hl-keyword">:a</span> <span class="hl-number">42</span>  <span class="hl-keyword">:b</span> <span class="hl-number">45</span><span class="hl-p1">}</span><span class="hl-p0">)</span>    <span class="hl-comment">;; at time 1, x has this value</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">x2</span>  <span class="hl-p1">{</span><span class="hl-keyword">:a</span> <span class="hl-number">42</span>  <span class="hl-keyword">:b</span> <span class="hl-number">45</span><span class="hl-p1">}</span><span class="hl-p0">)</span>    <span class="hl-comment">;; at time 2, x has this value</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">=</span> x1 x2<span class="hl-p0">)</span>                   <span class="hl-comment">;; is x the same, or has it changed? </span>
+<span class="hl-comment">;; =&gt;  true                 ;; answer: no change</span>
+
+<span class="hl-p0">(</span>identical? x1 x2<span class="hl-p0">)</span>          <span class="hl-comment">;; is x the same, or has it changed?</span>
+<span class="hl-comment">;; =&gt; false                 ;; answer: different</span>
+</code></pre>
+<p>So we can see different answers to the question &quot;has x changed?&quot; for the same values, depending on the function we use.</p>
+<p>For <code>props</code>,  <code>=</code> is used to determine if a new value have changed with regard to an old value.</p>
+<p>For ratoms, <code>identical?</code> is used (on the value inside the ratom) to determine if a new value has changed with regard to an old value.</p>
+<p>So, it is only when values are deemed to have &quot;changed&quot;, that a re-run is triggered, but the inputs use different definitions of &quot;changed&quot;.  This can be confusing.</p>
+<p>The <code>identical?</code> version is very fast. It is just a single reference check.</p>
+<p>The <code>=</code> version is more accurate, more intuitive, but potentially more expensive. Although, as I'm writing this I notice that <code>=</code> uses <code>identical?</code> <a href="https://github.com/clojure/clojurescript/blob/1b7390450243693d0b24e8d3ad085c6da4eef204/src/main/cljs/cljs/core.cljs#L1108-L1124">when it can</a>.</p>
+<p><strong>Update:</strong></p>
+<blockquote>
+<p>As of Reagent 0.6.0, ratoms use <code>=</code> (instead of <code>identical?</code>) is to determine if a new value is different to an old value. So, <code>ratoms</code> and <code>props</code> now have the same <code>changed?</code> semantics.</p>
+</blockquote>
+<h3 id="efficient-re-renders">Efficient Re-renders</h3>
+<p>It's only via rerenders that a UI will change.  So re-rendering is pretty essential.</p>
+<p>On the other hand, unnecessary re-rendering should be avoided.  In the worst case, it could lead to performance problems.  By unnecessary rendering, I mean rerenders which result in unchanged HTML. That's a whole lot of work for no reason.</p>
+<p>So this notion of &quot;changed&quot; is pretty important.  It controls if we are doing unnecessary, performance-sapping re-rendering work.</p>
+<h3 id="lifecycle-functions">Lifecycle Functions</h3>
+<p>When <code>props</code> change, the entire underlying React machinery is engaged. Reagent Components can have lifecycle methods like <code>component-did-update</code> and these functions will get called, just as they would if you were dealing with a React Component.</p>
+<p>But ... when the re-render occurs because an input ratom changed, <strong>Lifecycle functions are not run</strong>.  So, for example, <code>component-did-update</code> will not be called on the Component.</p>
+<p>Careful of this one. It trips people up.</p>
+<h2 id="appendix-1">Appendix 1</h2>
+<p>In the previous Tutorial, we looked at the difference between <code>()</code> and <code>[]</code>.</p>
+<p>Towards the end, I claimed that using <code>[]</code> was more efficient at &quot;re-render time&quot;.  Hopefully, after the tutorial above, our knowledge is a bit deeper and we can now better appreciate the truth in this claim.</p>
+<p>Remember this code from the previous tutorial:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">greet-family-square</span>
+  <span class="hl-p1">[</span>member1 member2 member3<span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+    <span class="hl-p2">[</span>greet member1<span class="hl-p2">]</span>     <span class="hl-comment">;; using [] not ()</span>
+    <span class="hl-p2">[</span>greet member2<span class="hl-p2">]</span>     
+    <span class="hl-p2">[</span>greet member3<span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">)</span>  
+</code></pre>
+<p>Now, imagine it used like this:</p>
+<pre class="hl"><code> <span class="hl-comment">;; the 3rd member of the family to greet</span>
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">extra</span> <span class="hl-p1">(</span>reagent.core/atom <span class="hl-string">&quot;Aunt Edith&quot;</span><span class="hl-p1">)</span><span class="hl-p0">)</span>  
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">top-level-component</span>
+    <span class="hl-p1">[</span><span class="hl-p1">]</span>
+    <span class="hl-p1">[</span>greet-family-square  <span class="hl-string">&quot;Mum&quot;</span> <span class="hl-string">&quot;Dad&quot;</span> @extra<span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span>reagent.core/render <span class="hl-p1">[</span>top-level-component<span class="hl-p1">]</span> <span class="hl-p1">(</span>.-body <span class="hl-builtin">js/document</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">)</span>
+</code></pre>
+<p>The first time the page is rendered, the DOM created will greet three cherished people.  All good.  At this point, the <code>round</code> and <code>square</code> versions of <code>greet-family</code> would be equally good at getting the initial DOM into our browser.</p>
+<p>But then, out of nowhere, comes information that our rich and eccentric Uncle John is rewriting his Last Will And Testament, and we need a fast, realtime change in our page. Luckily we have a repl handy, and we type <code>(reset! extra &quot;Uncle John&quot;)</code>.  We've changed that <code>extra</code> r/atom which holds the 3rd cherished family member - sorry &quot;Aunt Edith&quot;, you're out.</p>
+<p>What happens next?</p>
+<ol>
+<li>Reagent will recognize that a <code>top-level-component</code> component relies on <code>extra</code> which has changed.</li>
+<li>So it will rerender that component. In the hiccup produced (by the rerender), it will see that <code>greet-family-square</code> has a new 3rd prop. And, by that, I mean that the value for the 3rd prop (&quot;Uncle John&quot;) will not compare <code>=</code> to the value last rendered (&quot;Aunt Edith&quot;).</li>
+<li>So Reagent will trigger a rerender of <code>greet-family-square</code> with the new props (&quot;Mum&quot; &quot;Dad&quot; and &quot;Uncle John&quot;)</li>
+<li>In the hiccup produced by this rerender, Reagent will notice that the first two <code>greet</code> components have the same prop as that last rendered (&quot;Mum&quot; and &quot;Dad&quot;) but that the 3rd <code>greet</code> component has a new prop value (&quot;Uncle John&quot;).</li>
+<li>So it will NOT rerender the first two <code>greet</code>, but the renderer for the 3rd will be rereun.</li>
+</ol>
+<p>As you can see, only the right parts of the tree are re-rendered.  Nothing unnecessary is done.</p>
+<p>In the alternative <code>greet-family-round</code> version we looked at, the one which used <code>()</code> instead of <code>[]</code>, that efficiency is not possible.</p>
+<p>A re-render of <code>greet-family-round</code> always triggers three calls to <code>greet</code>, no matter what, accumulating a large amount of hiccup for <code>greet-family-round</code> to return.  It would then be left to React to diff all this new DOM with existing DOM and for it to work out that, in fact, parts of the tree (the first two greet parts) remain the same, and should be ignored. Which is a whole lot of unnecessary work!</p>
+<p>When we use <code>[]</code>, we get independent React Components which will only be re-rendered if their <code>props</code> change (or ratoms change). More efficient, more minimal re-renderings.</p>
+</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/WhenDoComponentsUpdate.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/index.html">Old release notes</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#components-are-reactive">Components Are Reactive</a></li><li class="toc-h3"><a href="#reactive-to-what">Reactive To What?</a></li><li class="toc-h2"><a href="#1-props">1. Props</a></li><li class="toc-h2"><a href="#2-ratoms">2. Ratoms</a></li><li class="toc-h2"><a href="#a-combination">A Combination</a></li><li class="toc-h2"><a href="#different">Different</a></li><li class="toc-h2"><a href="#changed">Changed?</a></li><li class="toc-h3"><a href="#efficient-re-renders">Efficient Re-renders</a></li><li class="toc-h3"><a href="#lifecycle-functions">Lifecycle Functions</a></li><li class="toc-h2"><a href="#appendix-1">Appendix 1</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/WhenDoComponentsUpdate.html"}</script><script src="js/main.js?a2a98f" type="text/javascript"></script></body></html>

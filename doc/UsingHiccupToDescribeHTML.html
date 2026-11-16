@@ -1,0 +1,147 @@
+<!doctype html>
+<html><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Reagent: Using Hiccup to Describe HTML</title><base href="../"/><link href="css/built.css?9dcfd2" rel="stylesheet"/><script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script></head><body><div id="main-content"><div><div class="site"><header class="site-header"><div class="site-header-inner"><a href="index.html" class="brand"><span class="brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+    <path stroke="#000" stroke-width="10.751" stroke-linejoin="round" paint-order="markers fill stroke" d="M5.375 5.375h53.249v53.249H5.375z"/>
+    <path d="M16.734 59.233h30.532c1.857 0 3.134-.5 3.714-1.4.58-1 .465-2.1-.58-3.5l-13.35-18.1v-9.1h1.741c.465 0 .813-.1 1.161-.4.348-.3.464-.6.464-1s-.116-.7-.464-1c-.348-.3-.696-.4-1.16-.4H25.208c-.465 0-.813.1-1.161.4-.348.3-.464.6-.464 1s.116.7.464 1c.348.3.696.4 1.16.4h1.742v9.1l-13.35 18.1c-1.045 1.4-1.16 2.5-.58 3.5.696.9 1.973 1.4 3.714 1.4zm13.118-21.5l.58-.7v-9.9H33.8v9.9l.58.7 13.467 18.6H16.502z" fill="#303c3c"/>
+    <path fill="#00d8ff" d="M35.889 42.633h-7.778l-9.055 12.6H45.06z"/>
+    <path d="M180 439.416a5.09 5.09 0 1 1-10.179 0 5.09 5.09 0 1 1 10.179 0z" transform="matrix(.56482 0 0 .5518 -69.11 -222.593)" fill="#00d8ff" stroke="#00d8ff"/>
+    <path d="M37.217 12.657a2.325 2.325 0 1 1-4.65 0 2.325 2.325 0 1 1 4.65 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".457"/>
+    <path d="M31.676 6.053a1.17 1.17 0 1 0-2.341 0 1.17 1.17 0 1 0 2.341 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".23"/>
+</svg>
+</span>Reagent</a><nav class="site-nav"><a href="doc/index.html">Guide</a><a href="api/index.html">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/index.html">Documentation index</a></li><li><a href="doc/Security.html">Security</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Tutorials</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html" class="active">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Using [square brackets] instead of (parentheses)</a></li><li><a href="doc/WhenDoComponentsUpdate.html">When do components update?</a></li><li><a href="doc/ManagingState.html">[WIP] Managing State: atoms, cursors, Reactions, and tracking</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing: How Reagent Renders Changes to Application State</a></li><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li></ul></li><li><span class="sidebar-section">Frequently Asked Questions</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Why isn&#x27;t my Component re-rendering?</a></li><li><a href="doc/FAQ/UsingRefs.html">How do I use React&#x27;s &quot;refs&quot;</a></li><li><a href="doc/FAQ/UsingAnEntity.html">How can I use an entity like &quot;nbsp&quot;?</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Why is my attribute (like autoFocus) missing?</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">How can I use React&#x27;s dangerouslySetInnerHTML?</a></li><li><a href="doc/FAQ/CljsjsReactProblems.html">Reagent doesn&#x27;t work after updating dependencies</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">How do I force Component re-creation?</a></li><li><a href="doc/FAQ/HtmlEntities.html">Using HTML entities</a></li></ul></li><li><span class="sidebar-section">Examples</span><ul><li><a href="doc/examples/material-ui.html">Material-UI v1</a></li><li><a href="doc/examples/smooth-ui.html">Smooth UI</a></li></ul></li><li><span class="sidebar-section">Other</span><ul><li><a href="doc/2.0-upgrade.html">Reagent 2.0 upgrade guide</a></li><li><a href="doc/reagent1.html">Reagent 1 and React 18</a></li><li><a href="doc/0.8-upgrade.html">0.8 Upgrade guide</a></li><li><a href="doc/development.html">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/index.html">API reference</a></li><li><a href="api/reagent.core.html">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><p class="review-notice"><strong>Not reviewed yet: </strong>this page may be outdated or inconsistent with the other guides. The <a href="api/index.html">API reference</a> is generated from the current source.</p><div class="markdown"><h1 id="using-hiccup-to-describe-html">Using Hiccup to Describe HTML</h1>
+<p>Reagent uses a datastructure known as Hiccup to describe HTML. Hiccup describes HTML elements and user-defined components as a nested ClojureScript vector:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:class</span> <span class="hl-string">&quot;parent&quot;</span><span class="hl-p1">}</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:p</span> <span class="hl-p2">{</span><span class="hl-keyword">:id</span> <span class="hl-string">&quot;child-one&quot;</span><span class="hl-p2">}</span> <span class="hl-string">&quot;I'm first child element.&quot;</span><span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:p</span> <span class="hl-string">&quot;I'm the second child element.&quot;</span><span class="hl-p1">]</span><span class="hl-p0">]</span>
+</code></pre>
+<p>NOTE: Also check <a href="doc/Security.html">Security</a> for some effects of using data to create React elements.</p>
+<p>As described below, reagent provides a number of extensions and conveniences to Hiccup, but the general rules of Hiccup are as follows:</p>
+<ol>
+<li>The first element is either a keyword or a symbol
+<ul>
+<li>If it is a keyword, the element is an HTML element where <code>(name keyword)</code> is the tag of the HTML element.</li>
+<li>If it is a symbol, reagent will treat the vector as a component, as described in the next section.</li>
+</ul>
+</li>
+<li>If the second element is a map, it represents the attributes to the element. The attribute map may be omitted.</li>
+<li>Any additional elements must either be Hiccup vectors representing child nodes or string literals representing child text nodes.</li>
+</ol>
+<h3 id="creating-non-standard-html-attributes">Creating non standard HTML attributes</h3>
+<p>While standard HTML attributes are passed as <code>:keywords</code>, if you need a non standard one, use a string key:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:span</span> <span class="hl-p1">{</span><span class="hl-string">&quot;custom-attribute&quot;</span> <span class="hl-string">&quot;value&quot;</span><span class="hl-p1">}</span><span class="hl-p0">]</span>
+</code></pre>
+<p>Will result in:</p>
+<pre><code>&lt;span custom-attribute=&quot;value&quot;&gt;&lt;/span&gt;
+</code></pre>
+<h3 id="custom-elements">Custom elements</h3>
+<p>Tags containing a <code>-</code>, like <code>:my-element</code>, are rendered as custom elements (Web Components).
+See <a href="doc/WebComponents.html">Web Components</a> for how props, properties and events work with them.</p>
+<h2 id="special-treatment-of-nil-child-nodes">Special treatment of <code>nil</code> child nodes</h2>
+<p>Reagent and React ignore nil nodes, which allow conditional logic in Hiccup forms:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">my-div</span> <span class="hl-p1">[</span>child?<span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:div</span>
+    <span class="hl-string">&quot;Parent Element&quot;</span>
+    <span class="hl-p2">(</span><span class="hl-builtin">when</span> child? <span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-string">&quot;Child element&quot;</span><span class="hl-p0">]</span><span class="hl-p2">)</span><span class="hl-p1">]</span><span class="hl-p0">)</span>
+</code></pre>
+<p>In this example <code>(my-div false)</code> will evaluate to <code>[:div &quot;Parent Element&quot; nil]</code>, which reagent will simply treat the same as <code>[:div &quot;Parent Element&quot;]</code>.</p>
+<h2 id="special-interpretation-of-style-attribute">Special interpretation of <code>style</code> attribute</h2>
+<p>The <code>:style</code> attribute can be written a string or as a map. The following two are equivalent:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:style</span> <span class="hl-string">&quot;color: red; font-weight: bold&quot;</span><span class="hl-p1">}</span> <span class="hl-string">&quot;Alert&quot;</span><span class="hl-p0">]</span>
+<span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:style</span> <span class="hl-p2">{</span><span class="hl-keyword">:color</span> <span class="hl-string">&quot;red&quot;</span>
+               <span class="hl-keyword">:font-weight</span> <span class="hl-string">&quot;bold&quot;</span><span class="hl-p2">}</span><span class="hl-p1">}</span>
+      <span class="hl-string">&quot;Alert&quot;</span><span class="hl-p0">]</span>
+</code></pre>
+<p>The map form is the same as <a href="https://reactjs.org/docs/dom-elements.html#style">React's style attribute</a>, except that when using the map form of the style attribute, the keys should be the same as the CSS attribute as shown in the example above (not in camel case as is required JavaScript).</p>
+<h3 id="css-custom-properties-styntax">CSS custom properties styntax</h3>
+<p>To create an element with a CSS custom property like this:</p>
+<pre><code>&lt;span style=&quot;--custom-property: value&quot;&gt;&lt;/span&gt;
+</code></pre>
+<p>Use a string as a key for the <code>:style</code> map:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:span</span> <span class="hl-p1">{</span><span class="hl-keyword">:style</span> <span class="hl-p2">{</span><span class="hl-string">&quot;--custom-property&quot;</span> <span class="hl-string">&quot;value&quot;</span><span class="hl-p2">}</span><span class="hl-p1">}</span><span class="hl-p0">]</span>
+</code></pre>
+<p>NOTE: This is due to how Reagent turns keywords as map keys to Object
+properties with conversion from kebab-case to camelCase, which React
+also uses with CSS properties (vs. regular CSS). It could be possible
+to change the implementation to skip the case-conversion for properties
+starting with <code>--</code> but it isn't implemented now.</p>
+<h2 id="special-interpretation-of-class-attribute">Special interpretation of <code>class</code> attribute</h2>
+<p>In JavaScript, <code>class</code> is a reserved keyword, so React uses the <code>className</code> to specify class attibutes. Reagent just uses <code>class</code>.</p>
+<p>The <code>class</code> attribute of HTML elements accepts a string, a keyword or
+symbol, or a collection of these. Collections can be nested, and <code>nil</code> and
+<code>false</code> values are removed. Reagent normalizes the value to a class string
+(using <code>r/class-names</code>), so there is no need to call it yourself:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:class</span> <span class="hl-p2">[</span><span class="hl-string">&quot;a-class&quot;</span> <span class="hl-p0">(</span><span class="hl-builtin">when</span> active? <span class="hl-string">&quot;active&quot;</span><span class="hl-p0">)</span> <span class="hl-string">&quot;b-class&quot;</span><span class="hl-p2">]</span><span class="hl-p1">}</span><span class="hl-p0">]</span>
+
+<span class="hl-comment">;; A component can add its own class to a :class value received in props,</span>
+<span class="hl-comment">;; even if that value is a collection.</span>
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">button</span> <span class="hl-p1">[</span><span class="hl-p2">{</span><span class="hl-keyword">:keys</span> <span class="hl-p0">[</span>class<span class="hl-p0">]</span><span class="hl-p2">}</span> label<span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:button</span> <span class="hl-p2">{</span><span class="hl-keyword">:class</span> <span class="hl-p0">[</span><span class="hl-string">&quot;btn&quot;</span> class<span class="hl-p0">]</span><span class="hl-p2">}</span> label<span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">[</span>button <span class="hl-p1">{</span><span class="hl-keyword">:class</span> <span class="hl-p2">[</span><span class="hl-string">&quot;primary&quot;</span> <span class="hl-p0">(</span><span class="hl-builtin">when</span> large? <span class="hl-string">&quot;large&quot;</span><span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">}</span> <span class="hl-string">&quot;OK&quot;</span><span class="hl-p0">]</span>
+<span class="hl-comment">;; =&gt; &lt;button class=&quot;btn primary large&quot;&gt;OK&lt;/button&gt;</span>
+</code></pre>
+<p>This only applies to the <code>class</code> attribute of HTML elements. For Reagent
+components <code>:class</code> is a normal prop, passed to the component as is.</p>
+<p>To combine class values in props maps, use <code>r/merge-props</code> or
+<code>r/class-names</code>. They normalize nested collections the same way:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">button</span> <span class="hl-p1">[</span>props label<span class="hl-p1">]</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:button</span> <span class="hl-p2">(</span><span class="hl-builtin">r/merge-props</span> <span class="hl-p0">{</span><span class="hl-keyword">:class</span> <span class="hl-string">&quot;btn&quot;</span><span class="hl-p0">}</span> props<span class="hl-p2">)</span> label<span class="hl-p1">]</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">[</span>button <span class="hl-p1">{</span><span class="hl-keyword">:class</span> <span class="hl-p2">[</span><span class="hl-string">&quot;primary&quot;</span> <span class="hl-p0">(</span><span class="hl-builtin">when</span> large? <span class="hl-p1">[</span><span class="hl-string">&quot;large&quot;</span> <span class="hl-string">&quot;bold&quot;</span><span class="hl-p1">]</span><span class="hl-p0">)</span><span class="hl-p2">]</span><span class="hl-p1">}</span> <span class="hl-string">&quot;OK&quot;</span><span class="hl-p0">]</span>
+<span class="hl-comment">;; =&gt; &lt;button class=&quot;btn primary large bold&quot;&gt;OK&lt;/button&gt;</span>
+</code></pre>
+<h2 id="special-notation-for-id-and-class">Special notation for id and class</h2>
+<p>The id of an element can be indicated with a hash (<code>#</code>) after the name of the element.</p>
+<p>This:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div#my-id</span><span class="hl-p0">]</span>
+</code></pre>
+<p>is the same as this:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:id</span> <span class="hl-string">&quot;my-id&quot;</span><span class="hl-p1">}</span><span class="hl-p0">]</span>
+</code></pre>
+<p>One or more classes can be indicated for an element with a <code>.</code> and the class-name like this:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div.my-class.my-other-class.etc</span><span class="hl-p0">]</span>
+</code></pre>
+<p>which is the same as:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:class</span> <span class="hl-p2">[</span><span class="hl-string">&quot;my-class&quot;</span> <span class="hl-string">&quot;my-other-class&quot;</span> <span class="hl-string">&quot;etc&quot;</span><span class="hl-p2">]</span><span class="hl-p1">}</span><span class="hl-p0">]</span>
+</code></pre>
+<p>Special notations for id and classes can be used together. The id must be listed first:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div#my-id.my-class.my-other-class</span><span class="hl-p0">]</span>
+</code></pre>
+<p>which is the same as:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span> <span class="hl-p1">{</span><span class="hl-keyword">:id</span> <span class="hl-string">&quot;my-id&quot;</span> <span class="hl-keyword">:class</span> <span class="hl-p2">[</span><span class="hl-string">&quot;my-class&quot;</span> <span class="hl-string">&quot;my-other-class&quot;</span><span class="hl-p2">]</span><span class="hl-p1">}</span><span class="hl-p0">]</span>
+</code></pre>
+<h2 id="special-notation-for-nested-elements">Special notation for nested elements</h2>
+<p>Reagent extends standard Hiccup in one way: it is possible to stack elements together by using a <code>&gt;</code> character.</p>
+<p>This:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div</span>
+  <span class="hl-p1">[</span><span class="hl-keyword">:p</span>
+    <span class="hl-p2">[</span><span class="hl-keyword">:b</span> <span class="hl-string">&quot;Nested Element&quot;</span><span class="hl-p2">]</span><span class="hl-p1">]</span><span class="hl-p0">]</span>
+</code></pre>
+<p>can be written as:</p>
+<pre class="hl"><code><span class="hl-p0">[</span><span class="hl-keyword">:div&gt;p&gt;b</span> <span class="hl-string">&quot;Nested Element&quot;</span><span class="hl-p0">]</span>
+</code></pre>
+<h2 id="rendering-hiccup">Rendering Hiccup</h2>
+<p>The primary entrypoint to the reagent library is <code>reagent.dom/render</code>.</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">ns</span> <span class="hl-def">example</span>
+  <span class="hl-p1">(</span><span class="hl-keyword">:require</span> <span class="hl-p2">[</span>reagent.dom <span class="hl-keyword">:as</span> rdom<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">render-simple</span> <span class="hl-p1">[</span><span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">rdom/render</span> <span class="hl-p2">[</span><span class="hl-keyword">:div</span> <span class="hl-p0">[</span><span class="hl-keyword">:p</span> <span class="hl-string">&quot;Hello world!&quot;</span><span class="hl-p0">]</span><span class="hl-p2">]</span>
+    <span class="hl-p2">(</span>.-body <span class="hl-builtin">js/document</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>This <code>render</code> function expects one of two things:</p>
+<ol>
+<li>A React Element, which will just be passed to React as is.</li>
+<li>A ClojureScript vector (i.e., a Hiccup form).</li>
+</ol>
+<p>If it encounters a ClojureScript vector, it will interpret it as Hiccup. Reagent expects one of two things in the first position of the vector:</p>
+<ol>
+<li>A keyword like <code>:div</code> or <code>:span</code>, which it will create using React.createElement</li>
+<li>A symbol like <code>my-component</code>.</li>
+</ol>
+<p>If it's a symbol, then reagent will evaluate a function by that name. Reagent expects one of three things from this function:</p>
+<ol>
+<li>A Hiccup vector. Reagent creates a React component with the function as its render method and uses the Hiccup vector for the initial render.</li>
+<li>A ClojureScript function. Reagent will then create a React component with this inner function as the render method and will then call the inner function for the initial render.</li>
+<li>A React component. Reagent will render this using React.createElement. Note, this could be a result of calling <code>reagent.core/create-class</code> or it could be a React component you have imported from a JavaScript library.</li>
+</ol>
+</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/UsingHiccupToDescribeHTML.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/index.html">Old release notes</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h3"><a href="#creating-non-standard-html-attributes">Creating non standard HTML attributes</a></li><li class="toc-h3"><a href="#custom-elements">Custom elements</a></li><li class="toc-h2"><a href="#special-treatment-of-nil-child-nodes">Special treatment of nil child nodes</a></li><li class="toc-h2"><a href="#special-interpretation-of-style-attribute">Special interpretation of style attribute</a></li><li class="toc-h3"><a href="#css-custom-properties-styntax">CSS custom properties styntax</a></li><li class="toc-h2"><a href="#special-interpretation-of-class-attribute">Special interpretation of class attribute</a></li><li class="toc-h2"><a href="#special-notation-for-id-and-class">Special notation for id and class</a></li><li class="toc-h2"><a href="#special-notation-for-nested-elements">Special notation for nested elements</a></li><li class="toc-h2"><a href="#rendering-hiccup">Rendering Hiccup</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/UsingHiccupToDescribeHTML.html"}</script><script src="js/main.js?a2a98f" type="text/javascript"></script></body></html>
