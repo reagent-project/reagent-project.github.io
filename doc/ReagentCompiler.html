@@ -52,6 +52,78 @@ change. Could be related to how <code>react/memo</code> handles changes properti
 </ul>
 <p><img src="https://raw.githubusercontent.com/reagent-project/reagent/master/doc/benchmark.png" alt="1.0.0-alpha2 benchmark" /></p>
 <p>(Local test run with <a href="https://github.com/krausest/js-framework-benchmark">https://github.com/krausest/js-framework-benchmark</a>, with added function component case)</p>
+<h2 id="custom-compiler">Custom compiler</h2>
+<p><code>create-compiler</code> returns an implementation of the
+<code>reagent.impl.protocols/Compiler</code> protocol. You can also implement the
+protocol yourself, for example to create the React elements with something
+else than <code>react/createElement</code>.</p>
+<p>The <code>make-element</code> method is called for HTML elements, inputs, fragments
+(<code>:&lt;&gt;</code>), <code>:&gt;</code> and <code>:r&gt;</code> elements. <code>jsprops</code> are the props already converted
+to a JS object (for <code>:r&gt;</code>, the props as given, without conversion), and the
+children are in <code>argv</code>, starting from index <code>first-child</code>.
+The example below implements it with a <code>create-element</code> function that takes
+the same arguments as <code>react/createElement</code>. The other methods do the same as
+the compiler from <code>create-compiler</code>:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">ns</span> <span class="hl-def">example.compiler</span>
+  <span class="hl-p1">(</span><span class="hl-keyword">:require</span> <span class="hl-p2">[</span>reagent.impl.component <span class="hl-keyword">:as</span> comp<span class="hl-p2">]</span>
+            <span class="hl-p2">[</span>reagent.impl.protocols <span class="hl-keyword">:as</span> p<span class="hl-p2">]</span>
+            <span class="hl-p2">[</span>reagent.impl.template <span class="hl-keyword">:as</span> tmpl<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">make-element</span>
+  <span class="hl-string">&quot;Like `reagent.impl.template/make-element`, but calls `create-element`
+  instead of `react/createElement`.&quot;</span>
+  <span class="hl-p1">[</span>create-element compiler argv component jsprops first-child<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span>apply create-element component jsprops
+         <span class="hl-p2">(</span><span class="hl-builtin">map</span> <span class="hl-p0">#(</span><span class="hl-builtin">p/as-element</span> compiler <span class="hl-builtin">%</span><span class="hl-p0">)</span> <span class="hl-p0">(</span><span class="hl-builtin">drop</span> first-child argv<span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defn</span> <span class="hl-def">create-compiler</span>
+  <span class="hl-string">&quot;Like `reagent.core/create-compiler`, but creates the elements with
+  `create-element`.&quot;</span>
+  <span class="hl-p1">[</span>opts create-element<span class="hl-p1">]</span>
+  <span class="hl-p1">(</span><span class="hl-builtin">let</span> <span class="hl-p2">[</span>id <span class="hl-p0">(</span>gensym <span class="hl-string">&quot;custom-compiler&quot;</span><span class="hl-p0">)</span>
+        fn-to-element <span class="hl-p0">(</span><span class="hl-builtin">if</span> <span class="hl-p1">(</span><span class="hl-keyword">:function-components</span> opts<span class="hl-p1">)</span>
+                        <span class="hl-builtin">tmpl/maybe-function-element</span>
+                        <span class="hl-builtin">tmpl/reag-element</span><span class="hl-p0">)</span>
+        parse-fn <span class="hl-p0">(</span><span class="hl-builtin">get</span> opts <span class="hl-keyword">:parse-tag</span> <span class="hl-builtin">tmpl/cached-parse</span><span class="hl-p0">)</span><span class="hl-p2">]</span>
+    <span class="hl-p2">(</span>reify <span class="hl-builtin">p/Compiler</span>
+      <span class="hl-p0">(</span>get-id <span class="hl-p1">[</span>_this<span class="hl-p1">]</span> id<span class="hl-p0">)</span>
+      <span class="hl-p0">(</span>parse-tag <span class="hl-p1">[</span>this tag-name tag-value<span class="hl-p1">]</span>
+        <span class="hl-p1">(</span>parse-fn this tag-name tag-value<span class="hl-p1">)</span><span class="hl-p0">)</span>
+      <span class="hl-p0">(</span>as-element <span class="hl-p1">[</span>this x<span class="hl-p1">]</span>
+        <span class="hl-p1">(</span><span class="hl-builtin">tmpl/as-element</span> this x fn-to-element<span class="hl-p1">)</span><span class="hl-p0">)</span>
+      <span class="hl-p0">(</span>make-element <span class="hl-p1">[</span>this argv component jsprops first-child<span class="hl-p1">]</span>
+        <span class="hl-p1">(</span>make-element create-element this argv component jsprops first-child<span class="hl-p1">)</span><span class="hl-p0">)</span>
+      <span class="hl-p0">(</span>reactify-component <span class="hl-p1">[</span>this c<span class="hl-p1">]</span>
+        <span class="hl-p1">(</span><span class="hl-builtin">if</span> <span class="hl-p2">(</span><span class="hl-keyword">:function-components</span> opts<span class="hl-p2">)</span>
+          <span class="hl-p2">(</span><span class="hl-builtin">comp/functional-reactify-component</span> this c<span class="hl-p2">)</span>
+          <span class="hl-p2">(</span><span class="hl-builtin">comp/as-class</span> c this<span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+</code></pre>
+<p>For example, <a href="https://emotion.sh/docs/css-prop">Emotion</a> provides <code>jsx</code>, a
+replacement for <code>react/createElement</code> that supports the <code>css</code> prop:</p>
+<pre class="hl"><code><span class="hl-p0">(</span><span class="hl-builtin">ns</span> <span class="hl-def">example.core</span>
+  <span class="hl-p1">(</span><span class="hl-keyword">:require</span> <span class="hl-p2">[</span><span class="hl-string">&quot;@emotion/react&quot;</span> <span class="hl-keyword">:as</span> emotion<span class="hl-p2">]</span>
+            <span class="hl-p2">[</span>example.compiler <span class="hl-keyword">:as</span> compiler<span class="hl-p2">]</span>
+            <span class="hl-p2">[</span>reagent.dom.client <span class="hl-keyword">:as</span> rdomc<span class="hl-p2">]</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">def</span> <span class="hl-def">emotion-compiler</span> <span class="hl-p1">(</span><span class="hl-builtin">compiler/create-compiler</span> <span class="hl-p2">{</span><span class="hl-keyword">:function-components</span> <span class="hl-builtin">true</span><span class="hl-p2">}</span> <span class="hl-builtin">emotion/jsx</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">defonce</span> <span class="hl-def">root</span> <span class="hl-p1">(</span><span class="hl-builtin">rdomc/create-root</span> <span class="hl-p2">(</span>.getElementById <span class="hl-builtin">js/document</span> <span class="hl-string">&quot;app&quot;</span><span class="hl-p2">)</span><span class="hl-p1">)</span><span class="hl-p0">)</span>
+
+<span class="hl-p0">(</span><span class="hl-builtin">rdomc/render</span> root
+              <span class="hl-p1">[</span><span class="hl-keyword">:div</span> <span class="hl-p2">{</span><span class="hl-keyword">:css</span> <span class="hl-p0">{</span><span class="hl-keyword">:color</span> <span class="hl-string">&quot;hotpink&quot;</span>
+                           <span class="hl-string">&quot;&amp;:hover&quot;</span> <span class="hl-p1">{</span><span class="hl-keyword">:color</span> <span class="hl-string">&quot;darkmagenta&quot;</span><span class="hl-p1">}</span><span class="hl-p0">}</span><span class="hl-p2">}</span>
+               <span class="hl-string">&quot;Hello&quot;</span><span class="hl-p1">]</span>
+              emotion-compiler<span class="hl-p0">)</span>
+</code></pre>
+<p>Reagent converts the <code>:css</code> map to a JS object like the other props, so
+nested maps and string keys work. Functions, e.g. Emotion theme functions,
+are called with JS arguments and their return value isn't converted: return
+a JS object, or wrap the function to convert the result with
+<code>reagent.impl.template/convert-prop-value</code>.</p>
+<p>The <code>reagent.impl</code> namespaces are internal: the functions used here can
+change between Reagent versions, and the <code>Compiler</code> protocol can get new
+methods. Check the implementation of <code>create-compiler</code> in
+<code>reagent.impl.template</code> when you update Reagent.</p>
 <h2 id="reasoning">Reasoning</h2>
 <p>Now that this mechanism to control how Reagent compiles Hiccup-style markup
 to React calls is in place, it will be probably used later to control
@@ -76,4 +148,4 @@ to create element from a keyword, this will be easy)</li>
 <li>Will this cause problems for libraries? Do the libraries have to start
 calling <code>as-element</code> with their own Compiler to ensure compatibility.</li>
 </ul>
-</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/ReagentCompiler.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/">Archive</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#functional-components-implementation">Functional components implementation</a></li><li class="toc-h2"><a href="#reasoning">Reasoning</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/ReagentCompiler.html"}</script><script src="js/main.js?94739a" type="text/javascript"></script></body></html>
+</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/ReagentCompiler.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/">Archive</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#functional-components-implementation">Functional components implementation</a></li><li class="toc-h2"><a href="#custom-compiler">Custom compiler</a></li><li class="toc-h2"><a href="#reasoning">Reasoning</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/ReagentCompiler.html"}</script><script src="js/main.js?2f70c7" type="text/javascript"></script></body></html>
