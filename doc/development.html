@@ -7,30 +7,75 @@
     <path d="M37.217 12.657a2.325 2.325 0 1 1-4.65 0 2.325 2.325 0 1 1 4.65 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".457"/>
     <path d="M31.676 6.053a1.17 1.17 0 1 0-2.341 0 1.17 1.17 0 1 0 2.341 0z" fill="#00d8ff" stroke="#00d8ff" stroke-width=".23"/>
 </svg>
-</span>Reagent</a><nav class="site-nav"><a href="doc/">Guide</a><a href="api/">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/">Documentation index</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Reagent 2</span><ul><li><a href="doc/WhatsNew2.html">What&#x27;s new in 2.0</a></li><li><a href="doc/2.0-upgrade.html">Upgrading to 2.0</a></li></ul></li><li><span class="sidebar-section">Learn</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Square brackets vs parentheses</a></li><li><a href="doc/WhenDoComponentsUpdate.html">When do components update?</a></li><li><a href="doc/ManagingState.html">Managing State</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/BestPractices.html">Best Practices (draft)</a></li></ul></li><li><span class="sidebar-section">Reference</span><ul><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li><li><a href="doc/Security.html">Security</a></li></ul></li><li><span class="sidebar-section">FAQ</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Component not re-rendering</a></li><li><a href="doc/FAQ/UsingRefs.html">Using refs</a></li><li><a href="doc/FAQ/UsingAnEntity.html">Entities like nbsp</a></li><li><a href="doc/FAQ/HtmlEntities.html">HTML entities</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Missing attributes</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">dangerouslySetInnerHTML</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">Forcing re-creation</a></li><li><a href="doc/FAQ/CljsjsReactProblems.html">Broken after updating deps</a></li></ul></li><li><span class="sidebar-section">Older versions</span><ul><li><a href="doc/1.2-upgrade.html">Upgrading to 1.2</a></li><li><a href="doc/1.1-upgrade.html">Upgrading to 1.1</a></li><li><a href="doc/1.0-upgrade.html">Upgrading to 1.0</a></li><li><a href="doc/0.8-upgrade.html">Upgrading to 0.8</a></li></ul></li><li><span class="sidebar-section">More</span><ul><li><a href="doc/examples/material-ui.html">Example: Material-UI</a></li><li><a href="doc/examples/smooth-ui.html">Example: Smooth UI</a></li><li><a href="doc/development.html" class="active">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/">API reference</a></li><li><a href="api/reagent.core.html">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><p class="review-notice"><strong>Not reviewed yet: </strong>this page may be outdated or inconsistent with the other guides. The <a href="api/">API reference</a> is generated from the current source.</p><div class="markdown"><h1 id="reagent-development">Reagent development</h1>
+</span>Reagent</a><nav class="site-nav"><a href="doc/">Guide</a><a href="api/">API</a><a href="https://github.com/reagent-project/reagent/blob/master/CHANGELOG.md">Changelog</a><a href="https://github.com/reagent-project/reagent">GitHub</a></nav><div class="search"><input type="search" placeholder="Search docs &amp; API" aria-label="Search" value=""/></div><button title="Switch to dark theme" aria-label="Toggle dark theme" class="theme-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"></path></svg></button></div></header><main><div class="docs-layout"><nav class="sidebar"><button class="sidebar-toggle">Menu</button><ul><li><a href="doc/">Documentation index</a></li><li><a href="doc/GettingStarted.html">Getting Started</a></li><li><span class="sidebar-section">Reagent 2</span><ul><li><a href="doc/WhatsNew2.html">What&#x27;s new in 2.0</a></li><li><a href="doc/2.0-upgrade.html">Upgrading to 2.0</a></li></ul></li><li><span class="sidebar-section">Learn</span><ul><li><a href="doc/UsingHiccupToDescribeHTML.html">Using Hiccup to Describe HTML</a></li><li><a href="doc/CreatingReagentComponents.html">Creating Reagent Components</a></li><li><a href="doc/UsingSquareBracketsInsteadOfParens.html">Square brackets vs parentheses</a></li><li><a href="doc/WhenDoComponentsUpdate.html">When do components update?</a></li><li><a href="doc/ManagingState.html">Managing State</a></li><li><a href="doc/BatchingAndTiming.html">Batching and Timing</a></li><li><a href="doc/ControlledInputs.html">Controlled Inputs</a></li><li><a href="doc/BestPractices.html">Best Practices (draft)</a></li></ul></li><li><span class="sidebar-section">Reference</span><ul><li><a href="doc/InteropWithReact.html">Interop with React</a></li><li><a href="doc/ReactFeatures.html">React Features</a></li><li><a href="doc/ReagentCompiler.html">Reagent Compiler</a></li><li><a href="doc/WebComponents.html">Web Components (Custom Elements)</a></li><li><a href="doc/ReactRenderers.html">React Renderers</a></li><li><a href="doc/ServerSideRendering.html">Server Side Rendering</a></li><li><a href="doc/React19.html">React 19 and Reagent</a></li><li><a href="doc/Security.html">Security</a></li></ul></li><li><span class="sidebar-section">FAQ</span><ul><li><a href="doc/FAQ/ComponentNotRerendering.html">Component not re-rendering</a></li><li><a href="doc/FAQ/UsingRefs.html">Using refs</a></li><li><a href="doc/FAQ/UsingAnEntity.html">Entities like nbsp</a></li><li><a href="doc/FAQ/HtmlEntities.html">HTML entities</a></li><li><a href="doc/FAQ/MyAttributesAreMissing.html">Missing attributes</a></li><li><a href="doc/FAQ/dangerouslySetInnerHTML.html">dangerouslySetInnerHTML</a></li><li><a href="doc/FAQ/ForcingComponentRecreation.html">Forcing re-creation</a></li></ul></li><li><span class="sidebar-section">Older versions</span><ul><li><a href="doc/1.2-upgrade.html">Upgrading to 1.2</a></li><li><a href="doc/1.1-upgrade.html">Upgrading to 1.1</a></li><li><a href="doc/1.0-upgrade.html">Upgrading to 1.0</a></li><li><a href="doc/0.8-upgrade.html">Upgrading to 0.8</a></li></ul></li><li><span class="sidebar-section">More</span><ul><li><a href="doc/examples/material-ui.html">Example: Material-UI</a></li><li><a href="doc/examples/smooth-ui.html">Example: Smooth UI</a></li><li><a href="doc/development.html" class="active">Development guide</a></li></ul></li><li><span class="sidebar-section">API</span><ul><li><a href="api/">API reference</a></li><li><a href="api/reagent.core.html">reagent.core</a></li><li><a href="api/reagent.dom.client.html">reagent.dom.client</a></li><li><a href="api/reagent.dom.html">reagent.dom</a></li><li><a href="api/reagent.dom.server.html">reagent.dom.server</a></li><li><a href="api/reagent.ratom.html">reagent.ratom</a></li><li><a href="api/reagent.hooks.html">reagent.hooks</a></li></ul></li></ul></nav><div class="docs-main"><article class="docs-content"><div class="markdown"><h1 id="reagent-development">Reagent development</h1>
+<h2 id="requirements">Requirements</h2>
+<ul>
+<li>Node.js and npm (<code>.nvmrc</code> has the version CI uses)</li>
+<li>Java 21</li>
+<li><a href="https://clojure.org/guides/install_clojure">Clojure CLI</a> and
+<a href="https://leiningen.org/">Leiningen</a>, for the full test run</li>
+<li><a href="https://github.com/clj-kondo/clj-kondo">clj-kondo</a> and
+<a href="https://github.com/weavejester/cljfmt">cljfmt</a>, for linting and
+formatting</li>
+</ul>
+<p>Install the npm dependencies (shadow-cljs, React, Karma) first:</p>
+<pre><code>npm install
+</code></pre>
+<h2 id="development-loop">Development loop</h2>
+<p>Start the shadow-cljs watch build for the site and the tests:</p>
+<pre><code>npx shadow-cljs watch client
+</code></pre>
+<p>Then open <a href="http://localhost:8090">http://localhost:8090</a>. The page reloads the code when you save a
+file. The DEV box in the bottom right corner runs the whole test suite (&quot;Run
+tests&quot;), with the details in the browser console. Its &quot;Run on load&quot; checkbox
+runs the tests on every page load.</p>
+<h3 id="repl">REPL</h3>
+<p>shadow-cljs starts an nREPL server; the port is in <code>.shadow-cljs/nrepl.port</code>.
+Connect to it with your editor, switch to the ClojureScript REPL of the
+browser page and run a single test namespace:</p>
+<pre class="hl"><code><span class="hl-p0">(</span>shadow.cljs.devtools.api/repl <span class="hl-keyword">:client</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span><span class="hl-builtin">require</span> 'reagent.impl.util-test <span class="hl-keyword">:reload</span><span class="hl-p0">)</span>
+<span class="hl-p0">(</span>cljs.test/run-tests 'reagent.impl.util-test<span class="hl-p0">)</span>
+</code></pre>
+<p>The REPL needs the page open in a browser.</p>
 <h2 id="running-tests">Running tests</h2>
-<p>The tests use <a href="https://karma-runner.github.io/2.0/index.html">Karma</a> to run tests on browsers. You need to install <code>karma</code> command to run the tests:</p>
-<pre><code>npm install -g karma-cli
+<p>Tests are in <code>test/</code>. Use <code>reagenttest.utils/deftest</code> instead of
+<code>cljs.test/deftest</code>: it defines each test for both the default (class
+component) compiler and the function component compiler.</p>
+<p>Before finishing a change, run the full suite in headless Chrome:</p>
+<pre><code>npx shadow-cljs compile test &amp;&amp; npx karma start test-environments/shadow-cljs-prod/karma.conf.js --single-run
 </code></pre>
-<p>To prepare different environments for tests run:</p>
-<pre><code>./prepare-tests.sh
+<h3 id="all-environments">All environments</h3>
+<p><code>./run-tests.sh</code> runs the tests in every environment under
+<code>test-environments/</code> (Leiningen with Cljsjs and npm, bundlers, advanced
+compilation, Node, shadow-cljs release), like CI does. It is slow, and only
+needed for changes that could behave differently between build tools or under
+advanced compilation. <code>./run-tests.sh clj</code> runs only the bundler
+environments (<code>bundle*</code>), <code>./run-tests.sh lein</code> all the others.</p>
+<h3 id="controlled-input-tests">Controlled input tests</h3>
+<p><code>e2e/inputs.spec.js</code> uses <a href="https://playwright.dev/">Playwright</a> to type into
+the page in <code>test/reagenttest/e2e/inputs.cljs</code> with real keyboard and IME
+input, to test controlled inputs in Chromium:</p>
+<pre><code>npx playwright install chromium-headless-shell   # once
+npm run test:e2e
 </code></pre>
-<p>After this, you can run the full test set:</p>
-<pre><code>./run-tests.sh
+<p>Known bugs are marked with <code>test.fail</code> and a link to the issue.
+<code>npx playwright test</code> alone reuses the last build. The page is served on port
+8091; set <code>E2E_PORT</code> to use another port.</p>
+<p>To try the page by hand, run <code>npm run e2e:page</code> and open
+<a href="http://127.0.0.1:8091">http://127.0.0.1:8091</a>.</p>
+<h2 id="lint-and-formatting">Lint and formatting</h2>
+<pre><code>./lint.sh
+./cljfmt.sh check   # or: ./cljfmt.sh fix
 </code></pre>
-<p>Running all the tests can take a while, so while developing Reagent,
-you might want to focus on one test environment, and use Figwheel to
-run tests on your browser:</p>
-<pre><code>lein figwheel client # For Cljsjs
-lein figwheel client-npm # NPM
-
-# Open http://0.0.0.0:3449 on a browser
-# Check console for test output
-</code></pre>
-<h2 id="building-package">Building package</h2>
-<p>To build Reagent and use built version in your applications run <code>lein install</code>
-and update the dependency on your app to use the version that was installed.</p>
-<p>Note that if <code>project.clj</code> uses a version that is released on Clojars, this command
-will overwrite that version on your local Maven repository. To restore
-real version, remove directory corresponding to the version from <code>~/.m2/repository/reagent/reagent/</code>.</p>
-</div><p class="edit-link"><a href="https://github.com/reagent-project/reagent/blob/master/doc/development.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/">Archive</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#running-tests">Running tests</a></li><li class="toc-h2"><a href="#building-package">Building package</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/development.html"}</script><script src="js/main.js?160395" type="text/javascript"></script></body></html>
+<p>CI runs both and they should report nothing. CI pins the clj-kondo and cljfmt
+versions (<code>.github/workflows/clojure.yml</code>); older versions can report false
+positives.</p>
+<h2 id="building-the-package">Building the package</h2>
+<p>To build Reagent and use the built version in your application, run
+<code>lein install</code> and change your application's dependency to the version in
+<code>project.clj</code>.</p>
+<p>If <code>project.clj</code> has a version that is released on Clojars, this overwrites
+that version in your local Maven repository. To restore the released version,
+remove its directory from <code>~/.m2/repository/reagent/reagent/</code>.</p>
+</div><p class="edit-link"><span class="reviewed">Reviewed <!-- -->2026-11-18<!-- --> · </span><a href="https://github.com/reagent-project/reagent/blob/master/doc/development.md">Edit this page on GitHub</a></p></article><footer class="site-footer"><a href="https://github.com/reagent-project/reagent">GitHub</a> · <a href="https://cljdoc.org/d/reagent/reagent/">cljdoc</a> · <a href="https://clojurians.slack.com/messages/reagent/">#reagent on Clojurians Slack</a> · <a href="news/">Archive</a></footer></div><nav class="toc"><div class="toc-title">On this page</div><button aria-expanded="false" class="toc-toggle">On this page</button><ul><li class="toc-h2"><a href="#requirements">Requirements</a></li><li class="toc-h2"><a href="#development-loop">Development loop</a></li><li class="toc-h3"><a href="#repl">REPL</a></li><li class="toc-h2"><a href="#running-tests">Running tests</a></li><li class="toc-h3"><a href="#all-environments">All environments</a></li><li class="toc-h3"><a href="#controlled-input-tests">Controlled input tests</a></li><li class="toc-h2"><a href="#lint-and-formatting">Lint and formatting</a></li><li class="toc-h2"><a href="#building-the-package">Building the package</a></li></ul></nav></div></main></div></div></div><script>var pageConfig = {"page-path":"/doc/development.html"}</script><script src="js/main.js?9eb1e3" type="text/javascript"></script></body></html>
